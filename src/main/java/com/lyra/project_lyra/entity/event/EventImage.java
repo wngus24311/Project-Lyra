@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.lyra.project_lyra.entity.BaseEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,34 +17,26 @@ import lombok.ToString;
 
 @Entity
 @Builder
+@Getter
+// cxclude를 시키면 ToString메소드에서 제외시킨다.
+@ToString(exclude = "event")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@ToString(exclude ="event")
-@Table(name="tbl_eventreview")
-public class EventReview //extends BaseEntity
-{
-	//댓글 번호
+@Table(name="tbl_eventimage")
+public class EventImage {
+	// 이미지 번호
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long reviewnum;
+	private Long imagenum;
+	
+	@Column(nullable= false)
+	private String path;
+	// uuid : 네트워크 상에서 고유성이 보장되는 id를 만들기 위한 표준 규약
+	@Column(nullable= false)
+	private String uuid;
+	@Column(length=100, nullable=false)
+	private String imagename;
 
-	/* 유저아이디 포링키 이후 사용 코드
-	@ManyToOne(fetch = FetchType.LAZY)
-	private MemberInfo memberinfo;
-	*/
-	// 포링키 이전까지 댓글유저 아이디 객체 대체용도 
-	@Column(length=15, nullable=false)
-	private String reviewid;
-	
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Event event;
-	
-	// 댓글내용
-	@Column(length=2000, nullable=false)
-	private String reviewcontent;
-	
-	
-	
 }
