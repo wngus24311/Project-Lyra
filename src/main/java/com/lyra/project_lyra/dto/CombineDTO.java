@@ -1,5 +1,20 @@
 package com.lyra.project_lyra.dto;
 
-public class CombineDTO {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class CombineDTO {
+       
+	   private Long completeRateNum;
+	   private Long keepNum;
+	   private String id;
+	   private Long bookNum;
+	   private Long lastPage;
+	   
 }

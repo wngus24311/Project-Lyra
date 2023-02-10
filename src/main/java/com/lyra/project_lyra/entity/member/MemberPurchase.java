@@ -1,4 +1,6 @@
-package com.lyra.project_lyra.entity.combine;
+package com.lyra.project_lyra.entity.member;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,8 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.lyra.project_lyra.entity.book.BookInfo;
-import com.lyra.project_lyra.entity.member.MemberInfo;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,20 +21,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude={"memberInfo", "bookInfo"})
-@Table(name="tbl_CombineCompulateRate")
-public class CombineCompleteRate {
+@ToString
+@Table(name="tbl_MemberPurchase")
+public class MemberPurchase {
    
    @Id
-   private Long completeRateNum;
+   private Long purchaseNum;
    
    @ManyToOne
    @JoinColumn(name="id")
    private MemberInfo memberInfo;
    
-   @ManyToOne
-   @JoinColumn(name="bookNum")
-   private BookInfo bookInfo;
-   
-   private Long lastPage;
+   @LastModifiedDate
+   private LocalDateTime purchaseDate;
 }
