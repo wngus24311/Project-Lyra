@@ -1,3 +1,5 @@
+
+
 jQuery(document).ready(function ($) {
 
     $('#checkbox').change(function(){
@@ -5,7 +7,8 @@ jQuery(document).ready(function ($) {
           moveRight();
       }, 3000);
     });
-    
+
+    //  slider
       var slideCount = $('#slider ul li').length;
       var slideWidth = $('#slider ul li').width();
       var slideHeight = $('#slider ul li').height();
@@ -45,3 +48,19 @@ jQuery(document).ready(function ($) {
   
   });    
   
+
+// //   modal
+//   const open = document.getElementById('open');
+//   const modal_container = 
+//   document.getElementById('modal_container');
+//   const read = 
+//   document.getElementById('read');
+
+//   open.addEventListner('click', () => {
+//     modal_container.classList.add('show');
+//   });
+
+//   close.addEventListner('click', () => {
+//     modal_container.classList.remove('show');
+//   });
+

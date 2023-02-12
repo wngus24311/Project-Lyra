@@ -1,5 +1,6 @@
 package com.lyra.project_lyra.service.implement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -31,11 +32,12 @@ public class BookServiceImpl implements BookService {
 	private final BookInfoRepository bookInfoRepository;
 	private final BookReviewRepository bookReviewRepository;
 
+
 	@Override
 	public Long register1(BookDTO dto) {
 		log.info("dto--------" + dto);
 
-		BookInfo bookInfo = dtoToEntity1(dto);
+		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 
 		bookInfoRepository.save(bookInfo);
 
@@ -46,7 +48,7 @@ public class BookServiceImpl implements BookService {
 	public Long register2(BookDTO dto) {
 		log.info("dto--------" + dto);
 
-		BookReview bookReview = dtoToEntity2(dto);
+		BookReview bookReview = reviewDtoToEntity(dto);
 
 		bookReviewRepository.save(bookReview);
 
@@ -66,7 +68,7 @@ public class BookServiceImpl implements BookService {
 			log.info(Arrays.toString(arr));
 		});
 
-		Function<Object[], BookDTO> fn = (en -> entityToDto1((BookInfo) en[0]));
+		Function<Object[], BookDTO> fn = (en -> bookInfoEntityToDto((BookInfo) en[0]));
 
 		return new PageResultDTO<>(result, fn);
 
@@ -81,13 +83,26 @@ public class BookServiceImpl implements BookService {
 
 	// 리뷰 페이지
 	@Override
-	public List<BookDTO> getList(Long bookNum) {
+	public List<BookDTO> getList() {
 
-		BookInfo bookInfo = BookInfo.builder().bookNum(bookNum).build();
-
-		List<BookReview> result = bookReviewRepository.findByBookInfo(bookInfo);
-
-		return result.stream().map(bookReview -> entityToDto2(bookReview)).collect(Collectors.toList());
+		List<BookInfo> books = bookInfoRepository.findAll();
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			BookDTO bookDTO = BookDTO.builder()
+					.bookNum(book.getBookNum())
+					.bookTitle(book.getBookTitle())
+					.bookGerne(book.getBookGerne())
+					.bookThumbnail(book.getBookThumbnail())
+					.bookLike(book.getBookLike())
+					.bookPage(book.getBookPage())
+					.build();
+			
+			bookDTOList.add(bookDTO);
+		}
+		
+		log.info(bookDTOList);
+		return bookDTOList;
 	}
 
 	// 책 리뷰 수정
@@ -110,5 +125,14 @@ public class BookServiceImpl implements BookService {
 	public void remove(Long reviewNum) {
 		bookReviewRepository.deleteById(reviewNum);
 		
+	}
+
+	@Override
+	public void insert(BookDTO dto) {
+		log.info("dto--------" + dto);
+		
+		BookInfo bookInfo = bookInfoDtoToEntity(dto);
+		
+		bookInfoRepository.save(bookInfo);
 	}
 }

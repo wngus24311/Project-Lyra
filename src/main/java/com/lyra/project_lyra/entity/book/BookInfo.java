@@ -36,6 +36,7 @@ public class BookInfo {
    @Column(nullable = false)
    private String bookGerne;
    
+   @Column(nullable = false)
    private Long bookLike;
    
    @Column(nullable = false)

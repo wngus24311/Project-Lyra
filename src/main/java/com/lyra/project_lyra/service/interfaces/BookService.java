@@ -13,6 +13,8 @@ import com.lyra.project_lyra.entity.member.MemberInfo;
 //2번 : BookReview
 
 public interface BookService {
+	
+	void insert(BookDTO dto);
 
 	Long register1(BookDTO dto);
 	
@@ -27,13 +29,13 @@ public interface BookService {
 	PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto);
 
 	// 책 리뷰 페이지 처리
-	List<BookDTO> getList(Long bookNum);
+	List<BookDTO> getList();
 
 	void modify(BookDTO bookDTO);
 
 	void remove(Long reviewNum);
 
-	default BookInfo dtoToEntity1(BookDTO dto) {
+	default BookInfo bookInfoDtoToEntity(BookDTO dto) {
 
 		BookInfo bookInfo = BookInfo.builder()
 				.bookNum(dto.getBookNum())
@@ -47,7 +49,7 @@ public interface BookService {
 		return bookInfo;
 	}
 
-	default BookReview dtoToEntity2(BookDTO dto) {
+	default BookReview reviewDtoToEntity(BookDTO dto) {
 
 		MemberInfo memberInfo = MemberInfo.builder().id(dto.getId()).build();
 
@@ -64,7 +66,7 @@ public interface BookService {
 		return bookReview;
 	}
 
-	default BookDTO entityToDto1(BookInfo bookInfo) {
+	default BookDTO bookInfoEntityToDto(BookInfo bookInfo) {
 
 		BookDTO bookDTO = BookDTO.builder().bookNum(bookInfo.getBookNum())
 				.bookTitle(bookInfo.getBookTitle())
@@ -77,7 +79,7 @@ public interface BookService {
 		return bookDTO;
 	}
 
-	default BookDTO entityToDto2(BookReview bookReview) {
+	default BookDTO reviewEntityToDto(BookReview bookReview) {
 
 		BookDTO bookDTO = BookDTO.builder().reviewNum(bookReview.getReviewnum()).
 				id(bookReview.getMemberInfo().getId())

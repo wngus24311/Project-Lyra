@@ -1,10 +1,161 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="/css/welcome.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> -->
+
+    
+    
 </head>
 <body>
- HELLO
+    <!-- header 호출 -->
+    <div data-include-path="/aside/header.html"></div>
+
+
+    
+<div class="header-content">
+    <h1>전 세계 도서를 모아 엮은 거문고</h1>
+    <h3>따뜻한 이야기들을 지금 만나보세요</h3>
+    <form class="email-signup" method="GET" action="/main/main">
+        <input type="email" placeholder="이메일 주소 입력" required>
+        <button type="submit">시작하기</button>
+    </form>
+</div>
+
+
+<!-- --------------------- features start ------------------------- -->
+    <div class="features">
+        <div class="row">
+            <div class="text-col1">
+                <h2>당신을 기다리는 12만권의 도서</h2>
+                <p>무제한으로 경험해보세요</p>
+            </div>
+            <div class="img-col1">
+                <img src="/images/bookgrid.jpg">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="img-col2">
+                <!-- <img src="images/device1.png"> -->
+                <img src="/images/device2.png">
+            </div>
+            <div class="text-col2">
+                <h2>서점, 일상에서 더 가깝게</h2>
+                <p>세상에서 가장 교양있는 취미</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-col">
+                <h2>좋아하실 만한 책들 여기 모아뒀어요</h2>
+                <p>검색을 통해 뽑은 인기 분야 책들을 확인해보세요</p>
+            </div>
+          <!-- <div class="waterdrop-box">
+            <div class="drops">
+                <div class="drop"></div>
+                <div class="drop"></div>
+          </div> -->
+            <div class="img-col">
+                <img src="/images/book3.png">
+            </div>
+           
+        </div>
+
+        <div class="row">
+            <div class="img-col">
+                <img src="/images/book2.png">
+            </div>
+            <div class="text-col">
+                <h2>한 달 완독 챌린지</h2>
+                <p>한 눈에 들어오는 해시태그, 장르별 도서로 취향을 찾아보세요</p>
+            </div>
+           
+        </div>
+    </div>
+    </script>
+     <!-- --------------------- features end ------------------------- -->
+
+
+
+      <!-- --------------------- faq start ------------------------- -->
+    <div class="faq">
+        <h2>자주 묻는 질문</h2>
+        <ul class="accordion">
+            <li>
+                <input type="radio" name="accordion" id="first">
+                <label for="first">거문고가 무엇인가요?</label>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique vero ex, 
+                        atque error sed molestiae quia minus amet alias quasi voluptates ut, 
+                        placeat maiores possimus? Illum sunt nostrum consectetur?</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="second">
+                <label for="second">안 쓰면 환불해주나요?</label>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique vero ex, 
+                        atque error sed molestiae quia minus amet alias quasi voluptates ut, 
+                        placeat maiores possimus? Illum sunt nostrum consectetur?</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="third">
+                <label for="third">구독 중 해지할 수 있나요? 수수료는 없나요?</label>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique vero ex, 
+                        atque error sed molestiae quia minus amet alias quasi voluptates ut, 
+                        placeat maiores possimus? Illum sunt nostrum consectetur?</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="accordion" id="fourth">
+                <label for="fourth">어떤 기기에서 사용할 수 있나요?</label>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo similique vero ex, 
+                        atque error sed molestiae quia minus amet alias quasi voluptates ut, 
+                        placeat maiores possimus? Illum sunt nostrum consectetur?</p>
+                </div>
+            </li>
+        </ul> 
+        <small>시작할 준비 되셨나요? 이메일을 입력하세요.</small>
+        <form class="email-signup">
+            <input type="email" placeholder="이메일 주소 입력" required>
+            <button type="submit">시작하기</button>
+        </form>
+    </div>
+    <!-- --------------------- faq end ------------------------- -->
+
+
+    <!-- ---------- footer 호출 ---------- -->
+    <div data-include-path="/aside/footer.html"></div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+
 </body>
 </html>

@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
     <link rel="stylesheet" href="/project/css/welcome.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/project/css/movingfooter.css">
 
-    
-    
 </head>
 <body>
     <!-- header 호출 -->
     <div data-include-path="header.html"></div>
 
-
-    
 <div class="header-content">
     <h1>전 세계 도서를 모아 엮은 거문고</h1>
     <h3>따뜻한 이야기들을 지금 만나보세요</h3>
@@ -57,11 +51,6 @@
                 <h2>좋아하실 만한 책들 여기 모아뒀어요</h2>
                 <p>검색을 통해 뽑은 인기 분야 책들을 확인해보세요</p>
             </div>
-          <!-- <div class="waterdrop-box">
-            <div class="drops">
-                <div class="drop"></div>
-                <div class="drop"></div>
-          </div> -->
             <div class="img-col">
                 <img src="/project/images/book3.png">
             </div>
@@ -135,7 +124,10 @@
 
 
     <!-- ---------- footer 호출 ---------- -->
-    <div data-include-path="footer.html"></div>
+    <div data-include-path="movingfooter.html"></div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
         window.addEventListener('load', function() {
@@ -155,7 +147,6 @@
             });
         });
     </script>
-
 
 </body>
 </html>

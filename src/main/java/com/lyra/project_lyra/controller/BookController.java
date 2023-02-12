@@ -31,12 +31,24 @@ public class BookController {
 	
 	private final BookService bookService;
 	
+	//KAKAO API 책 정보 가져오기
+	@GetMapping("/insert")
+	public void indextest() {
+				
+	}
+	
+	@PostMapping("/insert")
+	public void indextest2(@RequestBody BookDTO dto) {
+		log.info("dto......." + dto);
+		bookService.insert(dto);
+	}
+	
 	
 	//책 컨트롤러
 	@GetMapping("/list")
 	public void RankingList(PageRequestDTO pageRequestDTO, Model model) {
-		log.info("list.........." + pageRequestDTO);
-		model.addAttribute("result", bookService.getBookRankingList(pageRequestDTO));
+		//log.info("list.........." + pageRequestDTO);
+		//model.addAttribute("result", bookService.getBookRankingList(pageRequestDTO));
 	}
 
 	
@@ -44,12 +56,12 @@ public class BookController {
 	
 	//책 리뷰 컨트롤러
 	@GetMapping(value="/book/{bookNum}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<BookDTO>> getListByBoard(@PathVariable("bookNum") Long bookNum) {
-	
-		log.info("bookNum : " + bookNum);
-		
-		return new ResponseEntity<>(bookService.getList(bookNum), HttpStatus.OK);
-	}
+//	public ResponseEntity<List<BookDTO>> getListByBoard(@PathVariable("bookNum") Long bookNum) {
+//	
+//		log.info("bookNum : " + bookNum);
+//		
+//		return new ResponseEntity<>(bookService.getList(bookNum), HttpStatus.OK);
+//	}
 	
 	@PostMapping("")
 	public ResponseEntity<Long> register(@RequestBody BookDTO bookDTO){
