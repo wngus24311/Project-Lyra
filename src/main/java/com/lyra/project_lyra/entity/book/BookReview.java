@@ -45,4 +45,12 @@ public class BookReview {
     
     @LastModifiedDate
 	private LocalDateTime bookReviewRegDate;
+
+	 public void changeGrade(Long grade) {
+    	this.grade = grade;
+    }
+    
+    public void changeReview(String bookReview) {
+    	this.bookReview = bookReview;
+    }
 }
