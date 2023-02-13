@@ -65,10 +65,9 @@ public class BookServiceImpl implements BookService {
 		result.getContent().forEach(arr -> {
 			log.info(Arrays.toString(arr));
 		});
-		
-		Function<Object[], BookDTO> fn = (en -> 
-		entityToDto1((BookInfo)en[0]));
-		
+
+		Function<Object[], BookDTO> fn = (en -> entityToDto1((BookInfo) en[0]));
+
 		return new PageResultDTO<>(result, fn);
 
 	}
@@ -82,8 +81,12 @@ public class BookServiceImpl implements BookService {
 
 	// 리뷰 페이지
 	@Override
-	public List<BookDTO> getBookReviewList(Long bookNum) {
-		List<BookReview> result = bookReviewRepository.getReviews(BookInfo.builder().bookNum(bookNum).build());
+	public List<BookDTO> getList(Long bookNum) {
+
+		BookInfo bookInfo = BookInfo.builder().bookNum(bookNum).build();
+
+		List<BookReview> result = bookReviewRepository.findByBookInfo(bookInfo);
+
 		return result.stream().map(bookReview -> entityToDto2(bookReview)).collect(Collectors.toList());
 	}
 
@@ -106,6 +109,6 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void remove(Long reviewNum) {
 		bookReviewRepository.deleteById(reviewNum);
-
+		
 	}
 }

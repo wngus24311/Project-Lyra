@@ -48,7 +48,7 @@ public class BookController {
 	
 		log.info("bookNum : " + bookNum);
 		
-		return new ResponseEntity<>(bookService.getBookReviewList(bookNum), HttpStatus.OK);
+		return new ResponseEntity<>(bookService.getList(bookNum), HttpStatus.OK);
 	}
 	
 	@PostMapping("")

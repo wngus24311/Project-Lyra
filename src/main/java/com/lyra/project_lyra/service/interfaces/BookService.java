@@ -27,7 +27,7 @@ public interface BookService {
 	PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto);
 
 	// 책 리뷰 페이지 처리
-	List<BookDTO> getBookReviewList(Long bookNum);
+	List<BookDTO> getList(Long bookNum);
 
 	void modify(BookDTO bookDTO);
 

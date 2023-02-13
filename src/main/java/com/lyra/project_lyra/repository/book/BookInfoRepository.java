@@ -15,6 +15,7 @@ public interface BookInfoRepository extends JpaRepository<BookInfo, Long>{
 		return null;
 	}
 	
+	//책 랭킹
 	@Query("select m, avg(coalesce(r.grade,0)), count(r) from BookInfo m " 
 			+ "left outer join BookReview r on r.bookInfo = m group by m")
 	Page<Object[]> getBookRankingPage(Pageable pageable);

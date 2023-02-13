@@ -8,14 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.lyra.project_lyra.entity.book.BookInfo;
 import com.lyra.project_lyra.entity.book.BookReview;
-import com.lyra.project_lyra.entity.member.MemberInfo;
 
 public interface BookReviewRepository extends JpaRepository<BookReview, Long>{
 	   
+	//리뷰 삭제
 	   @Modifying
-	   @Query("delete from tbl_BookReview br where br.memberInfo = :memberInfo")
-	   void deleteByMemberInfo(MemberInfo memberInfo);
+	   @Query("delete from BookReview br where br.bookInfo = :bookInfo")
+	   void deleteByBookNum(BookInfo bookInfo);
 	   
 	 //책 리뷰 가져오기
-		List<BookReview> getReviews(BookInfo bookInfo);
+	   List<BookReview> findByBookInfo(BookInfo bookInfo);
 }
+
+
