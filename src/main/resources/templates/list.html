@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>listPage</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>evnum</th>
+			<th>title</th>
+			<th>title(||을 쓰지 않은 경우)</th>
+			<th>date</th>
+			<th>hits</th>
+		</tr>
+		<!--Thymeleaf문법-->
+		<!-- 
+		Controller findAll() : model.addAttribute에서 
+		eventList에다가 eventDTOList를 담은걸 th:each(반복문)에 넣고 
+		event라는 변수를 선언해준다
+		-->
+		<tr th:each="event: ${eventList}">
+			<td th:text="${event.evnum}"></td>
+			<td><a th:href="@{|/event/${event.evnum}|}"
+				th:text="${event.eventTitle}"></a></td>
+			<td><a th:href="@{/event/${event.evnum}}"
+				th:text="${event.eventTitle}"></a></td>
+			<td
+				th:text="*{#temporals.format(event.eventCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+			<td th:text="${event.eventHits}"></td>
+		</tr>
+	</table>
+	<button onclick="saveReq()">게시글 작성</button>
+</body>
+<script th:inline="javascript">
+		const saveReq = () => {
+			console.log("게시글 추가 요청");
+			location.href="/event/save";
+		}
+	</script>
+</html>

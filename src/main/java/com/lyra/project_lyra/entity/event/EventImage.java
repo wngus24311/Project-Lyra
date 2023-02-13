@@ -6,37 +6,53 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.lyra.project_lyra.entity.BaseEntity;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Setter;
 
 @Entity
-@Builder
 @Getter
-// cxclude를 시키면 ToString메소드에서 제외시킨다.
-@ToString(exclude = "event")
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name="tbl_eventimage")
-public class EventImage {
-	// 이미지 번호
+@Setter
+@Table(name="tbl_image")
+public class EventImage extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long imagenum;
+	private Long inum;
+	@Column
+	private String eventOriginalImageName;
+	@Column
+	private String eventServerImageName;
 	
-	@Column(nullable= false)
-	private String path;
-	// uuid : 네트워크 상에서 고유성이 보장되는 id를 만들기 위한 표준 규약
-	@Column(nullable= false)
-	private String uuid;
-	@Column(length=100, nullable=false)
-	private String imagename;
+	@Column
+	private String eventOriginalThumbnailName;
+	@Column
+	private String eventServerThumbnailName;
 
+	
+	
+	/* @JoinColumn(name = "board_id")
+	 	- Board_id와 조인컬럼을 하겠다는 의미.
+	 	- name = DB에 만들어지는 컬럼  */
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "evnum")
 	private Event event;
+	
+	
+	// 부모Entity, Fiiename 을 가져오도록. Pk값이 아니라 부모 Entity값을 넘겨줘야함.
+	public static EventImage toBoardFileEntity(
+			Event event, String eventOriginalImageName, String eventServerImageName, String eventOriginalThumbnailName, String eventServerThumbnailName) {
+		EventImage boardFileEntity = new EventImage();
+		boardFileEntity.setEvent(event);
+		boardFileEntity.setEventOriginalImageName(eventOriginalImageName);
+		boardFileEntity.setEventServerImageName(eventServerImageName);
+		boardFileEntity.setEventOriginalThumbnailName(eventOriginalThumbnailName);
+		boardFileEntity.setEventServerThumbnailName(eventServerThumbnailName);
+	return boardFileEntity;
+	}
+	
 }

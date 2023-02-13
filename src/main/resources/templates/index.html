@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+</head>
+<body>
+	<!-- script함수 호출 -->
+	<button onclick="saveReq()">글작성</button>
+	<a href="/event/save">글작성</a>
+	<button onclick="listReq()">글목록</button>
+	<button onclick="pagingReq()">페이징 목록</button>
+</body>
+<script>
+	/*
+	기존 함수 정의방식
+	function listReq(){
+		location.href="/event/";
+	} 
+	*/
+	/*최근 함수 정의방식*/
+	const saveReq = () => {
+		/*
+		인덱스가 띄워졌을시 event/save주소를 호출
+		(<a href = "event/save">와 동일하며 
+		주소를 제대로 요청하느냐에 중점을 뒀을때 UI적인 측면만 다르다.) 
+		*/
+		location.href="/event/save";
+	}
+	const listReq = () => {
+		location.href="/event/";
+	}
+	const pagingReq = () => {
+		location.href="/event/paging";
+	}
+</script>
+
+</html>

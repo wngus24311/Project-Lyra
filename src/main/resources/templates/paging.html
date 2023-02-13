@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>listPage</title>
+</head>
+<body>
+	<button onclick="saveReq()">글작성</button>
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성일</th>
+			<th>조회수</th>
+			<th>이미지</th>
+		</tr>
+		<tr th:each="event: ${eventList}">
+			<td th:text="${event.evnum}"></td>
+			<!-- 서버에선 실제 사용자가 보고있는 페이지값보다 하나 작은값을 가지고있기에 서버쪽으로 요청할때는 하나 큰값을 줘야한다. -->
+			<td><a th:href="@{|/event/${event.evnum}|(page=${eventList.number + 1})}" 
+					th:text="${event.eventTitle}"></a></td>
+			
+			<td th:text="*{#temporals.format(event.eventStartDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+			<td th:text="${event.eventHits}"></td>
+			<!-- 저장된 파일의 이름을 가져오는 곳 
+				이름을 가져오면 local에 저장할때 지정한 경로에서 파일을 가져옴-->
+			<td th:if="${event.ThumbnailAttached == 1}"><img th:src="@{|/upload/${event.eventServerThumbnailName}|}"></td>
+		</tr>
+	</table>
+		
+	<!-- 첫번째 페이지 이동 -->
+	<!-- /event/paging?page=1와 같이 똑같이 동작 -->
+	<a th:href="@{/event/paging(page=1)}">첫 페이지</a>
+	<!-- 이전 링크 활성화 비활성화 -->
+	<!-- eventList.getNumber() 메소드 호출
+		사용자:2페이지일때 getNumber()=1이기에 컨트롤로 요청하는걸 eventList.number를 활용 -->
+	<a th:href="${eventList.first} ? '#' : @{/event/paging(page=${eventList.number})}">이전</a>
+	
+	<!-- 페이지 번호 링크(현재 페이지는 숫자만) 
+		for(int page=startPage; page<endPage; page++)-->
+	<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+		<!-- 현재페이지는 링크 없이 숫자만 표현 
+			반복되는 페이지값이 요청하는 페이지보다 +1일경우 페이지를 텍스트로만 보여주고-->
+		<span th:if="${page == eventList.number + 1}" th:text="${page}"></span>
+		<!-- 현재페이지 번호가 아닌 다른 페이지번호에는 링크를 보여주도록 -->
+		<span th:unless="${page == eventList.number + 1}">
+			<a th:href="@{/event/paging(page=${page})}" th:text="${page}"></a>
+		</span>
+	</span>
+	
+	<!-- 다음 링크 활성화 비활성화 
+		사용자: 2페이지, getNumber: 1, 다음페이지 3페이지주도록 할려면 +2를 더해줘야한다.-->
+	<a th:href="${eventList.last} ? '#' : @{/event/paging(page=${eventList.number + 2})}">다음</a>
+	
+	<!-- 마지막 페이지로 이동 -->
+	<a th:href="@{/event/paging(page=${eventList.totalPages})}">끝 페이지</a>
+
+</body>
+<script>
+
+
+	const saveReq = () => {
+		location.href="/event/save";
+	}
+</script>
+</html>

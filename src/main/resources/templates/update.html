@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>listPage</title>
+</head>
+<body>
+	<form action="/event/update" method="post" name="updateForm">
+		<input type="hidden" name="evnum" th:value="${eventUpdate.evnum}">
+		title: <input type="text" name="eventTitle"
+			th:value="${eventUpdate.eventTitle}"><br> 
+			eventName:<textarea name="eventName" cols="30" rows="10"
+			th:text="${eventUpdate.eventName}"></textarea>
+		<br> Image: <input type="hidden" name="eventHits"
+			th:value="${eventUpdate.eventHits}"> <input type="hidden"
+			name="eventHits" th:value="${eventUpdate.eventHits}"> 
+			<input type="submit" value="글작성완료">
+	</form>
+</body>
+<script th:inline="javascript">
+	</script>
+</html>

@@ -2,21 +2,19 @@ package com.lyra.project_lyra.repository.event;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.lyra.project_lyra.entity.event.Event;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-	/*
-		 //EventImage ei / Event e
-	@Query("select e, ei, avg(coalesce(r.grade,0)), count(r) from Event e "
-			+ "left outer join EventImage ei on ei.event = e "
-			+ "left outer join EventReview r on r.event = r group by e")
-	Page<Object[]> getListPage(Pageable pageable);
-	
-	@Query("select e, ei, avg(coalesce(r.grade,0)), count(r) from Event e "
-			+ "left outer join EventReview r on r.event = e "
-			+ "where e.eventnum = :eventnum group by ei")
-	List<Object[]> getEventWithAll(Long eventnum);
-*/
+	/* mySQL기준 쿼리문, 내가 조회하고자 하는 게시글의 조희수를 
+	   현재 가지고있는 조회수에서 하나를 증가시켜서 조회수 값으로 바꾸는것.
+	update board_table set board_hits=board_hits+1 where id=?
+	*/
+	@Modifying
+	@Query(value = "update Event e set e.eventHits=e.eventHits+1 where e.evnum=:evnum")
+	void updateHits(@Param("evnum") Long evnum);
 }
