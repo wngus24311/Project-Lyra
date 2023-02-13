@@ -35,8 +35,10 @@ public interface BookService {
 
 	default BookInfo dtoToEntity1(BookDTO dto) {
 
-		BookInfo bookInfo = BookInfo.builder().bookNum(dto.getBookNum())
+		BookInfo bookInfo = BookInfo.builder()
+				.bookNum(dto.getBookNum())
 				.bookTitle(dto.getBookTitle())
+				.bookThumbnail(dto.getBookThumbnail())
 				.bookGerne(dto.getBookGerne())
 				.bookLike(dto.getBookLike())
 				.bookPage(dto.getBookPage())
@@ -51,9 +53,11 @@ public interface BookService {
 
 		BookInfo bookInfo = BookInfo.builder().bookNum(dto.getBookNum()).build();
 
-		BookReview bookReview = BookReview.builder().reviewnum(dto.getReviewNum())
+		BookReview bookReview = BookReview.builder()
+				.reviewnum(dto.getReviewNum())
 				.memberInfo(memberInfo)
 				.bookInfo(bookInfo).grade(dto.getGrade())
+				.bookReview(dto.getBookReview())
 				.bookReviewRegDate(dto.getBookReviewRegDate())
 				.build();
 
@@ -64,6 +68,7 @@ public interface BookService {
 
 		BookDTO bookDTO = BookDTO.builder().bookNum(bookInfo.getBookNum())
 				.bookTitle(bookInfo.getBookTitle())
+				.bookThumbnail(bookInfo.getBookThumbnail())
 				.bookGerne(bookInfo.getBookGerne())
 				.bookLike(bookInfo.getBookLike())
 				.bookPage(bookInfo.getBookPage())

@@ -25,10 +25,10 @@ import lombok.ToString;
 public class MemberInfo {
    
    @Id
-   @Column(nullable = false)
+   @Column(length=20, nullable = false)
    private String id;
    
-   @Column(nullable = false)
+   @Column(length=16, nullable = false)
    private String pw;
    
    @Column(nullable = false)
@@ -39,8 +39,7 @@ public class MemberInfo {
    
    @Column(nullable = false)
    private String nickname;
-   
-   @Column(nullable = false)
+
    private String memberGerne;
    
    private String subscribeState;

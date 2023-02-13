@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    height: 2000px;
+    background: #020106;
+    color: #fff;
+}
+.container{
+    max-width: 95%;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    transition: 0.5s;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+ul{ 
+    list-style: none;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+i{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* ---------- header ---------- */
+.home{
+    color: white;
+    background-color: #020106;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+.header{
+    width: 100%;
+    height: 25vh;
+    position:relative;
+    /* background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(/project/images/background.jpg); */
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.nav-bar1{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    pad: 10px 0;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: solid 0.001cm gray;
+}
+.nav-bar2{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    pad: 10px 0;
+}
+.search{
+    display: flex;
+    justify-content: flex-end;
+}
+.fas fa-search{
+    display:inline-block;
+    align-items:center;
+    justify-content:flex-end;
+}
+    .logo{
+    width: 100px;
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    }
+    .nav-bar1 button{
+    border: 0;
+    outline: 0;
+    background: #020106;
+    color: whitesmoke;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    }
+    .nav-bar2 button{
+    border: 0;
+    outline: 0;
+    background: #020106;
+    color: whitesmoke;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    /* font-weight:bolder; */
+    }
+
+/* ---------- slider ---------- */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);	
+
+html {
+    border-top: 5px solid #fff;
+    color: #2a2a2a;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans';
+}
+#slider {
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto 0 auto;
+    border-radius: 4px;
+}
+
+#slider ul p{
+    position: relative;
+    /* display: inline; */
+    float: left;
+    color: white;
+}
+#slider ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    list-style: none;
+}
+#slider ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 144vh;
+    height: 500px;
+    background: #ccc;
+    text-align: center;
+    line-height: 300px;
+}
+a.control_prev, a.control_next {
+    position: absolute;
+    top: 40%;
+    z-index: 999;
+    display: block;
+    padding: 4% 3%;
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+a.control_prev:hover, a.control_next:hover {
+    opacity: 1;
+-webkit-transition: all 0.2s ease;
+}
+a.control_prev {
+    border-radius: 0 2px 2px 0;
+}
+a.control_next {
+    right: 0;
+    border-radius: 2px 0 0 2px;
+}
+.slider_option {
+    position: relative;
+    margin: 10px auto;
+    width: 160px;
+    font-size: 18px;
+}
+
+
+/* ---------- popular ----------  */
+.heading h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline;
+}
+.heading{
+    margin-bottom: 10px;
+}
+.heading button{
+    /* padding: 10px 10px; */
+    background-color: black;
+    font-size: 15px;
+    float: right;
+    color: white;
+    margin-top: 18px;
+    /* margin-bottom: 30px; */
+}
+.popular{
+    color: white;
+}
+.popular .container{
+    margin: 180px;
+}
+.popular .box{
+    position: relative;
+    background: #221f1f;
+    width: 100%;
+    cursor: pointer;
+    padding: 20PX;
+    /* border-radius: 5%; */
+}
+.popular .box .imgbox{
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+    /* border-radius: 5%; */
+}
+.popular .box .imgbox img{
+    transition: 0.5s;
+    height: auto;
+}
+.popular .box:hover .imgbox img{
+    opacity: 0.6;
+    transform: scale(1.2);
+}
+.popular .box .content{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    /* left: 40%; */
+    z-index: 2;
+}
+.popular .box .content i{
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.popular .box:hover .content i{
+    opacity: 1;
+    visibility: visible;
+}
+/* .popular #playbtn{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+} */
+.popular .icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+.popular .icon i{
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+}
+.popular .text{
+    padding-top: 10px;
+}
+.popular .text h3{
+    display: block;
+}
+.popular .description-genre{
+    margin: 0;
+    margin-bottom: 10px;
+}
+.popular .description-genre a{
+    color: white;
+}
+.owl-nav span{
+    
+    font-size: 50px;
+    color: white;
+}
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 25%;
+}
+.owl-prev{
+    left: -20px;
+}
+.owl-next{
+    right: -20px;
+}
+
+
+
+
+
+/* ---------- footer ---------- */
+.footer{
+    padding: 50px 15% 10px;
+    border-top: 6px solid #333;
+    color: #777;
+}
+.footer h2{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.footer .col{
+    flex-basis: 25%;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+.footer .col a{
+    display:block;
+    text-decoration: none;
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.footer .row{
+    align-items: flex-start;
+    padding: 10px 0;
+}
+.copyright-txt{
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

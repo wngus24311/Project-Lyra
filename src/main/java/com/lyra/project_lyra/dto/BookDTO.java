@@ -16,6 +16,7 @@ public class BookDTO {
      //BookInfo
 	 private Long bookNum;	   
 	 private String bookTitle;
+	 private String bookThumbnail;
 	 private String bookGerne;
 	 private Long bookLike; 
 	 private int bookPage;

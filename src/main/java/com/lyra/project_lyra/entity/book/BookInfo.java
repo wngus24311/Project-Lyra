@@ -31,6 +31,9 @@ public class BookInfo {
    private String bookTitle;
    
    @Column(nullable = false)
+   private String bookThumbnail;
+   
+   @Column(nullable = false)
    private String bookGerne;
    
    private Long bookLike;
