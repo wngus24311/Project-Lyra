@@ -35,15 +35,15 @@
 
 ● 포함 기술 스택
 
-Spring boot
-Hikaricp
-Thymeleaf
-Servlet
-Docker
-AWS
-JPA
-OAuth2
-Kakao API
+Spring boot,
+Hikaricp,
+Thymeleaf,
+Servlet,
+Docker,
+AWS,
+JPA,
+OAuth2,
+Kakao API,
 
 ● 역할분담 
 
