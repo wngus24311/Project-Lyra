@@ -33,8 +33,8 @@ public class MemberRepositoryTests {
 
        IntStream.rangeClosed(1,10).forEach(i -> {
                MemberInfo memberInfo = MemberInfo.builder()
-                       .id("user" + i)
-                       .pw("1111")
+                       .username("user" + i)
+                       .password("1111")
                        .nickname("nickname"+i)
                        .age(i)
                        .memberGerne("액션")
@@ -51,8 +51,8 @@ public class MemberRepositoryTests {
     public void insertMemberPurchase() {
 
     	 //맴버 아이디
-        String id = "user"+((long)(Math.random()*10) + 1);
-        MemberInfo memberInfo = MemberInfo.builder().id(id).build();
+        String username = "user"+((long)(Math.random()*10) + 1);
+        MemberInfo memberInfo = MemberInfo.builder().username(username).build();
 
     IntStream.rangeClosed(1,10).forEach(i -> {
             MemberPurchase memberPurchase = MemberPurchase.builder()

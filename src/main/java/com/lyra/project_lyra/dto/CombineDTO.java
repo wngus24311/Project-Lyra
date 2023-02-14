@@ -13,7 +13,7 @@ public class CombineDTO {
        
 	   private Long completeRateNum;
 	   private Long keepNum;
-	   private String id;
+	   private String username;
 	   private Long bookNum;
 	   private Long lastPage;
 	   

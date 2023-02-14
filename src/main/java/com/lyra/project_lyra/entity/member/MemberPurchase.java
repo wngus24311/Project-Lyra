@@ -29,7 +29,7 @@ public class MemberPurchase {
    private Long purchaseNum;
    
    @ManyToOne
-   @JoinColumn(name="id")
+   @JoinColumn(name="username")
    private MemberInfo memberInfo;
    
    @LastModifiedDate

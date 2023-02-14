@@ -51,7 +51,7 @@ public interface BookService {
 
 	default BookReview reviewDtoToEntity(BookDTO dto) {
 
-		MemberInfo memberInfo = MemberInfo.builder().id(dto.getId()).build();
+		MemberInfo memberInfo = MemberInfo.builder().username(dto.getUsername()).build();
 
 		BookInfo bookInfo = BookInfo.builder().bookNum(dto.getBookNum()).build();
 
@@ -82,7 +82,7 @@ public interface BookService {
 	default BookDTO reviewEntityToDto(BookReview bookReview) {
 
 		BookDTO bookDTO = BookDTO.builder().reviewNum(bookReview.getReviewnum()).
-				id(bookReview.getMemberInfo().getId())
+				username(bookReview.getMemberInfo().getUsername())
 				.bookNum(bookReview.getBookInfo().getBookNum())
 				.bookReview(bookReview.getBookReview())
 				.grade(bookReview.getGrade())
