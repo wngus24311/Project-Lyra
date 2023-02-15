@@ -28,7 +28,7 @@ public class MemberInfo {
    @Column(length=20, nullable = false)
    private String username;
    
-   @Column(length=16, nullable = false)
+   @Column(length=100, nullable = false)
    private String password;
    
    @Column(nullable = false)

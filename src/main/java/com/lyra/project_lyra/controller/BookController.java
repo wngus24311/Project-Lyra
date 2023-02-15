@@ -38,6 +38,11 @@ public class BookController {
 	public void indextest() {
 				
 	}
+
+	@PostMapping("/logintest")
+	public ResponseEntity<String> logintest() {
+		return ResponseEntity.ok().body("토큰 인증 완료.");
+	}
 	
 	@PostMapping("/insert")
 	public void indextest2(@RequestBody BookDTO dto) {

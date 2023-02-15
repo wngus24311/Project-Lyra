@@ -13,7 +13,7 @@ public class JwtUtil {
     // Token에서 username 확인하기
     public static String getUserName(String token, String secretKey) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token)
-                .getBody().get("userName", String.class);
+                .getBody().get("username", String.class);
     }
 
     // Token 확인하여 파기시간 확인
@@ -25,9 +25,8 @@ public class JwtUtil {
     // Token 발행하는 메서드
     public static String createJwt(String username, String secretKey, Long expriedMs) {
         Claims claims = Jwts.claims();
-        claims.put("userName", username);   // claims에 username을 담기
-        log.info("username =======> " + username);
-        log.info("sk ============> " + secretKey);
+        claims.put("username", username);   // claims에 username을 담기
+
         return Jwts.builder()
                 .setClaims(claims)  // set 해줌
                 .setIssuedAt(new Date(System.currentTimeMillis()))  // 생성 시간

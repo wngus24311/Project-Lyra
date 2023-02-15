@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 @Data
 @Builder
@@ -22,8 +23,7 @@ public class MemberDTO {
    private String memberGerne;
    private String subscribeState;
    private Timestamp lastlogin;
-   
-   
+
    private Long purchaseNum;
    private LocalDateTime purchaseDate;
    
