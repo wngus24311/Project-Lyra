@@ -69,7 +69,6 @@ public class MemberServiceImpl implements MemberService {
         if (!bCryptPasswordEncoder.matches(password, selectedUser.getPassword())) {
             throw new AppException(ErrorCode.INVAILD_PASSWORD, "패스워드가 틀렸습니다.");
         }
-        log.info("로그인 2차 확인");
         String token = JwtUtil.createJwt(selectedUser.getUsername(), secretKey, expiredMs);
         log.info(token);
         return token;

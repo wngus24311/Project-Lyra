@@ -59,12 +59,9 @@ public class MemberController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody MemberDTO dto, HttpServletRequest request) {
         String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-        log.info("ㅋㅋ 깜놀" + authorization);
+        log.info("authorization =====> " + authorization);
         /** ID로 Password 찾아서 비교할 준비 */
         String password = repository.findByUsername(dto.getUsername()).get().getPassword();
-//        if (authorization.equals("Barer "))
-        log.info("password ==========> " + password);
-        log.info("username ==========> " + dto.getUsername());
 
         /** PasswordEncoder의 비교 메서드인 matches로 비교하여 확인 후 OK 보냄 */
         if (bCryptPasswordEncoder.matches(dto.getPassword(), password)) {
