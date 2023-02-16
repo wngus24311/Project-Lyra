@@ -23,7 +23,7 @@ public class BookDTO {
 	 
 	 //BookReview + ( bookNum )
 	 private Long reviewNum;
-	 private String username;
+	 private String id;
 	 private String bookReview;
 	 private Long grade;
 	 private LocalDateTime bookReviewRegDate;

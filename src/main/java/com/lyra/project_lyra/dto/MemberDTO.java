@@ -7,23 +7,23 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberDTO {
-
-   private String username;
-   private String password;
+   
+   private String id;
+   private String pw;
    private int age;
    private int gender;
    private String nickname;
    private String memberGerne;
    private String subscribeState;
    private Timestamp lastlogin;
-
+   
+   
    private Long purchaseNum;
    private LocalDateTime purchaseDate;
    

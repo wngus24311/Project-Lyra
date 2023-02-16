@@ -31,7 +31,7 @@ public class CombineKeep {
    private Long keepNum;
    
    @ManyToOne
-   @JoinColumn(name="username")
+   @JoinColumn(name="id")
    private MemberInfo memberInfo;
    
    @ManyToOne

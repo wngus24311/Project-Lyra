@@ -26,10 +26,10 @@ public class MemberInfo {
    
    @Id
    @Column(length=20, nullable = false)
-   private String username;
+   private String id;
    
-   @Column(length=100, nullable = false)
-   private String password;
+   @Column(length=16, nullable = false)
+   private String pw;
    
    @Column(nullable = false)
    private int age;
