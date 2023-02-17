@@ -1,255 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <!-- header js, css 호출 -->
-    <link rel="stylesheet" href="/css/header.css">
-    <script src="/js/header.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+<!-- header js, css 호출 -->
+<link rel="stylesheet" href="/css/header.css">
+<script src="/js/header.js"></script>
 
-    <!-- main css, js 호출  -->
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/main.js"></script>
+<!-- main css, js 호출  -->
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/main.js"></script>
 
 </head>
 <body>
 
-    <!-- header 호출 -->
-    <div data-include-path="/aside/header.html"></div>
+	<!-- header 호출 -->
+	<div data-include-path="/aside/header.html"></div>
 
-    <!-- ---------- slider start ---------- -->
-    <div id="slider">
-    <a href="#" class="control_next"> > </a>
-    <a href="#" class="control_prev"> < </a>
-    <ul>
-        <li id="slides" class="slide1">
-            <h1>해리포터</h1>
-            <p>해리포털~</p>
-            <div class="slide_genre">
-                장르: <span class="text-body">판타지</span>
-            </div>
-        </li>
-        <li id="slides" class="slide2">
-            <h1>셜록 홈즈</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            <div class="slide_genre">
-                장르: <span class="text-body">추리</span>
-            </div>
-        </li>
-        <li id="slides" class="slide3">
-            <h1>슬램덩크</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            <div class="slide_genre">
-                장르: <span class="text-body">스포츠</span>
-            </div>
-        </li>
-        <li id="slides" class="slide4">
-            <h1>위대한 개츠비</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            <div class="slide_genre">
-                장르: <span class="text-body">장편소설</span>
-            </div>
-        </li>
-    </ul>  
-    </div>
-    <!-- ---------- slider end ---------- -->
+	<!-- ---------- slider start ---------- -->
+	<div id="slider">
+		<a href="#" class="control_next"> > </a> <a href="#"
+			class="control_prev"> < </a>
+		<ul>
+			<li id="slides" class="slide1">
+				<h1>해리포터</h1>
+				<p>해리포털~</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">판타지</span>
+				</div>
+			</li>
+			<li id="slides" class="slide2">
+				<h1>셜록 홈즈</h1>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">추리</span>
+				</div>
+			</li>
+			<li id="slides" class="slide3">
+				<h1>슬램덩크</h1>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">스포츠</span>
+				</div>
+			</li>
+			<li id="slides" class="slide4">
+				<h1>위대한 개츠비</h1>
+				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">장편소설</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- ---------- slider end ---------- -->
 
 
-    <!-- contents start -->
-    <section class="popular mtop">
-        <div class="container">
- <div class="heading flex1">
-            	<span th:each="dto, dtoStat : ${result}" th:if="${dto.bookGerne} == '1' and ${dtoStat.index} < 1">
-                	<h2>실시간 인기 도서</h2>            	
-            	</span>
-                <button>더보기 ></button>
-            </div>
-            
-            <div class="owl-carousel owl-theme">
+	<!-- contents start -->
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<span>
+					<h2>[[${bookResult[0]}]]</h2>
+				</span>
+				<button>더보기 ></button>
+			</div>
 
-                <div class="item" th:each="dto : ${result}" th:if="${dto.bookGerne} == '1'"> 
-                    <div class="box">
-                        <div class="icon">
-                            <i class="far fa-heart"></i>
-                            <i class="fas fa-share-alt"></i>
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="imgbox">
-                        	<div>
-                        	  <img th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" />
-                        	</div>                           
-                        </div>
-                        <div class="text">
-                            <h3>[[${dto.bookTitle}]]</h3>
-                            <div class="description-genre">
-                              <a href="#" th:if="${dto.bookGerne} == '1'">#액션</a>                                
-                              <a href="#" th:if="${dto.bookGerne} == '2'">#로맨스</a>                                
-                              <a href="#" th:if="${dto.bookGerne} == '3'">#만화</a>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result1}">
+					<div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
+								class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">[[${bookResult[0]}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            </div>
-    </section>
-    <section class="popular mtop">
-        <div class="container">
-            <div class="heading flex1">
-                <h2>금주의 TOP 10</h2>
-                <button>더보기 ></button>
-            </div>
-            
-            <div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result}" th:if="${dto.bookGerne} == '3'"> 
-                    <div class="box">
-                        <div class="icon">
-                            <i class="far fa-heart"></i>
-                            <i class="fas fa-share-alt"></i>
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="imgbox">
-                        	<div>
-                        	  <img th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" />
-                        	</div>                           
-                        </div>
-                        <div class="text">
-                            <h3>[[${dto.bookTitle}]]</h3>
-                            <div class="description-genre">
-                              <a href="#">#[[${dto.bookGerne}]]</a>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<span>
+					<h2>[[${bookResult[1]}]]</h2>
+				</span>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result2}">
+					<div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
+								class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">[[${bookResult[1]}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<h2>실시간 인기 순위</h2>
+				<button>더보기 ></button>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result1}">
+					<div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
+								class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">#[[${dto.bookGerne}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<h2>거문고 추천</h2>
+				<button>더보기 ></button>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result2}">
+					<div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
+								class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img id="imgId" th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>#[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">#[[${dto.bookGerne}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+	<script>
+		const item = document.querySelectorAll('.item');
 	
-            </div>
-            </div>
-    </section>
-    <section class="popular mtop">
-        <div class="container">
-            <div class="heading flex1">
-                <h2>거문고 추천</h2>
-                <button>더보기 ></button>
-            </div>
-            
-            <div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result}" th:if="${dto.bookGerne} == '3'"> 
-                    <div class="box">
-                        <div class="icon">
-                            <i class="far fa-heart"></i>
-                            <i class="fas fa-share-alt"></i>
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="imgbox">
-                        	<div>
-                        	  <img th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" />
-                        	</div>                           
-                        </div>
-                        <div class="text">
-                            <h3>[[${dto.bookTitle}]]</h3>
-                            <div class="description-genre">
-                              <a href="#">#[[${dto.bookGerne}]]</a>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+		item.forEach((list, index) => {
+	        const imgbox = list.querySelector('.imgbox');
+	
+	        imgbox.addEventListener('click', () => {
+	        	var data={category:(String)(msg.documents[0].title)}
+	        	
+	            $.ajax({
+					url: '/main/categoryInsert',
+					type:"post",
+					//data:JSON.stringify(data),
+					contentType:"application/json; charset=UTF-8",
+					dataType:"text",
+					success: function(result){
+						console.log("success result : " + result);
+					}
+				});	
+	        });
+	    });
+	
+		$('.owl-carousel').owlCarousel({
+			loop : true,
+			margin : 10,
+			dots : false,
+			nav : true,
+			responsive : {
+				411 : {
+					items : 1
+				},
+				768 : {
+					items : 2
+				},
+				1000 : {
+					items : 5
+				}
+			}
+		})
+	</script>
+	<!-- contents end -->
 
-            </div>
-            </div>
-    </section>
-    <section class="popular mtop">
-        <div class="container">
-            <div class="heading flex1">
-                <h2>#친구와 함께 #청춘 #우정</h2>
-                <button>더보기 ></button>
-            </div>
-            
-            <div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result}" th:if="${dto.bookGerne} == '2'"> 
-	                    <div class="box">
-	                        <div class="icon">
-	                            <i class="far fa-heart"></i>
-	                            <i class="fas fa-share-alt"></i>
-	                            <i class="fas fa-plus"></i>
-	                        </div>
-	                        <div class="imgbox">
-	                        	<div>
-	                        	  <img id="imgId" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" />
-	                        	</div>                           
-	                        </div>
-	                        <div class="text">
-	                            <h3>#[[${dto.bookTitle}]]</h3>
-	                            <div class="description-genre">
-	                              <a href="#">#[[${dto.bookGerne}]]</a>                                
-	                            </div>
-	                        </div>
-	                    </div>
-               		 </div>
-            	</div>
-            </div>
-    </section>
+	<!-- ---------- footer 호출 ---------- -->
+	<div data-include-path="/aside/movingfooter.html"></div>
 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-    
-    <script>
-        $('.owl-carousel').owlCarousel({
-            loop:true,
-            margin:10,
-            dots: false,
-            nav:true,
-            responsive:{
-                411:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:5
-                }
-            }
-        })
-    </script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-            </div>
-           </div> 
-        </div>
-    </div>
-</section>
-<!-- contents end -->
-
-    <!-- ---------- footer 호출 ---------- -->
-    <div data-include-path="/aside/movingfooter.html"></div>
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script>
-	    let auth = localStorage.getItem("Authorization");
-        window.addEventListener('load', function() {
-            var allElements = document.getElementsByTagName('*');
-            Array.prototype.forEach.call(allElements, function(el) {
-                var includePath = el.dataset.includePath;
-                if (includePath) {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            el.outerHTML = this.responseText;
-                        }
-                    };
-                    xhttp.open('GET', includePath, true);
-                    xhttp.send();
-                }
-            });
-        });
-    </script>
+	<script>
+		let auth = localStorage.getItem("Authorization");
+		window.addEventListener('load', function() {
+			var allElements = document.getElementsByTagName('*');
+			Array.prototype.forEach.call(allElements, function(el) {
+				var includePath = el.dataset.includePath;
+				if (includePath) {
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							el.outerHTML = this.responseText;
+						}
+					};
+					xhttp.open('GET', includePath, true);
+					xhttp.send();
+				}
+			});
+		});
+	</script>
 
 </body>
-</html> 
+</html>

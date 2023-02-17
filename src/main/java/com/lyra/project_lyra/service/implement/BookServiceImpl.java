@@ -32,7 +32,6 @@ public class BookServiceImpl implements BookService {
 	private final BookInfoRepository bookInfoRepository;
 	private final BookReviewRepository bookReviewRepository;
 
-
 	@Override
 	public Long register1(BookDTO dto) {
 		log.info("dto--------" + dto);
@@ -134,5 +133,27 @@ public class BookServiceImpl implements BookService {
 		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 		
 		bookInfoRepository.save(bookInfo);
+	}
+
+	@Override
+	public List<BookDTO> getCategoryList(String category) {
+		List<BookInfo> books = bookInfoRepository.findAllByCategoryQuery(category);
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			BookDTO bookDTO = BookDTO.builder()
+					.bookNum(book.getBookNum())
+					.bookTitle(book.getBookTitle())
+					.bookGerne(book.getBookGerne())
+					.bookThumbnail(book.getBookThumbnail())
+					.bookLike(book.getBookLike())
+					.bookPage(book.getBookPage())
+					.build();
+			
+			bookDTOList.add(bookDTO);
+		}
+		
+		log.info("bookDTOList : " + bookDTOList);
+		return bookDTOList;
 	}
 }

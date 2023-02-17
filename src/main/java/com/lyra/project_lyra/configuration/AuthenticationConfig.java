@@ -34,7 +34,7 @@ public class AuthenticationConfig {
                 .cors().and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/member/join", "/member/login").permitAll()   /** join, login은 언제나 가능하도록!!! */
-                .antMatchers(HttpMethod.POST, "/book/**").authenticated()   /**모든 포스트 요청과 책 읽기는 인증 필요로 해놓음.*/
+                //.antMatchers(HttpMethod.POST, "/book/**").authenticated()   /**모든 포스트 요청과 책 읽기는 인증 필요로 해놓음.*/
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) /**JWT를 사용하는 경우에만 씀*/

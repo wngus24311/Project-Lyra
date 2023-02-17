@@ -19,6 +19,12 @@ public interface BookService {
 	Long register1(BookDTO dto);
 	
 	Long register2(BookDTO dto);
+	
+	// 책 리뷰 페이지 처리
+	List<BookDTO> getList();
+	
+	// 책 카테고리별 페이지 처리
+	List<BookDTO> getCategoryList(String username);
 
 	//와이어 프레임에 명시된 기술들 페이지 처리
 	
@@ -27,9 +33,6 @@ public interface BookService {
 
 	// 책 장르별 페이지 처리
 	PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto);
-
-	// 책 리뷰 페이지 처리
-	List<BookDTO> getList();
 
 	void modify(BookDTO bookDTO);
 

@@ -56,21 +56,36 @@
 			let auth = localStorage.getItem("Authorization");
 			let data = {
 				"username": username,
-				"password": password
+				"password": password,
+				"auth": auth
 			}
 			$.ajax({
 				url: '/member/login',
-				contentType: "application/json",
+				contentType: "application/json; charset=UTF-8",
 				data: JSON.stringify(data),
-				type: "POST",
+				type: 'POST',
 				headers: {
 					"Authorization" : auth
 				},
 				dataType: 'text',
 				success: function (data) {
-					window.location.href = "/main/main";
 					console.log("complete")
 					localStorage.setItem("Authorization", "Bearer " + data);
+					$.ajax({
+						url: '/main/main',
+						type:"post",
+						contentType:"application/json; charset=UTF-8",
+						headers: {
+							"Authorization" : auth
+						},
+						dataType:"text",
+						success: function(result){
+							console.log("success result : " + result);
+							let url = "/main/main/" + result;
+							console.log(url);
+							location.replace(url);
+						}
+					});		
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					console.log("왜 안될까" + textStatus);

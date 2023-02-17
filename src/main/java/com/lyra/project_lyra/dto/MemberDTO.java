@@ -23,6 +23,8 @@ public class MemberDTO {
    private String memberGerne;
    private String subscribeState;
    private Timestamp lastlogin;
+   
+   private String checkUsername;
 
    private Long purchaseNum;
    private LocalDateTime purchaseDate;
