@@ -116,6 +116,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		int[] iFlag = new int[category.length];
 		
+		
 		//가장 많은 데이터 구분
 		for (int i = 0; i < category.length; i++) {
 			for (int y = 0; y < category.length; y++) {
@@ -136,7 +137,6 @@ public class MemberServiceImpl implements MemberService {
 		
 		// 최대값 초기값 세팅
         int maxOne = iFlag[0];
-        int maxTwo = iFlag[0];
  
         // 최대값 구하기 1차
         for (int num : iFlag) {
@@ -153,6 +153,9 @@ public class MemberServiceImpl implements MemberService {
         		break;
         	}
         }
+        
+        int maxTwo = iFlag[0];
+        log.info("iFlag" + maxTwo);
         
         // 최대값 구하기 2차
         for (int num : iFlag) {
@@ -172,5 +175,44 @@ public class MemberServiceImpl implements MemberService {
 		log.info(categoryResult[1]);
 		
 		return categoryResult;
+	}
+
+	@Override
+	public void categoryInsert(String username, String category) {
+		MemberInfo memberInfo = new MemberInfo();
+		String getMemberGerne = memberRepository.findCategory(username);
+		String categorySum = "";
+		
+		
+		if (category.equals("")) {
+			categorySum = getMemberGerne + category;	
+		} else {
+			categorySum = getMemberGerne + "," + category;			
+		}
+		
+		log.info(getMemberGerne);
+		
+		log.info(username);
+		log.info(categorySum);
+		
+		memberRepository.updateCategory(username, categorySum);		
+	}
+
+	@Override
+	public MemberDTO getUsernameInfo(String username) {
+		MemberInfo member = new MemberInfo();
+		MemberDTO memberDTO = new MemberDTO();
+		
+		member = memberRepository.findUsernameInfo(username);
+		
+		memberDTO = memberDTO.builder()
+				.username(member.getUsername())
+				.age(member.getAge())
+				.gender(member.getGender())
+				.nickname(member.getNickname())
+				.build();
+		
+		log.info("findUsernameInfo" + memberDTO);
+		return memberDTO;
 	}
 }

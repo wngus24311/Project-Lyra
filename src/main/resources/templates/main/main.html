@@ -70,17 +70,18 @@
 		<div class="container">
 			<div class="heading flex1">
 				<span>
-					<h2>[[${bookResult[0]}]]</h2>
+					<h2>[[${username}]]님의 많이 보던 장르</h2>
 				</span>
 				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result1}">
+				<div class="item" th:each="dto : ${result1}" th:category="${bookResult[0]}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
-								class="fas fa-plus"></i>
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i> 
+							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -91,7 +92,7 @@
 						<div class="text">
 							<h3>[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
-								<a href="#">[[${bookResult[0]}]]</a>
+								<a href="#" th:id="${bookResult[0]}">[[${bookResult[0]}]]</a>
 							</div>
 						</div>
 					</div>
@@ -105,16 +106,18 @@
 		<div class="container">
 			<div class="heading flex1">
 				<span>
-					<h2>[[${bookResult[1]}]]</h2>
+					<h2>[[${username}]]님의 추천 장르</h2>
 				</span>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result2}">
+				<div class="item" th:each="dto : ${result2}" th:category="${bookResult[1]}" th:onClick="categoryInsert(this.getAttribute('category'))">					
+					<input type="hidden" class="bookNum" name="bookNum" th:value="${dto.bookNum}">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
-								class="fas fa-plus"></i>
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i> 
+							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -125,7 +128,7 @@
 						<div class="text">
 							<h3>[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
-								<a href="#">[[${bookResult[1]}]]</a>
+								<a href="#" th:id="${bookResult[1]}">[[${bookResult[1]}]]</a>
 							</div>
 						</div>
 					</div>
@@ -141,11 +144,13 @@
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result1}">
+				<div class="item" th:each="dto : ${bookLikeList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
+					<input type="hidden" class="bookNum" name="bookNum" th:value="${dto.bookNum}">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
-								class="fas fa-plus"></i>
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i>
+							 <i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -156,7 +161,7 @@
 						<div class="text">
 							<h3>[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
-								<a href="#">#[[${dto.bookGerne}]]</a>
+								<a href="#" th:id="${dto.bookGerne}">#인기순위</a>
 							</div>
 						</div>
 					</div>
@@ -168,16 +173,18 @@
 	<section class="popular mtop">
 		<div class="container">
 			<div class="heading flex1">
-				<h2>거문고 추천</h2>
+				<h2>최근 나온 책</h2>
 				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result2}">
+				<div class="item" th:each="dto : ${bookUpdateList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
+					<input type="hidden" class="bookNum" name="bookNum" th:value="${dto.bookNum}">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart"></i> <i class="fas fa-share-alt"></i> <i
-								class="fas fa-plus"></i>
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i> 
+							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -188,7 +195,7 @@
 						<div class="text">
 							<h3>#[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
-								<a href="#">#[[${dto.bookGerne}]]</a>
+								<a href="#" th:id="${dto.bookGerne}">#추천</a>
 							</div>
 						</div>
 					</div>
@@ -203,27 +210,40 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
-	<script>
-		const item = document.querySelectorAll('.item');
-	
-		item.forEach((list, index) => {
-	        const imgbox = list.querySelector('.imgbox');
-	
-	        imgbox.addEventListener('click', () => {
-	        	var data={category:(String)(msg.documents[0].title)}
-	        	
-	            $.ajax({
-					url: '/main/categoryInsert',
-					type:"post",
-					//data:JSON.stringify(data),
-					contentType:"application/json; charset=UTF-8",
-					dataType:"text",
-					success: function(result){
-						console.log("success result : " + result);
-					}
-				});	
-	        });
-	    });
+	<script>		
+		function categoryInsert(clicked_id){
+			let url = window.location.href;
+			let data = {category:clicked_id, url:url};
+			console.log(url);
+			
+			$.ajax({
+				url: '/main/categoryInsert',
+				type:"post",
+				data:JSON.stringify(data),
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("categoryInsert success");
+				}
+			});	
+			
+		}
+		
+		function bookNumInsert(bookNum){
+			let urls = window.location.href;
+			let datas = {bookNums:bookNum, url:urls};
+			
+			$.ajax({
+				url: '/combine/keep',
+				type:"post",
+				data:JSON.stringify(datas),
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("keep success");
+				}
+			});	
+		}
 	
 		$('.owl-carousel').owlCarousel({
 			loop : true,
@@ -242,6 +262,7 @@
 				}
 			}
 		})
+
 	</script>
 	<!-- contents end -->
 

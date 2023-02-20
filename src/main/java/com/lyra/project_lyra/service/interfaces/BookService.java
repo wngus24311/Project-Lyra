@@ -25,6 +25,12 @@ public interface BookService {
 	
 	// 책 카테고리별 페이지 처리
 	List<BookDTO> getCategoryList(String username);
+	
+	// 책 좋아요 개수 많은 순으로 가져오기
+	List<BookDTO> getLikeList();
+	
+	// 책 최신 리스트 가져오기
+	List<BookDTO> getUpdateList();
 
 	//와이어 프레임에 명시된 기술들 페이지 처리
 	
@@ -93,6 +99,16 @@ public interface BookService {
 				.build();
 
 		return bookDTO;
+	}
+	
+	default boolean entityNullCheck(BookInfo bookInfo) {
+		boolean bResult = true;
+		
+		if (bookInfo.getBookGerne().equals("") || bookInfo.getBookThumbnail().equals("") || bookInfo.getBookTitle().equals("")) {
+			bResult = false;
+		}
+		
+		return bResult;
 	}
 
 }

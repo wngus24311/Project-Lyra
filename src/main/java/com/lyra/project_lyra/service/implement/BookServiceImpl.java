@@ -88,16 +88,18 @@ public class BookServiceImpl implements BookService {
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
-			BookDTO bookDTO = BookDTO.builder()
-					.bookNum(book.getBookNum())
-					.bookTitle(book.getBookTitle())
-					.bookGerne(book.getBookGerne())
-					.bookThumbnail(book.getBookThumbnail())
-					.bookLike(book.getBookLike())
-					.bookPage(book.getBookPage())
-					.build();
-			
-			bookDTOList.add(bookDTO);
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
 		}
 		
 		log.info(bookDTOList);
@@ -136,24 +138,74 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getCategoryList(String category) {
-		List<BookInfo> books = bookInfoRepository.findAllByCategoryQuery(category);
+	public List<BookDTO> getCategoryList(String username) {
+		List<BookInfo> books = bookInfoRepository.findAllByCategoryQuery(username);
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
-			BookDTO bookDTO = BookDTO.builder()
-					.bookNum(book.getBookNum())
-					.bookTitle(book.getBookTitle())
-					.bookGerne(book.getBookGerne())
-					.bookThumbnail(book.getBookThumbnail())
-					.bookLike(book.getBookLike())
-					.bookPage(book.getBookPage())
-					.build();
-			
-			bookDTOList.add(bookDTO);
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
 		}
 		
 		log.info("bookDTOList : " + bookDTOList);
+		return bookDTOList;
+	}
+
+	@Override
+	public List<BookDTO> getLikeList() {
+		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookLike"));
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
+		}
+		
+		log.info("bookLikeList" + bookDTOList);
+		return bookDTOList;
+	}
+
+	@Override
+	public List<BookDTO> getUpdateList() {
+		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookNum"));
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
+		}
+		
+		log.info("bookLikeList" + bookDTOList);
 		return bookDTOList;
 	}
 }

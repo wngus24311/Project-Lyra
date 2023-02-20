@@ -11,5 +11,11 @@ public interface MemberService {
     // 회원 정보 가져오기
  	List<MemberDTO> getList();
  	
+ 	// user id별 카테고리 가져오기
  	String[] getCategory(String username);
+ 	
+ 	//username 받아와서 Database 변경하기
+ 	void categoryInsert(String username, String category);
+ 	
+ 	MemberDTO getUsernameInfo(String username);
 }
