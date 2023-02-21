@@ -37,7 +37,7 @@ public class MemberRepositoryTests {
                        .password("1111")
                        .nickname("nickname"+i)
                        .age(i)
-                       .memberGerne("액션")
+                       .memberGenre("액션")
                        .subscribeState("예")
                        .build();
                memberInfoRepository.save(memberInfo);

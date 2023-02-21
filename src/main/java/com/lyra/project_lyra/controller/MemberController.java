@@ -6,15 +6,15 @@ import com.lyra.project_lyra.service.implement.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+//@RestController
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/member/*")
@@ -42,10 +42,27 @@ public class MemberController {
                 dto.getAge(),
                 dto.getGender(),
                 dto.getNickname(),
-                dto.getMemberGerne(),
+                dto.getMemberGenre(),
                 dto.getSubscribeState());
+        ;
 
-        return ResponseEntity.ok().body("회원가입이 완료되었습니다.");
+        return ResponseEntity.ok().body(service.login(dto.getUsername(), dto.getPassword()));
+    }
+
+    @GetMapping("/category")
+    public ModelAndView category() {
+        log.info("/member/category");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/member/category");
+        return modelAndView;
+    }
+
+    @PostMapping("/category")
+    public ResponseEntity<String> category(@RequestBody MemberDTO dto , Authentication authentication) {
+        String username = (String) authentication.getPrincipal();
+        log.info("username ==========> " + username);
+        service.addMemberGenre(username, dto.getMemberGenre());
+        return ResponseEntity.ok().body("장르 선택이 완료 되었습니다.");
     }
 
     @GetMapping("/login")
@@ -62,6 +79,7 @@ public class MemberController {
         log.info("authorization =====> " + authorization);
         /** ID로 Password 찾아서 비교할 준비 */
         String password = repository.findByUsername(dto.getUsername()).get().getPassword();
+        log.info("Test ==========> " + dto.getUsername());
 
         /** PasswordEncoder의 비교 메서드인 matches로 비교하여 확인 후 OK 보냄 */
         if (bCryptPasswordEncoder.matches(dto.getPassword(), password)) {

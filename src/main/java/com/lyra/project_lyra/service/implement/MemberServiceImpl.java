@@ -1,5 +1,6 @@
 package com.lyra.project_lyra.service.implement;
 
+import com.lyra.project_lyra.dto.MemberDTO;
 import com.lyra.project_lyra.entity.member.MemberInfo;
 import com.lyra.project_lyra.excpetion.AppException;
 import com.lyra.project_lyra.excpetion.ErrorCode;
@@ -9,13 +10,13 @@ import com.lyra.project_lyra.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -49,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
                 .age(age)
                 .gender(gender)
                 .nickname(nickname)
-                .memberGerne(memberGerne)
+                .memberGenre(memberGerne)
                 .subscribeState(subscribeState)
                 .lastlogin(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
@@ -73,4 +74,21 @@ public class MemberServiceImpl implements MemberService {
         log.info(token);
         return token;
     }
+
+    /** add to memberGerne */
+    @Transactional
+    @Override
+    public void addMemberGenre(String username, String memberGenre) {
+        MemberInfo memberInfo = repository.findByUsername(username).get();
+        memberInfo.setMemberGenre(memberGenre);
+        repository.save(memberInfo);
+    }
+
+    @Override
+    public MemberDTO check(String username) {
+        MemberDTO dto = new MemberDTO();
+        dto.setUsername(username);
+        return dto;
+    }
+
 }

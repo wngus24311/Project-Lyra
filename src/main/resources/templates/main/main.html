@@ -68,7 +68,17 @@
             	</span>
                 <button>더보기 ></button>
             </div>
-            
+	        <div class="row">
+		        <div class="col-4">
+			        <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-center">
+				        <a class="p-1 rounded" href="#simple-list-item-1">Item 1</a>
+				        <a class="p-1 rounded" href="#simple-list-item-2">Item 2</a>
+				        <a class="p-1 rounded" href="#simple-list-item-3">Item 3</a>
+				        <a class="p-1 rounded" href="#simple-list-item-4">Item 4</a>
+				        <a class="p-1 rounded" href="#simple-list-item-5">Item 5</a>
+			        </div>
+		        </div>
+	        </div>
             <div class="owl-carousel owl-theme">
 
                 <div class="item" th:each="dto : ${result}" th:if="${dto.bookGerne} == '1'"> 
@@ -232,6 +242,9 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
+	    const scrollSpy = new bootstrap.ScrollSpy(document.body, {
+		    target: '#navbar-example'
+	    })
 	    let auth = localStorage.getItem("Authorization");
         window.addEventListener('load', function() {
             var allElements = document.getElementsByTagName('*');
@@ -249,6 +262,26 @@
                 }
             });
         });
+		$(document).ready(function () {
+			let auth = localStorage.getItem("Authorization");
+			
+			$.ajax({
+				url: '/main/main',
+				contentType: "application/json",
+				type: "POST",
+				headers: {
+					"Authorization" : auth
+				},
+				dataType: 'text',
+				success: function (data) {
+					console.log("complete" + data);
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					console.log("왜 안될까" + textStatus);
+				}
+			});
+		})
+	   
     </script>
 
 </body>

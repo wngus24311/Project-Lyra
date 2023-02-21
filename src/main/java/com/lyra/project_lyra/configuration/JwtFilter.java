@@ -51,12 +51,13 @@ public class JwtFilter extends OncePerRequestFilter {
 
             // Username Token 에서 꺼내기
             String username = JwtUtil.getUserName(token, secretKey);
+
             log.info("userName ========> " + username);
             // 권한 부여
             // Todo: 권한 수정 해줘야함
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(username, null, List.of(new SimpleGrantedAuthority("USER")));
-
+            log.info("JWTFilter authenticationToken ==============> " + authenticationToken);
             // Detail 넣어줌
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);

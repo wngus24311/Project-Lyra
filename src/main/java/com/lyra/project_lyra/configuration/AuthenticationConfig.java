@@ -1,5 +1,6 @@
 package com.lyra.project_lyra.configuration;
 
+import com.lyra.project_lyra.dto.MemberDTO;
 import com.lyra.project_lyra.service.implement.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,7 +34,7 @@ public class AuthenticationConfig {
                 .csrf().disable()   // 위와 동
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/member/join", "/member/login").permitAll()   /** join, login은 언제나 가능하도록!!! */
+                .antMatchers(HttpMethod.GET,"/member/**", "/main/**").permitAll()   /** join, login은 언제나 가능하도록!!! */
                 .antMatchers(HttpMethod.POST, "/book/**").authenticated()   /**모든 포스트 요청과 책 읽기는 인증 필요로 해놓음.*/
                 .and()
                 .sessionManagement()

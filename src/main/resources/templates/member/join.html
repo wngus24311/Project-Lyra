@@ -6,12 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>회원 가입</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="/css/join.css">
+	<style>
 	
+	</style>
 	
 </head>
 <body>
-	<div>
+	<div class="position-absolute top-50 start-50 translate-middle login-div">
 		<table>
 			<tr>
 				<td>
@@ -26,7 +31,7 @@
 					아이디
 				</td>
 				<td>
-					<input type="text" class="username" name="username" placeholder="ID를 입력해주세요">
+					<input type="text" class="username form-control" name="username" placeholder="ID를 입력해주세요">
 				</td>
 			</tr>
 			<tr>
@@ -37,18 +42,7 @@
 					비밀번호
 				</td>
 				<td>
-					<input type="password" class="password" name="password" placeholder="비밀번호를 입력해주세요.">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="emailMsg"></div>
-				</td>
-				<td>
-					Email
-				</td>
-				<td>
-					<input type="email" class="email" name="email" placeholder="email을 입력해주세요.">
+					<input type="password" class="password form-control" name="password" placeholder="비밀번호를 입력해주세요.">
 				</td>
 			</tr>
 			<tr>
@@ -59,7 +53,7 @@
 					나이
 				</td>
 				<td>
-					<input type="text"class="age" name="age" placeholder="나이를 입력해주세요.">
+					<input type="text"class="age form-control" name="age" placeholder="나이를 입력해주세요.">
 				</td>
 			</tr>
 			<tr>
@@ -70,7 +64,7 @@
 					Nickname
 				</td>
 				<td>
-					<input type="text" class="nickname" name="nickname" placeholder="별명을 입력해주세요.">
+					<input type="text" class="nickname form-control" name="nickname" placeholder="별명을 입력해주세요.">
 				</td>
 			</tr>
 			<tr>
@@ -81,18 +75,26 @@
 					성별
 				</td>
 				<td>
-					<input type="radio" class="gender" name="gender" value="0" > 남성
-					<input type="radio" class="gender" name="gender" value="1" > 여성
+					<div class="form-check form-check-inline">
+						<input type="radio" class="gender form-check-input" id="inlineRadio1" name="gender" value="0" >
+						<label class="form-check-label" for="inlineRadio1">남성</label>
+						
+					</div>
+					<div class="form-check form-check-inline">
+						<input type="radio" class="gender form-check-input" id="inlineRadio2" name="gender" value="1" >
+						<label class="form-check-label" for="inlineRadio1">여성</label>
+					</div>
+					
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<button type="button" class="okJoin">되라 좀</button>
+					<button type="button" class="btn btn-outline-success okJoin">가입 완료</button>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<a href="/member/login">이미 가입되어 있나요?</a>
+					<a href="/member/login" class="link-info">이미 가입되어 있나요?</a>
 				</td>
 			</tr>
 		</table>
@@ -101,15 +103,13 @@
 		$('.okJoin').click(function () {
 			let username = $(".username").val();
 			let password = $(".password").val();
-			let email = $(".email").val();
 			let age = $(".age").val();
 			let nickname = $(".nickname").val();
 			let gender = $(".gender").val();
 			
-			let data = {
+			let datas = {
 				"username": username,
 				"password": password,
-				"email": email,
 				"memberGerne": "0",
 				"age": age,
 				"nickname": nickname,
@@ -120,15 +120,35 @@
 			$.ajax({
 				url: '/member/join',
 				contentType: "application/json",
-				data: JSON.stringify(data),
+				data: JSON.stringify(datas),
 				type: "POST",
 				dataType: 'text',
 				success: function (data) {
-					console.log("됫다 " + data);
+					console.log("Success " + data);
+					localStorage.setItem("Authorization", "Bearer " + data);
+					let auth = localStorage.getItem("Authorization");
+					$.ajax({
+						url: '/member/category',
+						contentType: "application/json",
+						type: "GET",
+						headers: {
+							"Authorization" : auth
+						},
+						dataType: "text",
+						success: function (data) {
+							console.log("Success" + data);
+							window.location.href = "/member/category";
+						}
+					});
 					
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					console.log("왜 안될까" + textStatus);
+					console.log("Error" + textStatus);
+					if (username == null) {
+						alert("아이디를 입력해주세요.");
+					} else {
+						alert("아이디가 있습니다 다시 입력해주세요.")
+					}
 				}
 			});
 		}); // .uploadBtn 이벤트 종료
