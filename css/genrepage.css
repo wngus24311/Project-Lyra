@@ -1,0 +1,334 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+body{    
+    background: #020106;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    width: 100vw;
+}
+.container{
+    max-width: 95%;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    transition: 0.5s;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+ul{ 
+    list-style: none;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+i{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+
+
+/* ---------- popular ----------  */
+section{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.heading h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline;
+}
+.heading{
+    margin-bottom: 10px;
+}
+.heading button{
+    /* padding: 10px 10px; */
+    background-color: black;
+    font-size: 15px;
+    float: right;
+    color: white;
+    margin-top: 18px;
+    /* margin-bottom: 30px; */
+}
+.popular{
+    color: white;
+}
+.popular .container{
+    margin: 180px;
+}
+.popular .box{
+    position: relative;
+    background: #221f1f;
+    width: 100%;
+    cursor: pointer;
+    padding: 20PX;
+    overflow: hidden;
+    /* border-radius: 5%; */
+}
+.popular .box .imgbox{
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    /* border-radius: 5%; */
+}
+.popular .box .imgbox img{
+    transition: 0.6s;
+    height: auto;
+}
+.popular .box:hover .imgbox img{
+    opacity: 0.4;
+    transform: scale(1.2);
+}
+.watch-btn{
+    /* visibility: hidden; */
+    display: none;
+}
+.popular .box:hover .watch-btn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 80px;
+    top: 105px;
+    left: 65px;
+    transition: 0.3s;
+}
+.popular .box .content{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    /* left: 40%; */
+    z-index: 2;
+}
+
+.popular .icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+.popular .icon i{
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+}
+.icon #add-icon{
+    font-size: 20px;
+}
+.icon #heart-icon{
+    font-size: 20px;
+}
+.material-icons-outlined{
+    /* font-size: 20px; */
+    margin: 5px;
+    padding: 5px;
+    color: white;
+}
+.material-icons-outlined:hover,
+.material-icons-outlined:focus{
+    cursor: pointer;
+}
+.material-icons-outlined:active{
+    transform: scale(0.96);
+}
+.popular .text{
+    padding-top: 10px;
+}
+.popular .text h3{
+    display: block;
+}
+.popular .description-genre{
+    margin: 0;
+    margin-bottom: 10px;
+}
+.popular .description-genre a{
+    color: white;
+}
+.owl-nav span{
+    
+    font-size: 40px;
+    color: white;
+    font-weight: bolder;
+}
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 35%;
+
+}
+.owl-prev{
+    left: -60px;
+}
+.owl-next{
+    right: -60px;
+}
+
+
+/* ---------- modal ----------  */
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.75);
+    transition: all 250ms ease-in-out;
+    opacity: 1;
+    visibility: hidden;
+    z-index: 2;
+}
+.modal--bg{
+    visibility: visible;
+    opacity: 1;
+    z-index: 3;
+}
+.modal_content{
+    position: fixed;
+    display: flex;
+    left: 25%;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 540px;
+    max-width: 960px;
+    background-color: #d1d1d1; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100px);
+    transition: all 400ms ease-in-out;
+    z-index: 2;
+    overflow:hidden;
+    padding-bottom: 10px;
+}
+.modal_content--show{
+    position: fixed;
+    /* top: 20%; */
+    left: 25%;
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+    z-index: 4;
+}
+.modal_img{
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+
+}
+.modal_close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #212527;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+    z-index: 3;
+}
+.modal_close:hover{
+    color: #df4747;
+}
+.modal_left, .modal_right, .review{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.detail_title, .detail_description{
+    text-transform: uppercase;
+    color: #3e363f;
+    padding-bottom: 20px;
+}
+.detail_readBtn{
+    cursor: pointer;
+    background: #16191f;
+    color: #edf7f6; 
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 250ms ease-in-out;
+    border-radius: 5px;
+}
+.detail_readBtn:hover{
+    background: #3586ff;
+    color: #edf7f6; 
+}
+.review{
+    height: 55vh;
+    overflow-y: auto;
+}
+
+.review .comment_id, .comment_detail{
+    text-transform: uppercase;
+    color: #3e363f;
+}
+.review-add{
+    cursor: pointer;
+    background: #16191f;
+    color: #edf7f6; 
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    transition: all 250ms ease-in-out;
+    border-radius: 5px;
+}
+.review-add:hover{
+    background: #3586ff;
+    color: #edf7f6; 
+}
+.review .review_title{
+    width: 200px;
+    height: 50px;
+    margin-bottom: 5px;
+    padding-top: 8px;
+    font-size: 23px;
+    color: black;
+}
+.review .comments{
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #C1C1C1;
+    border-radius: 5px;
+    margin-bottom: 13px;
+    font-size: 14px;
+}
+.review .comment_id{
+    padding-bottom: 10px;
+    font-size: 16px;
+    padding-top: 10px;
+}
+.review .comment_detail{
+    padding-bottom: 20px;
+}
+.detail .icon{
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+.detail .icon i,
+.detail .icon span{
+    padding-top: 10px;
+    font-size: 25px;
+    padding-right: 5px;
+    color: black;
+}

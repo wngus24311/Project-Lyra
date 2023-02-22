@@ -1,0 +1,389 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+body{
+    background: #020106;
+    color: #fff;
+}
+.container{
+    max-width: 95%;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    transition: 0.5s;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+ul{ 
+    list-style: none;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+i{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+
+
+
+/* ----- user profile -----  */
+.wrapper{
+    position: absolute;
+    top: 63%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 350px;
+    display: flex;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+}
+.wrapper .left{
+    width: 35%;
+    background: linear-gradient(to right, #01a9ac, #01dbdf);
+    padding: 30px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
+.wrapper .left img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.wrapper .left h4{
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+.wrapper .left p{
+    font-size: 15px;
+}
+.wrapper .right{
+    width: 65%;
+    background: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 30px 25px;
+}
+.wrapper .right .info1,
+.wrapper .right .info2{
+    margin-bottom: 30px;
+}
+.wrapper .right .info1 h3, 
+.wrapper .right .info2 h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+.wrapper .right .info1_data,
+.wrapper .right .info2_data{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper .right .info1_data .data,
+.wrapper .right .info2_data .data{
+    width: 45%;
+}
+.wrapper .right .info1_data .data h4,
+.wrapper .right .info2_data .data h4{
+    color: #353c4e;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.wrapper .right .info1_data .data p,
+.wrapper .right .info2_data .data p{
+    font-size: 17px;
+    margin-bottom: 20px;
+    color: #919aa3;
+}
+
+
+
+
+
+
+
+
+/* ---------- 나의 구독  ----------  */
+.container-membership{
+    display: block;
+    max-width: 95%;
+    margin-left: 950px;
+    width: 500px;
+}
+.container-membership h2{
+    margin-left: 40px;
+    padding-left: 50px;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline;
+}
+.pricing-table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: min(1600px, 100%);
+    margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 500px;
+}
+.pricing-card{
+    flex: 1;
+    max-width: 340px;
+    background-color: #e7e7e7;
+    margin: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    color: #000000;
+    transition: .3s linear;
+    border-radius: 5px;
+}
+.pricing-card-header{
+    background-color: #01dbdf;
+    display: inline-block;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 0 0 20px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: .3s linear;
+}
+.pricing-card:hover .pricing-card-header{
+    box-shadow: 0 0 0 30em #01dbdf;
+}
+.price{
+    font-size: 50px;
+    font-weight: 530;
+    color: #000000;
+    margin: 40px 0;
+    transition: .2s linear;
+}
+.pricing-card:hover,.pricing-card:hover .price{
+    color: #fff;
+}
+.pricing-card li{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+.order-btn{
+    display: inline-block;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    border: 2px solid #01dbdf;
+    color: #000000;
+    padding: 18px 40px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: .3s linear;
+}
+.order-btn:hover{
+    background-color: #01dbdf;
+    color: #fff;
+}
+
+
+
+
+
+
+/* ---------- 찜한 책, 읽은 책  ----------  */
+.heart-container{
+    display: block;
+    max-width: 80%;
+    margin: auto;
+    padding-top: 400px;
+}
+.read-container{
+    display: block;
+    max-width: 80%;
+    margin: auto;
+    padding-top: 350px;
+    padding-bottom: 250px;
+}
+a{
+    text-decoration: none;
+    transition: 0.5s;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+ul{ 
+    list-style: none;
+}
+i{
+    cursor: pointer;
+    transition: 0.5s;
+}
+section{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.heading h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    display: inline;
+}
+.heading{
+    margin-bottom: 10px;
+}
+.heading button{
+    background-color: black;
+    font-size: 15px;
+    float: right;
+    color: white;
+    margin-top: 18px;
+}
+.popular{
+    color: white;
+}
+.popular .container{
+    margin: 180px;
+}
+.popular .box{
+    position: relative;
+    background: #424242;
+    width: 100%;
+    cursor: pointer;
+    padding: 20PX;
+    overflow: hidden;
+}
+.popular .box .imgbox{
+    position: relative;
+    height: 270px;
+    overflow: hidden;
+}
+.popular .box .imgbox img{
+    transition: 0.6s;
+    height: auto;
+}
+.popular .box:hover .imgbox img{
+    opacity: 0.4;
+    transform: scale(1.2);
+}
+.watch-btn{
+    display: none;
+}
+.popular .box:hover .watch-btn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 80px;
+    top: 105px;
+    left: 65px;
+    transition: 0.3s;
+}
+.popular .box .content{
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    z-index: 2;
+}
+.popular .box .content i{
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.popular .box:hover .content i{
+    opacity: 1;
+    visibility: visible;
+}
+.popular .icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+.popular .icon i{
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+}
+.popular .text{
+    padding-top: 10px;
+}
+.popular .text h3{
+    display: block;
+}
+.popular .description-genre{
+    margin: 0;
+    margin-bottom: 10px;
+}
+.popular .description-genre a{
+    color: white;
+}
+.owl-nav span{
+    
+    font-size: 40px;
+    color: white;
+    font-weight: bolder;
+}
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 35%;
+}
+.owl-prev{
+    left: -60px;
+}
+.owl-next{
+    right: -60px;
+}
+
+
+
+
+
+
+
+
+
+/* --------- progress bar ----------  */
+.progress-bar{
+    margin-top: 20px;
+    position: relative;
+    width: 232px;
+    height: 25px;
+    border-radius: 30px;
+    background-color: white;
+}
+.progress-bar span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    color: black;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.7;
+    text-align:center;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #01dbdf 50%, #01a9ac 100%);
+    transition: width .5s linear;
+}

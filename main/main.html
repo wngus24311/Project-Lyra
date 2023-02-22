@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ----- box icons -----  -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- ----- google font icons -----  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- ----- fontawsome -----  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- ----- carousel -----  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  
+    <!-- ----- google fonts -----  -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- ----- css -----  -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+   <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script> -->
+</head>
+<body>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <div class="addthis_inline_share_toolbox_07dw" id="div-api" style="display: none;"></div>  -->
+    <!-- header 호출 -->
+    <div data-include-path="/aside/header.html"></div>
+
+    <!-- ---------- slider start ---------- -->
+    <div id="slider">
+    <a href="#" class="control_next"> > </a>
+    <a href="#" class="control_prev"> < </a>
+    <ul>
+        <li id="slide1" class="slides">
+            <h1>해리포터</h1>
+            <p>돌아온 판타지의 역작</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">판타지</span>
+            </div>
+        </li>
+        <li id="slide2" class="slides">
+            <h1>셜록 홈즈</h1>
+            <p>“범죄는 흔하다. 그러나 논리는 흔치 않다”</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">추리</span>
+            </div>
+        </li>
+        <li id="slide3" class="slides">
+            <h1>슬램덩크</h1>
+            <p>"농구 좋아하세요?"</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">스포츠</span>
+            </div>
+        </li>
+        <li id="slide4" class="slides">
+            <h1>위대한 개츠비</h1>
+            <p>미국을 대표하는 고전 소설</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">고전</span>
+            </div>
+        </li>
+        <li id="slide5" class="slides">
+            <h1>용의자 x의 헌신</h1>
+            <p>히가시노 게이고 문학의 정수</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">추리</span>
+            </div>
+        </li>
+        <li id="slide6" class="slides">
+            <h1>오만과 편견</h1>
+            <p>영국인들이 가장 사랑하는 작가로 꼽힌 제인 오스틴의 대표작</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">로맨스</span>
+            </div>
+        </li>
+        <li id="slide7" class="slides">
+            <h1>살인자의 기억법</h1>
+            <p>전 세계 독자를 사로잡은 최고의 심리스릴러 </p>
+            <div class="slide_genre">
+                장르: <span class="text-body">추리</span>
+            </div>
+        </li>
+        <li id="slide8" class="slides">
+            <h1>나미야 잡화점의 기억</h1>
+            <p>수백만부 베스트셀러의 주인공</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">장편소설</span>
+            </div>
+        </li>
+        <li id="slide9" class="slides">
+            <h1>러브레터</h1>
+            <p>겨울이 오면 생각나는 명대사</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">로맨스</span>
+            </div>
+        </li>
+        <li id="slide10" class="slides">
+            <h1>헝거게임</h1>
+            <p>판타지 액션 블록버스터</p>
+            <div class="slide_genre">
+                장르: <span class="text-body">판타지</span>
+            </div>
+        </li>
+    </ul>  
+    </div>
+    <!-- ---------- slider end ---------- -->
+
+    <!-- contents start -->
+        <section class="popular mtop">
+            <div class="container">
+                <div class="heading flex1">
+                    <h2>실시간 인기 도서</h2>
+                    
+                </div>               
+                <div class="owl-carousel owl-theme">
+
+                    <div class="item">
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                                
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card1.jpg" alt="">
+                                
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card2.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card3.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card4.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card5.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card6.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card7.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card8.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card9.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card10.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card11.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card12.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card13.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>췍이름aaa</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card14.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="item"> 
+                        <div class="box">
+                            <div class="icon">
+                                <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                                <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                                <span name="add-icon" class="material-icons-outlined">control_point</span>
+                            </div>
+                            <div class="imgbox">
+                                <a href="#" class="watch-btn">
+                                    <i class='bx bx-book-open bx-tada' ></i>
+                                </a>
+                                <img class="item-img" src="/images/card15.jpg" alt="">
+                            </div>
+                            <div class="text">
+                                <h3>책 이름</h3>
+                                <div class="description-genre">
+                                  <a href="#">#장르</a>                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                </div>
+        </section>
+
+    <!-- ---------- modal screen start ----------  -->
+    <div class="modal">
+    <div class="modal_content">
+        <i class="modal_close far fa-times-circle"></i>
+
+        <div class="modal_left">
+            <img class="modal_img" src="" alt="" >
+        </div>
+
+        <div class="modal_right">
+            <div class="detail">
+                <h2 class="detail_title"></h2>
+                <p class="detail_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Architecto praesentium corporis accusamus dolor necessitatibus asperiores, nobis velit ex. 
+                </p>
+                <a href="#" onclick="location.href='/main/bookflip.html'" class="detail_readBtn">읽으러 가기</a>
+                <div class="icon">
+                    <span name="modal-heart-icon" class="material-icons-outlined">favorite_border</span>
+                    <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                    <span name="modal-add-icon" class="material-icons-outlined">control_point</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="review">
+            <h2 class="review_title">⭐ 이 책의 리뷰</h2>
+            <p class="review-add" id="review-add" onclick="dis()">작성하기</p>
+            <div class="review-write-container" style="display: none;">
+                <form action="#">
+                <header>소중한 리뷰를 작성해주세요</header>
+                <div class="textarea">
+                    <textarea cols="30" placeholder="리뷰 작성"></textarea>
+                </div>
+                <div class="btn">
+                    <button type="submit" id="review-submit">업로드 하기</button>
+                </div>
+            </form>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">안산고수</h3>
+                    <p class="comment_detail">잼써여111111111</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">원데이</h3>
+                    <p class="comment_detail">잼써여2222222222</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">요떼기</h3>
+                    <p class="comment_detail">잼써여33333333333333</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">ad세훈</h3>
+                    <p class="comment_detail">잼써여444444444444</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">짱비</h3>
+                    <p class="comment_detail">잼써여5555555555555555555</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">짱비</h3>
+                    <p class="comment_detail">잼써여5555555555555555555</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">짱비</h3>
+                    <p class="comment_detail">잼써여5555555555555555555</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">짱비</h3>
+                    <p class="comment_detail">잼써여5555555555555555555</p>
+            </div>
+            <div class="comments">
+                <h3 class="comment_id">짱비</h3>
+                    <p class="comment_detail">잼써여5555555555555555555</p>
+            </div>
+            <!-- <p class="review-add">작성하기</p> -->
+        </div>
+    </div>
+    </div>
+    <!-- ---------- modal screen end ----------  -->
+
+    <section class="popular mtop">
+        <div class="container">
+            <div class="heading flex1">
+                <h2>금주의 TOP 10</h2>
+                
+            </div>
+            <div class="owl-carousel owl-theme">
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card1.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card2.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card3.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card4.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card5.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card6.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card7.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card8.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card9.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card10.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card11.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card12.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card13.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>췍이름aaa</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card14.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card15.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </section>
+    <section class="popular mtop">
+        <div class="container">
+            <div class="heading flex1">
+                <h2>거문고 추천</h2>
+                
+            </div>
+            
+            <div class="owl-carousel owl-theme">
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card1.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card2.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card3.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card4.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card5.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card6.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card7.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card8.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card9.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card10.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card11.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card12.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card13.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>췍이름aaa</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card14.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card15.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </section>
+    <section class="popular mtop">
+        <div class="container">
+            <div class="heading flex1">
+                <h2>#친구와 함께 #청춘 #우정</h2>
+                
+            </div>
+            
+            <div class="owl-carousel owl-theme">
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card1.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card2.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card3.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card4.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card5.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card6.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card7.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card8.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card9.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card10.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card11.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card12.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card13.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>췍이름aaa</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card14.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <div class="box">
+                        <div class="icon">
+                            <span name="heart-icon" class="material-icons-outlined">favorite_border</span>
+                            <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
+                            <span name="add-icon" class="material-icons-outlined">control_point</span>
+                        </div>
+                        <div class="imgbox">
+                            <a href="#" class="watch-btn">
+                                <i class='bx bx-book-open bx-tada' ></i>
+                            </a>
+                            <img class="item-img" src="/images/card15.jpg" alt="">
+                        </div>
+                        <div class="text">
+                            <h3>책 이름</h3>
+                            <div class="description-genre">
+                              <a href="#">#장르</a>                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </section>
+            </div>
+           </div> 
+        </div>
+    </div>
+</section>
+<!-- contents end -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        dots: false,
+        nav:true,
+        responsive:{
+            411:{
+                items:1
+            },
+            768:{
+                items:2
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
+</script>
+
+<!-- --------- slider.js start ----------  -->
+<script>
+jQuery(document).ready(function ($) {
+$('#checkbox').change(function(){
+setInterval(function () {
+moveRight();
+}, 3000);
+});
+
+$('a').click(function($) // 슬라이더 좌우 버튼 클릭 시 body 스크롤 block
+    {
+        $.preventDefault();   
+    });
+
+let slideCount = $('#slider ul li').length;
+let slideWidth = $('#slider ul li').width();
+let slideHeight = $('#slider ul li').height();
+let sliderUlWidth = slideCount * slideWidth;
+
+$('#slider').css({ width: slideWidth, height: slideHeight });     
+$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });  
+$('#slider ul li:last-child').prependTo('#slider ul');
+
+function moveLeft() {
+    $('#slider ul').animate({
+    left: + slideWidth
+    }, 200, function () {
+        $('#slider ul li:last-child').prependTo('#slider ul');
+        $('#slider ul').css('left', '');
+        });
+};
+
+function moveRight() {
+    $('#slider ul').animate({
+        left: - slideWidth
+    }, 200, function () {
+        $('#slider ul li:first-child').appendTo('#slider ul');
+        $('#slider ul').css('left', '');
+    });
+};
+
+$('a.control_prev').click(function () {
+    moveLeft();
+});
+
+$('a.control_next').click(function () {
+    moveRight();
+});
+});    
+</script>
+<!-- --------- slider.js end ----------  -->
+
+
+<!-- ----- icon click effect -----  -->
+<script>
+    // ----- 메인페이지 아이콘 ----- 
+    const hearts = document.getElementsByName('heart-icon') // 좋아요 아이콘 
+    hearts.forEach((heart) => {
+        heart.addEventListener("click", toggleLike)
+
+    function toggleLike() {
+        if(heart.textContent === "favorite_border") { // 클릭 시 color change: red
+            heart.textContent = "favorite"
+            heart.style.color = "red"
+        } else {
+            heart.textContent = "favorite_border" // else: white
+            heart.style.color = "white"
+        }
+    }
+})
+
+    const adds = document.getElementsByName('add-icon') // 찜하기 아이콘 
+    adds.forEach((add) => {
+
+    add.addEventListener("click", toggleAdd)
+
+    function toggleAdd(){
+        if(add.textContent === "control_point") { // 클릭 시 color change: green
+            add.textContent = "add_task"
+            add.style.color = "green"
+        } else {
+            add.textContent = "control_point" // else: white
+            add.style.color = "white"
+        }
+    }
+})
+
+// ----- 모달 창 아이콘 ----- 
+const modalHearts = document.getElementsByName('modal-heart-icon') // 좋아요 아이콘 
+        modalHearts.forEach((modalHeart) => {
+        modalHeart.addEventListener("click", toggleLike)
+
+    function toggleLike() {
+        if(modalHeart.textContent === "favorite_border") {  // 클릭 시 color change: red
+            modalHeart.textContent = "favorite"
+            modalHeart.style.color = "red"
+        } else {
+            modalHeart.textContent = "favorite_border" // else: black
+            modalHeart.style.color = "black"
+        }
+    }
+})
+
+const modalAdds = document.getElementsByName('modal-add-icon') // 찜하기 아이콘 
+    modalAdds.forEach((modalAdd) => {
+
+    modalAdd.addEventListener("click", toggleAdd)
+
+    function toggleAdd(){
+        if(modalAdd.textContent === "control_point") { // 클릭 시 color change: green
+            modalAdd.textContent = "add_task"
+            modalAdd.style.color = "green"
+        } else {
+            modalAdd.textContent = "control_point"  // else: black
+            modalAdd.style.color = "black"
+        }
+    }
+})
+</script>
+
+
+    <!-- ---------- footer 호출 ----------  -->
+    <div data-include-path="/aside/movingfooter.html"></div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*'); // 전체 가져옴
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+    <!-- ---------- modal screen ----------  -->
+    <script>
+        const modal = document.querySelector('.modal');
+        const modalContent = document.querySelector('.modal_content');
+        const close = document.querySelector('.modal_close');
+        const modalImg = document.querySelector('.modal_img');
+        const item = document.querySelectorAll('.item');
+        const title = document.querySelector('.detail_title');
+
+        item.forEach((list, index) => {
+            const view = list.querySelector('.item-img');
+            const itemImg = list.querySelector('.item-img').getAttribute('src'); //src로 이미지 정보 가져옴
+
+            view.addEventListener('click', () => { // 클릭 이벤트 - modal show
+                modal.classList.add('modal--bg');
+                modalContent.classList.add('modal_content--show');
+                modalImg.setAttribute('src', itemImg);
+                title.innerText = `product title ${index + 1}`;
+        });
+    });
+    close.addEventListener('click', () => { // 클릭이벤트 - modal close 
+        modal.classList.remove('modal--bg');
+        modalContent.classList.remove('modal_content--show');
+    });
+    </script>
+
+<!-- ----- modal - review -----  -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    function dis(){
+            if($('.review-write-container').css('display') == 'none'){ // 작성하기 버튼 클릭 시 show, hide
+            $('.review-write-container').show();
+        }else{
+            $('.review-write-container').hide();
+        }
+        }
+
+        jQuery(document).ready(function ($) { // 업로드하기 버튼 클릭 시 hide 
+        $('#review-submit').click(function(){
+            $('.review-write-container').hide();
+            $("body").removeClass('notScroll');
+        })
+    })
+
+    $('#review-submit').click(function($) // 클릭 이벤트 시 body 스크롤 block
+    {
+        $.preventDefault();   
+    });
+</script>
+</script>
+
+</body>
+</html>
