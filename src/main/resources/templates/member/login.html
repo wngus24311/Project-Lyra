@@ -57,6 +57,7 @@
 		$('.okLogin').click(function () {
 			let username = $(".username").val();
 			let password = $(".password").val();
+			let init = localStorage.setItem("Authorization", "");
 			let auth = localStorage.getItem("Authorization");
 			let data = {
 				"username": username,

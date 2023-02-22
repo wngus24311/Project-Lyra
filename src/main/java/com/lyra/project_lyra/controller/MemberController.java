@@ -75,8 +75,8 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody MemberDTO dto, HttpServletRequest request) {
-        String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-        log.info("authorization =====> " + authorization);
+//        String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
+//        log.info("authorization =====> " + authorization);
         /** ID로 Password 찾아서 비교할 준비 */
         String password = repository.findByUsername(dto.getUsername()).get().getPassword();
         log.info("Test ==========> " + dto.getUsername());
