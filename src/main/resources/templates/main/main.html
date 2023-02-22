@@ -202,9 +202,9 @@
 				<div class="item" th:each="dto : ${result1}" th:category="${bookResult[0]}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"></i> 
+							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
 							<i class="fas fa-share-alt"></i> 
-							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -317,9 +317,9 @@
 				<div class="item" th:each="dto : ${result2}" th:category="${bookResult[1]}" th:onClick="categoryInsert(this.getAttribute('category'))">					
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"></i> 
+							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
 							<i class="fas fa-share-alt"></i> 
-							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -349,9 +349,9 @@
 				<div class="item" th:each="dto : ${bookLikeList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"></i> 
-							<i class="fas fa-share-alt"></i>
-							 <i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
+							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
+							<i class="fas fa-share-alt"></i> 
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -382,9 +382,9 @@
 				<div class="item" th:each="dto : ${bookUpdateList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<i class="far fa-heart" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"></i> 
+							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
 							<i class="fas fa-share-alt"></i> 
-							<i class="fas fa-plus" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
