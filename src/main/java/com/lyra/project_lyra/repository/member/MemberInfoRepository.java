@@ -37,4 +37,10 @@ public interface MemberInfoRepository extends JpaRepository<MemberInfo, String>{
     
     @Query("SELECT m FROM MemberInfo m WHERE m.username = :username")
     MemberInfo findUsernameInfo(String username);
+    
+  //책 좋아요 개수 변경
+  	@Modifying
+    @Transactional
+    @Query("UPDATE MemberInfo m SET m.subscribeState = :membership WHERE m.username = :username")
+  	void updateMembership(String membership, String username);
 }

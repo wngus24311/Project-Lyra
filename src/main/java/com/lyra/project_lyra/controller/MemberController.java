@@ -1,9 +1,12 @@
 package com.lyra.project_lyra.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +14,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lyra.project_lyra.dto.MemberDTO;
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.implement.MemberServiceImpl;
+import com.lyra.project_lyra.service.interfaces.BookService;
+import com.lyra.project_lyra.service.interfaces.CombineService;
 import com.lyra.project_lyra.service.interfaces.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,6 +37,8 @@ public class MemberController {
     private final MemberServiceImpl memberServiceImpl;
     private final MemberInfoRepository memberRepository;
     private final MemberService memberService;
+    private final CombineService combineService;
+    private final BookService bookService;
     /** EncoderConfig class에서 Dependency injection */
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -81,24 +90,72 @@ public class MemberController {
         return ResponseEntity.badRequest().body("아이디가 다릅니다.");
     }
     
-    @GetMapping("/mypage/{data}")
-    public ModelAndView genreselection(Model model, @PathVariable("data") String loginUser) {
-    	String username = loginUser;
+    @GetMapping("/mypage")
+    public ModelAndView genreselection(Model model, @RequestParam(value = "name", required=false) String loginUser) {
+    	String username;
+		log.info(loginUser);
+		if (loginUser == null) {
+			username = "user";
+		}else {
+			username = loginUser;			
+		}	
         
         log.info("memberService getUsernameInfo" + memberService.getUsernameInfo(username));
+        log.info("memberServie getKeepList" + combineService.getKeepList(username));
         
+        model.addAttribute("membership", memberService.getMembership(username));
+        model.addAttribute("page", combineService.getPage(combineService.getPageList(username)));
+        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username)));
+        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username)));
         model.addAttribute("userInfo", memberService.getUsernameInfo(username));
-
+        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/member/mypage");
         return modelAndView;
     }
     
-    @GetMapping("/category")
-    public ModelAndView category() {
-        log.info("========= Get Genreselection ========= ");
+    @GetMapping("/membership")
+    public ModelAndView membership(@RequestParam(value = "name", required=false) String loginUser) {
+    	String username;
+		log.info(loginUser);
+		if (loginUser == null) {
+			username = "user";
+		}else {
+			username = loginUser;			
+		}	
+    	
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/member/category");
+        modelAndView.setViewName("/member/membership");
         return modelAndView;
     }
+    
+    @PostMapping("/membership")
+	public String setKeepInsert(Authentication authentication) {
+    	String username = (String)authentication.getPrincipal();
+
+		return username;
+	}
+    
+    @PostMapping("/mypage")
+	public String getMypage(Authentication authentication) throws Exception{
+		String username = (String)authentication.getPrincipal();
+
+		return username;
+	}
+	
+	@PostMapping("/memberInsert")
+	public String setMemberInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
+    	log.info(data);
+    	log.info(data.get("membership"));
+    	
+    	String membership = Integer.toString((Integer)data.get("membership"));
+		
+		String username = (String)authentication.getPrincipal();
+		
+		log.info(membership);
+		
+		memberService.updateMembership(membership, username);
+		
+		return username;
+	}
 }

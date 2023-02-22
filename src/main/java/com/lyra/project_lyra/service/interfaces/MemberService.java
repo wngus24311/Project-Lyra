@@ -18,4 +18,8 @@ public interface MemberService {
  	void categoryInsert(String username, String category);
  	
  	MemberDTO getUsernameInfo(String username);
+ 	
+ 	void updateMembership(String membership, String username);
+ 	
+ 	String getMembership(String username);
 }

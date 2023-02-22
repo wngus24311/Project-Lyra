@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,9 +30,16 @@ public class MainController {
 	private final MemberService memberService;
 	private final MemberInfoRepository repository;
 
-	@GetMapping("/main/{data}")
-	public ModelAndView getMainList(Model model, @PathVariable("data") String loginUser) throws Exception{
-		String username = loginUser;
+	@GetMapping("/main")
+	public ModelAndView getMainList(Model model, @RequestParam(value = "name", required=false) String loginUser) throws Exception{
+		String username;
+		log.info(loginUser);
+		if (loginUser == null) {
+			username = "user";
+		}else {
+			username = loginUser;			
+		}	
+		
 		String[] categoryOne = memberService.getCategory(username);
 		
 		model.addAttribute("username", username);
@@ -54,18 +62,43 @@ public class MainController {
 	}
 	
 	@PostMapping("/categoryInsert")
-	public void setCategoryInsert(Model model, @RequestBody Map<String,Object> data) {
+	public void setCategoryInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
 		String category = (String)data.get("category");
 		String url = (String)data.get("url");
 		
-		String[] usernames = url.split("http://localhost:8095/main/main/");
+		log.info("category : " + category);
+		
 		String categoryEntity = categoryViewtoDB(category);
-		String username = usernames[1];
+		String username = (String)authentication.getPrincipal();
+		
+		log.info("categoryEntity : " + categoryEntity);
 		
 		memberService.categoryInsert(username, categoryEntity);
 		log.info("category Insert Success");
 	}
 	
+	 @GetMapping("/genrepage")
+    public ModelAndView gernepage(@RequestParam(value = "name", required=false) String loginUser) {
+    	String username;
+		log.info(loginUser);
+		if (loginUser == null) {
+			username = "user";
+		}else {
+			username = loginUser;			
+		}	
+    	
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/main/genrepage");
+        return modelAndView;
+    }
+    
+    @PostMapping("/genrepage")
+	public String getCategory(Authentication authentication) throws Exception{
+		String username = (String)authentication.getPrincipal();
+		
+		return username;
+	}
+
 	// Entity -> DTO
 	public String[] categoryDBtoView(String username) {
 		String[] categoryName = memberService.getCategory(username);

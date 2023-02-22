@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.lyra.project_lyra.dto.MemberDTO;
+import com.lyra.project_lyra.entity.combine.CombinePage;
 import com.lyra.project_lyra.entity.member.MemberInfo;
 import com.lyra.project_lyra.excpetion.AppException;
 import com.lyra.project_lyra.excpetion.ErrorCode;
@@ -189,12 +190,7 @@ public class MemberServiceImpl implements MemberService {
 		} else {
 			categorySum = getMemberGerne + "," + category;			
 		}
-		
-		log.info(getMemberGerne);
-		
-		log.info(username);
-		log.info(categorySum);
-		
+
 		memberRepository.updateCategory(username, categorySum);		
 	}
 
@@ -214,5 +210,19 @@ public class MemberServiceImpl implements MemberService {
 		
 		log.info("findUsernameInfo" + memberDTO);
 		return memberDTO;
+	}
+	
+	@Override
+	public void updateMembership(String membership, String username) {		
+		memberRepository.updateMembership(membership, username);
+	}
+
+	@Override
+	public String getMembership(String username) {
+		MemberInfo memberInfo = memberRepository.getById(username);
+		
+		String membership = memberInfo.getSubscribeState();
+		
+		return membership;
 	}
 }

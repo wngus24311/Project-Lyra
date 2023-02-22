@@ -2,6 +2,7 @@ package com.lyra.project_lyra.controller;
 
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,21 +23,59 @@ public class CombineController {
 	private final CombineService combineService;
 	
 	@PostMapping("/keep")
-	public void setCategoryInsert(Model model, @RequestBody Map<String,Object> data) {
+	public void setKeepInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
 		String bookNum = (String)data.get("bookNums");
 		String url = (String)data.get("url");
 		Long lBookNum = Long.parseLong(bookNum);
 		
-		log.info(bookNum);
-		log.info(url);
+		String username = (String)authentication.getPrincipal();
+		log.info(username);
 		
-		String[] usernames = url.split("http://localhost:8095/main/main/");
-		String username = usernames[1];
+		//String[] usernames = url.split("http://localhost:8095/main/main/");
+		//String username = usernames[1];
 		
 		if (combineService.bookKeepDelete(username, lBookNum)) {
 			log.info("keep delete success");
 		} else {
 			combineService.bookKeepSave(username, lBookNum);			
+			log.info("keep Insert success");
+		}
+	}
+	
+	@PostMapping("/like")
+	public void setLikeInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
+		String bookNum = (String)data.get("bookNums");
+		String url = (String)data.get("url");
+		Long lBookNum = Long.parseLong(bookNum);
+		
+		//String[] usernames = url.split("http://localhost:8095/main/main/");
+		//String username = usernames[1];
+		String username = (String)authentication.getPrincipal();
+		
+		if (combineService.bookLikeDelete(username, lBookNum)) {
+			log.info("keep delete success");
+		} else {
+			combineService.bookLikeSave(username, lBookNum);		
+			log.info("keep Insert success");
+		}
+	}
+	
+	@PostMapping("/page")
+	public void setPageInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
+		String bookNum = (String)data.get("bookNums");
+		String url = (String)data.get("url");
+		String bookPage = (String)data.get("bookPage");
+		Long lBookNum = Long.parseLong(bookNum);
+		Long lBookPage = Long.parseLong(bookPage);
+		
+		//String[] usernames = url.split("http://localhost:8095/main/main/");
+		//String username = usernames[1];
+		String username = (String)authentication.getPrincipal();
+		
+		if (combineService.bookPageUpdate(username, lBookNum, lBookPage)) {
+			log.info("keep update success");
+		} else {
+			combineService.bookPageSave(username, lBookNum, lBookPage);
 			log.info("keep Insert success");
 		}
 	}

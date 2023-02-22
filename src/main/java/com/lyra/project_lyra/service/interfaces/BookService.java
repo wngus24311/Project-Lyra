@@ -1,8 +1,10 @@
 package com.lyra.project_lyra.service.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.lyra.project_lyra.dto.BookDTO;
+import com.lyra.project_lyra.dto.CombineDTO;
 import com.lyra.project_lyra.dto.PageRequestDTO;
 import com.lyra.project_lyra.dto.PageResultDTO;
 import com.lyra.project_lyra.entity.book.BookInfo;
@@ -31,6 +33,8 @@ public interface BookService {
 	
 	// 책 최신 리스트 가져오기
 	List<BookDTO> getUpdateList();
+	
+	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
 
 	//와이어 프레임에 명시된 기술들 페이지 처리
 	

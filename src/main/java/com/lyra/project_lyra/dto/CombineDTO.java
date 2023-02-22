@@ -16,5 +16,8 @@ public class CombineDTO {
 	   private String username;
 	   private Long bookNum;
 	   private Long lastPage;
+	   private Long likeNum;
+	   private Long pageNum;
+	   private Long bookPage;
 	   
 }

@@ -7,6 +7,10 @@
 	<title>회원 가입</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<link rel="stylesheet" href="/css/login.css">
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<!-- page move -->
+    <script type="text/javascript" src="/js/pageMove.js"></script>
 </head>
 <body>
 <div>
@@ -81,7 +85,7 @@
 						dataType:"text",
 						success: function(result){
 							console.log("success result : " + result);
-							let url = "/main/main/" + result;
+							let url = "/main/main?name=" + result;
 							console.log(url);
 							location.replace(url);
 						}
