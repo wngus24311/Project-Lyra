@@ -6,19 +6,9 @@ body{
     background: #020106;
     color: #fff;
 }
- div {
-     margin: auto;
-     top: 50%;
-     left: 38%;
-     padding-top: 19%;
-     position: relative;
- }
 table {
-    /*left: 50%;*/
-    /*text-align: center;*/
     width: 600px;
     background-color: #474747;
-    /*position: center;*/
 }
 a {
     text-decoration-line: none;

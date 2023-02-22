@@ -14,7 +14,6 @@ import com.lyra.project_lyra.entity.book.BookInfo;
 import com.lyra.project_lyra.entity.member.MemberInfo;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
 
 
 public interface MemberInfoRepository extends JpaRepository<MemberInfo, String>{
@@ -30,11 +29,11 @@ public interface MemberInfoRepository extends JpaRepository<MemberInfo, String>{
     /** category 칼럼 데이터 수정 */
     @Modifying
     @Transactional
-    @Query("UPDATE MemberInfo b SET b.memberGerne = :category WHERE b.username = :username")
+    @Query("UPDATE MemberInfo b SET b.memberGenre = :category WHERE b.username = :username")
 	void updateCategory(String username, String category);
     
     //카테고리 가져오기
-    @Query("SELECT b.memberGerne FROM MemberInfo b WHERE b.username = :username")
+    @Query("SELECT b.memberGenre FROM MemberInfo b WHERE b.username = :username")
     String findCategory(String username);
     
     @Query("SELECT m FROM MemberInfo m WHERE m.username = :username")

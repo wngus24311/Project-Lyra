@@ -1,9 +1,9 @@
 package com.lyra.project_lyra.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.interfaces.BookService;
@@ -12,6 +12,9 @@ import com.lyra.project_lyra.util.Category;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/main")
@@ -48,8 +51,9 @@ public class MainController {
 
 	@PostMapping("/main")
 	public String getMainList(Authentication authentication) throws Exception{
+		log.info("authentication ======> " + authentication);
 		String username = (String)authentication.getPrincipal();
-
+		log.info("username =======> " + username);
 		return username;
 	}
 
