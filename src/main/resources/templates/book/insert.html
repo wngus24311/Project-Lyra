@@ -19,13 +19,13 @@
 integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
 crossorigin="anonymous"></script>
 <script>		
-	let result = 1;
+	let result = 4;
 	let result2 = 1;
 	let resultCount = 1;
 	getBookColum();
 	
 	function getBookColum() {
-		for (var i = 1; i < 255; i++){
+		for (var i = 299; i < 598; i++){
 			$.ajax({
 				method: "GET",
 				url: "https://dapi.kakao.com/v3/search/book?target=price",
@@ -53,13 +53,6 @@ crossorigin="anonymous"></script>
 			});
 		}
 	}
-	
-	//for (y = 1; y < 50; y++){
-		//setTimeout(function(){
-			//getBookColum();
-			//resultCount = resultCount + 256;
-		//}, y*40000);		
-	//}
 
 </script>
 </body>

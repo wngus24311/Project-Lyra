@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.lyra.project_lyra.dto.BookDTO;
+import com.lyra.project_lyra.dto.CombineDTO;
 import com.lyra.project_lyra.dto.PageRequestDTO;
 import com.lyra.project_lyra.dto.PageResultDTO;
 import com.lyra.project_lyra.entity.book.BookInfo;
@@ -31,7 +32,6 @@ public class BookServiceImpl implements BookService {
 
 	private final BookInfoRepository bookInfoRepository;
 	private final BookReviewRepository bookReviewRepository;
-
 
 	@Override
 	public Long register1(BookDTO dto) {
@@ -89,16 +89,18 @@ public class BookServiceImpl implements BookService {
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
-			BookDTO bookDTO = BookDTO.builder()
-					.bookNum(book.getBookNum())
-					.bookTitle(book.getBookTitle())
-					.bookGerne(book.getBookGerne())
-					.bookThumbnail(book.getBookThumbnail())
-					.bookLike(book.getBookLike())
-					.bookPage(book.getBookPage())
-					.build();
-			
-			bookDTOList.add(bookDTO);
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
 		}
 		
 		log.info(bookDTOList);
@@ -134,5 +136,99 @@ public class BookServiceImpl implements BookService {
 		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 		
 		bookInfoRepository.save(bookInfo);
+	}
+
+	@Override
+	public List<BookDTO> getCategoryList(String username) {
+		List<BookInfo> books = bookInfoRepository.findAllByCategoryQuery(username);
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
+		}
+		
+		log.info("bookDTOList : " + bookDTOList);
+		return bookDTOList;
+	}
+
+	@Override
+	public List<BookDTO> getLikeList() {
+		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookLike"));
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
+		}
+		
+		log.info("bookLikeList" + bookDTOList);
+		return bookDTOList;
+	}
+
+	@Override
+	public List<BookDTO> getUpdateList() {
+		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookNum"));
+		List<BookDTO> bookDTOList = new ArrayList<>();
+		
+		for (BookInfo book : books) {
+			if (entityNullCheck(book)) {
+				BookDTO bookDTO = BookDTO.builder()
+						.bookNum(book.getBookNum())
+						.bookTitle(book.getBookTitle())
+						.bookGerne(book.getBookGerne())
+						.bookThumbnail(book.getBookThumbnail())
+						.bookLike(book.getBookLike())
+						.bookPage(book.getBookPage())
+						.build();
+				
+				bookDTOList.add(bookDTO);
+			}
+		}
+		
+		log.info("bookLikeList" + bookDTOList);
+		return bookDTOList;
+	}
+
+	@Override
+	public List<BookDTO> getBookList(List<CombineDTO> combineDTO) {
+		List<BookDTO> listBookDTOs = new ArrayList<>();
+
+		for(int i = 0; i < combineDTO.size(); i++) {
+			Optional<BookInfo> bookInfo = bookInfoRepository.findById(combineDTO.get(i).getBookNum());
+			
+			BookDTO bookDTO = BookDTO.builder()
+					.bookNum(bookInfo.get().getBookNum())
+					.bookTitle(bookInfo.get().getBookTitle())
+					.bookGerne(bookInfo.get().getBookGerne())
+					.bookThumbnail(bookInfo.get().getBookThumbnail())
+					.bookLike(bookInfo.get().getBookLike())
+					.bookPage(bookInfo.get().getBookPage())
+					.build();
+			
+			listBookDTOs.add(bookDTO);
+		}
+		
+		return listBookDTOs;
 	}
 }

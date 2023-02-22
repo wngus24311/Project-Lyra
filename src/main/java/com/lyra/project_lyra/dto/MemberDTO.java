@@ -22,6 +22,8 @@ public class MemberDTO {
    private String memberGenre;
    private String subscribeState;
    private Timestamp lastlogin;
+   
+   private String checkUsername;
 
    private Long purchaseNum;
    private LocalDateTime purchaseDate;

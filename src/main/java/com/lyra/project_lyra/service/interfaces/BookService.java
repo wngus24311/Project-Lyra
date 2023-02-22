@@ -1,8 +1,10 @@
 package com.lyra.project_lyra.service.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.lyra.project_lyra.dto.BookDTO;
+import com.lyra.project_lyra.dto.CombineDTO;
 import com.lyra.project_lyra.dto.PageRequestDTO;
 import com.lyra.project_lyra.dto.PageResultDTO;
 import com.lyra.project_lyra.entity.book.BookInfo;
@@ -19,6 +21,20 @@ public interface BookService {
 	Long register1(BookDTO dto);
 	
 	Long register2(BookDTO dto);
+	
+	// 책 리뷰 페이지 처리
+	List<BookDTO> getList();
+	
+	// 책 카테고리별 페이지 처리
+	List<BookDTO> getCategoryList(String username);
+	
+	// 책 좋아요 개수 많은 순으로 가져오기
+	List<BookDTO> getLikeList();
+	
+	// 책 최신 리스트 가져오기
+	List<BookDTO> getUpdateList();
+	
+	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
 
 	//와이어 프레임에 명시된 기술들 페이지 처리
 	
@@ -27,9 +43,6 @@ public interface BookService {
 
 	// 책 장르별 페이지 처리
 	PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto);
-
-	// 책 리뷰 페이지 처리
-	List<BookDTO> getList();
 
 	void modify(BookDTO bookDTO);
 
@@ -90,6 +103,16 @@ public interface BookService {
 				.build();
 
 		return bookDTO;
+	}
+	
+	default boolean entityNullCheck(BookInfo bookInfo) {
+		boolean bResult = true;
+		
+		if (bookInfo.getBookGerne().equals("") || bookInfo.getBookThumbnail().equals("") || bookInfo.getBookTitle().equals("")) {
+			bResult = false;
+		}
+		
+		return bResult;
 	}
 
 }
