@@ -19,7 +19,8 @@ function membership(){
 	}
 	
 function main(){
-	let auth = localStorage.getItem("Authorization");
+		let auth = localStorage.getItem("Authorization");
+		
 		$.ajax({
 			url: '/main/main',
 			type:"post",
@@ -69,6 +70,25 @@ function mypage(){
 			success: function(result){
 				console.log("success result : " + result);
 				let url = "/member/mypage?name=" + result;
+				console.log(url);
+				location.replace(url);
+			}
+		});
+	}
+	
+function bookflip(){
+	let auth = localStorage.getItem("Authorization");
+		$.ajax({
+			url: '/main/bookflip',
+			type:"post",
+			contentType:"application/json; charset=UTF-8",
+			headers: {
+				"Authorization" : auth
+			},
+			dataType:"text",
+			success: function(result){
+				console.log("success result : " + result);
+				let url = "/main/bookflip?name=" + result;
 				console.log(url);
 				location.replace(url);
 			}

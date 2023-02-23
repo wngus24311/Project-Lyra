@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import com.lyra.project_lyra.entity.combine.CombinePage;
 
 public interface CombinePageRepository extends JpaRepository<CombinePage, Long>{
-	//책 좋아요 개수 변경
-	@Modifying
+	/** bookPage 칼럼 데이터 수정 */
+    @Modifying
     @Transactional
-    @Query("UPDATE CombinePage b SET b.bookPage = :bookPage WHERE b.pageNum = :bookNum")
-	void updateBookPage(Long bookNum, Long bookPage);
+    @Query("UPDATE CombinePage c SET c.bookPage = :bookPage WHERE c.memberInfo.username = :username AND c.bookInfo.bookNum = :bookNum")
+	void pageUpdate(Long bookPage, String username, Long bookNum);
 }

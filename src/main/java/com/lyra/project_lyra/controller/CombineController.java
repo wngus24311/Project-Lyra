@@ -59,24 +59,4 @@ public class CombineController {
 			log.info("keep Insert success");
 		}
 	}
-	
-	@PostMapping("/page")
-	public void setPageInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
-		String bookNum = (String)data.get("bookNums");
-		String url = (String)data.get("url");
-		String bookPage = (String)data.get("bookPage");
-		Long lBookNum = Long.parseLong(bookNum);
-		Long lBookPage = Long.parseLong(bookPage);
-		
-		//String[] usernames = url.split("http://localhost:8095/main/main/");
-		//String username = usernames[1];
-		String username = (String)authentication.getPrincipal();
-		
-		if (combineService.bookPageUpdate(username, lBookNum, lBookPage)) {
-			log.info("keep update success");
-		} else {
-			combineService.bookPageSave(username, lBookNum, lBookPage);
-			log.info("keep Insert success");
-		}
-	}
 }

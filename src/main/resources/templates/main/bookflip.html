@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="/css/bookflip.css">
    <!-- page move -->
     <script type="text/javascript" src="/js/pageMove.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </body>
 </head>
 <body>
-    <a href="#" onclick="location.href='/main/main.html'" class="btn-close">X</a>
+    <a href="javascript:main();" onclick="pageInsert();" class="btn-close">X</a>
     <div class="book">
         <input type="checkbox" id="c1">
         <input type="checkbox" id="c2">
         <input type="checkbox" id="c3">
         <input type="checkbox" id="c4">
         <input type="checkbox" id="c5">
-        <!-- <input type="checkbox" id="c6"> -->
-        <!-- <div class="cover"><img src="/images/card10.jpg"></div> -->
+
         <div class="flip-book">
             <div class="flip" id="p1">
                 <div class="front">
@@ -79,7 +79,29 @@
         
       
     </div>
-
+	<script>
+	function pageInsert(){
+		let auth = localStorage.getItem("Authorization");
+		let page = "4";
+		let bookNum = "2";
+		let data = {bookNums:bookNum, bookPage:page};
+		
+		$.ajax({
+			url: '/main/pageInsert',
+			type:"post",
+			data:JSON.stringify(data),
+			headers: {
+				"Authorization" : auth
+			},
+			contentType:"application/json; charset=UTF-8",
+			dataType:"text",
+			success: function(result){
+				console.log("page success");
+			}
+		});	
+		
+	}
+	</script>
 
 </body>
 </html>

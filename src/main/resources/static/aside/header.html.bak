@@ -12,7 +12,7 @@
     <div class="header">
         <nav class="nav-bar1">
             <div>
-                <a href="/member/login">로그인</a>
+                <a href="">로그인</a>
                 <a href="javascript:membership();">구독권</a>
                 <a href="">이벤트</a>
             </div>

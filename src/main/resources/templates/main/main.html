@@ -62,8 +62,7 @@
             padding-left: 10px;
             display: inline;
             text-shadow: 1px 1px 2px gray;
-            color: white;
-            
+            color: white;            
         }
         #modal .title h2 {
             display: inline;
@@ -202,18 +201,20 @@
 				<div class="item" th:each="dto : ${result1}" th:category="${bookResult[0]}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
-							<i class="fas fa-share-alt"></i> 
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
+							<i class="fas fa-share-alt"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="bookNumPageInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${bookResult[0]}">[[${bookResult[0]}]]</a>
 							</div>
@@ -231,6 +232,7 @@
         <i class="modal_close far fa-times-circle"></i>
 
         <div class="modal_left">
+        <div class="modal-bookNum">123</div>
             <img class="modal_img" src="" alt="" >
         </div>
 
@@ -240,7 +242,7 @@
                 <p class="detail_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
                     Architecto praesentium corporis accusamus dolor necessitatibus asperiores, nobis velit ex. 
                 </p>
-                <a href="#" onclick="location.href='/main/bookflip.html'" class="detail_readBtn">읽으러 가기</a>
+                <a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
                 <div class="icon">
                     <span id="modal-heart-icon" class="material-icons-outlined">favorite_border</span>
                     <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
@@ -275,30 +277,6 @@
                 <h3 class="comment_id">요떼기</h3>
                     <p class="comment_detail">잼써여33333333333333</p>
             </div>
-            <div class="comments">
-                <h3 class="comment_id">ad세훈</h3>
-                    <p class="comment_detail">잼써여444444444444</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
             <!-- <p class="review-add">작성하기</p> -->
         </div>
     </div>
@@ -317,14 +295,15 @@
 				<div class="item" th:each="dto : ${result2}" th:category="${bookResult[1]}" th:onClick="categoryInsert(this.getAttribute('category'))">					
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
-							<i class="fas fa-share-alt"></i> 
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
+							<i class="fas fa-share-alt"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
@@ -349,9 +328,11 @@
 				<div class="item" th:each="dto : ${bookLikeList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
-							<i class="fas fa-share-alt"></i> 
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
+							<i class="fas fa-share-alt"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -382,9 +363,11 @@
 				<div class="item" th:each="dto : ${bookUpdateList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span> 
-							<i class="fas fa-share-alt"></i> 
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
+							<i class="fas fa-share-alt"></i>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
 							<div>
@@ -393,7 +376,7 @@
 							</div>
 						</div>
 						<div class="text">
-							<h3>#[[${dto.bookTitle}]]</h3>
+							<h3>[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${dto.bookGerne}">#추천</a>
 							</div>
@@ -601,11 +584,19 @@
 	
 	<!-- --------- slider.js end ----------  -->
 	<!-- ----- icon click effect -----  -->
-	<script>
-	    const hearts = document.querySelectorAll('#heart-icon')
+	<script>	
+	    const hearts = document.getElementsByName('heart-icon');
 	    hearts.forEach((heart) => {
 	        heart.addEventListener("click", toggleLike)
-	
+
+	    if(heart.textContent === "favorite") {
+	    	heart.textContent = "favorite"
+            heart.style.color = "red"
+        } else {
+        	heart.textContent = "favorite_border"
+            heart.style.color = "white" 
+        }    
+	        
 	    function toggleLike() {
 	        if(heart.textContent === "favorite_border") {
 	            heart.textContent = "favorite"
@@ -621,7 +612,15 @@
 	    adds.forEach((add) => {
 	
 	    add.addEventListener("click", toggleAdd)
-	
+		
+	    if(add.textContent === "add_task") {
+	    		add.textContent = "add_task"
+	            add.style.color = "green"	            
+       	 } else {
+       			add.textContent = "control_point"
+	            add.style.color = "white"
+        }
+	    
 	    function toggleAdd(){
 	        if(add.textContent === "control_point") {
 	            add.textContent = "add_task"
@@ -692,34 +691,50 @@
 
     <!-- ---------- modal screen ----------  -->
     <script>
-        const modal = document.querySelector('.modal');
-        const modalContent = document.querySelector('.modal_content');
-        const close = document.querySelector('.modal_close');
-        const modalImg = document.querySelector('.modal_img');
-        const item = document.querySelectorAll('.item');
-        const title = document.querySelector('.detail_title');
+	    function modalInsert(bookNum){
+			let auth = localStorage.getItem("Authorization");
+			var data = {bookNums:bookNum};
+			
+			console.log(data);
+			
+			$.ajax({
+				url: '/main/modal',
+				type:"post",
+				data:JSON.stringify(data),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					 	const modal = document.querySelector('.modal');
+					    const modalContent = document.querySelector('.modal_content');
+					    const close = document.querySelector('.modal_close');
+					    const modalImg = document.querySelector('.modal_img');
+					    const item = document.querySelectorAll('.item');
+					    const title = document.querySelector('.detail_title');
+					     
+					     item.forEach((list, index) => {
+					        const view = list.querySelector('.item-img');
+					        const itemImg = list.querySelector('.item-img').getAttribute('src');
+					        
+					         view.addEventListener('click', () => { // 클릭 이벤트 - modal show
+					            modal.classList.add('modal--bg');
+					            modalContent.classList.add('modal_content--show');
+					            modalImg.setAttribute('src', itemImg);
+					            title.innerText = `product title ${index + 1}`;
+					            // console.log(modalImg);
+					    });
+					});
 
-        item.forEach((list, index) => {
-            const view = list.querySelector('.item-img');
-            const itemImg = list.querySelector('.item-img').getAttribute('src');
+					close.addEventListener('click', () => { // 클릭이벤트 - modal close 
+					    modal.classList.remove('modal--bg');
+					    modalContent.classList.remove('modal_content--show');
+					});
 
-            view.addEventListener('click', () => {
-                modal.classList.add('modal--bg');
-                modalContent.classList.add('modal_content--show');
-                modalImg.setAttribute('src', itemImg);
-                title.innerText = `product title ${index + 1}`;
-                // console.log(modalImg);
-        });
-    });
-
-    close.addEventListener('click', () => {
-        modal.classList.remove('modal--bg');
-        modalContent.classList.remove('modal_content--show');
-    });
-    // modal.addEventListener('click', () => {
-    //     modal.classList.remove('modal--bg');
-    //     modalContent.classList.remove('modal_content--show');
-    // });
+				}
+			});	
+		}
     </script>
     
     <script>

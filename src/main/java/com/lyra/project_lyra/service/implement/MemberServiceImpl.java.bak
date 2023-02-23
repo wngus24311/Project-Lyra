@@ -9,9 +9,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.lyra.project_lyra.dto.MemberDTO;
+import com.lyra.project_lyra.entity.combine.CombinePage;
 import com.lyra.project_lyra.entity.member.MemberInfo;
 import com.lyra.project_lyra.excpetion.AppException;
 import com.lyra.project_lyra.excpetion.ErrorCode;
@@ -78,24 +78,6 @@ public class MemberServiceImpl implements MemberService {
         log.info(token);
         return token;
     }
-
-    /** add to memberGerne */
-    @Transactional
-    @Override
-    public void addMemberGenre(String username, String memberGenre) {
-        MemberInfo memberInfo = memberRepository.findByUsername(username).get();
-        memberInfo.setMemberGerne(memberGenre);
-        
-        memberRepository.save(memberInfo);
-    }
-
-    @Override
-    public MemberDTO check(String username) {
-        MemberDTO dto = new MemberDTO();
-        dto.setUsername(username);
-        return dto;
-    }
-
 
 	@Override
 	public List<MemberDTO> getList() {
@@ -208,8 +190,6 @@ public class MemberServiceImpl implements MemberService {
 		} else {
 			categorySum = getMemberGerne + "," + category;			
 		}
-		
-		log.info(categorySum);
 
 		memberRepository.updateCategory(username, categorySum);		
 	}

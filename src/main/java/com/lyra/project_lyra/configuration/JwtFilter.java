@@ -56,7 +56,7 @@ public class JwtFilter extends OncePerRequestFilter {
             // Todo: 권한 수정 해줘야함
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(username, null, List.of(new SimpleGrantedAuthority("USER")));
-
+            log.info("JWTFilter authenticationToken ==============> " + authenticationToken);
             // Detail 넣어줌
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);

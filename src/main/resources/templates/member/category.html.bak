@@ -10,8 +10,7 @@
     <!-- ----- google font -----  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-	
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <!-- page move -->
     <script type="text/javascript" src="/js/pageMove.js"></script>
 </head>
@@ -142,7 +141,7 @@
         </label>
     </div>
 
-    <a href="#" class="submit" onclick="submitClick()">완료하기</a>
+    <a href="#" class="submit" onclick="location.href='/main/main.html'">완료하기</a>
     
     <div class="space"></div>
     
@@ -200,64 +199,6 @@ function count_check(obj){
             }
         });
     });
-
-    function submitClick() {
-	    let auth = localStorage.getItem("Authorization");
-	    let checkBox = $("input[name=check]");
-	    let checkData = "";
-	    for (let i = 0; i < checkBox.length; i++) {
-		    if (checkBox[i].checked) {
-			    if (checkData === "") {
-				    checkData += checkBox[i].value + ",";
-			    } else {
-				    checkData += checkBox[i].value;
-			    }
-		    }
-	    }
-	    if (checkData.endsWith(",") == true) {
-		    checkData = checkData.replace(",", "");
-	    }
-	    console.log(checkData);
-	
-	    let jsonData = {
-		    "memberGerne": checkData
-	    };
-	
-	    $.ajax({
-		    url: '/member/category',
-		    contentType: "application/json",
-		    data: JSON.stringify(jsonData),
-		    type: "POST",
-		    headers: {
-			    "Authorization": auth
-		    },
-		    dataType: 'text',
-		    success: function (data) {
-			    console.log("complete" + data);
-			    $.ajax({
-				    url: "/main/main",
-				    contentType: "application/json",
-				    type: "post",
-				    headers: {
-					    "Authorization": auth
-				    },
-				    dataType: "text",
-				    success: function (result) {
-					    console.log("success result : " + result);
-					    let url = "/main/main?name=" + result;
-					    console.log(url);
-					    location.replace(url);
-				    },
-				    error: function (textStatus) {
-					    console.log(textStatus + "왜 이게 나와");
-				    }
-			    })
-		    },
-		    error: function (jqXHR, textStatus, errorThrown) {
-			    console.log("왜 안될까" + textStatus);
-		    }
-	    });
-    }
 </script>
 <!-- ---------- footer 호출 end---------- -->
 </body>

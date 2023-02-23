@@ -23,16 +23,16 @@ public interface BookService {
 	Long register2(BookDTO dto);
 	
 	// 책 리뷰 페이지 처리
-	List<BookDTO> getList();
+	List<BookDTO> getList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
 	// 책 카테고리별 페이지 처리
-	List<BookDTO> getCategoryList(String username);
+	List<BookDTO> getCategoryList(String username, List<Long> likeBookNum, List<Long> keepBookNum);
 	
 	// 책 좋아요 개수 많은 순으로 가져오기
-	List<BookDTO> getLikeList();
+	List<BookDTO> getLikeList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
 	// 책 최신 리스트 가져오기
-	List<BookDTO> getUpdateList();
+	List<BookDTO> getUpdateList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
 	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
 
@@ -40,9 +40,6 @@ public interface BookService {
 	
 	// 랭킹 페이지 처리
 	PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto);
-
-	// 책 장르별 페이지 처리
-	PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto);
 
 	void modify(BookDTO bookDTO);
 

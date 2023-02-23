@@ -3,23 +3,22 @@ package com.lyra.project_lyra.controller;
 import java.util.Map;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
+import com.lyra.project_lyra.repository.book.BookInfoRepository;
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.interfaces.BookService;
+import com.lyra.project_lyra.service.interfaces.CombineService;
 import com.lyra.project_lyra.service.interfaces.MemberService;
 import com.lyra.project_lyra.util.Category;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/main")
@@ -29,6 +28,7 @@ public class MainController {
 	private final BookService bookService;
 	private final MemberService memberService;
 	private final MemberInfoRepository repository;
+	private final CombineService combineService;
 
 	@GetMapping("/main")
 	public ModelAndView getMainList(Model model, @RequestParam(value = "name", required=false) String loginUser) throws Exception{
@@ -44,10 +44,10 @@ public class MainController {
 		
 		model.addAttribute("username", username);
 		model.addAttribute("bookResult", categoryDBtoView(username));
-		model.addAttribute("result1", bookService.getCategoryList(categoryOne[0]));
-		model.addAttribute("result2", bookService.getCategoryList(categoryOne[1]));
-		model.addAttribute("bookLikeList", bookService.getLikeList());
-		model.addAttribute("bookUpdateList", bookService.getUpdateList());
+		model.addAttribute("result1", bookService.getCategoryList(categoryOne[0], combineService.bookLikeList(username), combineService.bookKeepList(username)));
+		model.addAttribute("result2", bookService.getCategoryList(categoryOne[1], combineService.bookLikeList(username), combineService.bookKeepList(username)));
+		model.addAttribute("bookLikeList", bookService.getLikeList(combineService.bookLikeList(username), combineService.bookKeepList(username)));
+		model.addAttribute("bookUpdateList", bookService.getUpdateList(combineService.bookLikeList(username), combineService.bookKeepList(username)));
 		
 		ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/main/main");
@@ -55,7 +55,7 @@ public class MainController {
 	}
 	
 	@PostMapping("/main")
-	public String getMainList(Authentication authentication) throws Exception{
+	public String getMainList(Authentication authentication) throws Exception{		
 		String username = (String)authentication.getPrincipal();
 		
 		return username;
@@ -72,20 +72,23 @@ public class MainController {
 		String username = (String)authentication.getPrincipal();
 		
 		log.info("categoryEntity : " + categoryEntity);
+		log.info(username);
 		
 		memberService.categoryInsert(username, categoryEntity);
 		log.info("category Insert Success");
 	}
 	
 	 @GetMapping("/genrepage")
-    public ModelAndView gernepage(@RequestParam(value = "name", required=false) String loginUser) {
+    public ModelAndView gernepage(Model model, @RequestParam(value = "name", required=false) String loginUser) {
     	String username;
 		log.info(loginUser);
 		if (loginUser == null) {
 			username = "user";
 		}else {
 			username = loginUser;			
-		}	
+		}
+		
+		model.addAttribute("list", bookService.getList(combineService.bookLikeList(username), combineService.bookKeepList(username)));
     	
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/main/genrepage");
@@ -97,6 +100,48 @@ public class MainController {
 		String username = (String)authentication.getPrincipal();
 		
 		return username;
+	}
+    
+    @GetMapping("/bookflip")
+    public ModelAndView category() {
+        log.info("/main/bookflip");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/main/bookflip");
+        return modelAndView;
+    }
+    
+    @PostMapping("/bookflip")
+	public String getBookflip(Authentication authentication) throws Exception{
+		String username = (String)authentication.getPrincipal();
+
+		return username;
+	}
+    
+    @PostMapping("/pageInsert")
+	public void setPageInsert(@RequestBody Map<String,Object> data, Authentication authentication) {
+		String bookNum = (String)data.get("bookNums");
+		String bookPage = (String)data.get("bookPage");
+		String username = (String)authentication.getPrincipal();
+		
+		Long lbookNum = Long.parseLong(bookNum); 
+		Long lbookPage = Long.parseLong(bookPage); 
+		
+		log.info("bookNum : " + bookNum);
+		log.info("bookPage : " + bookPage);
+		log.info("username : " + username);
+
+		combineService.bookPageSave(username, lbookNum, lbookPage);
+	}
+    
+    @PostMapping("/modal")
+	public String modalShow(@RequestBody Map<String,Object> data, Authentication authentication) {
+		String bookNum = (String)data.get("bookNums");
+		
+		Long lbookNum = Long.parseLong(bookNum); 
+		
+		log.info("bookNum : " + bookNum);
+		
+		return null;
 	}
 
 	// Entity -> DTO

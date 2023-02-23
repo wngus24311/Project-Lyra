@@ -74,21 +74,29 @@ public class BookServiceImpl implements BookService {
 
 	}
 
-	// 책 장르별
-	@Override
-	public PageResultDTO<BookDTO, Object[]> getBookGerneList(PageRequestDTO pageRequestDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	// 리뷰 페이지
 	@Override
-	public List<BookDTO> getList() {
+	public List<BookDTO> getList(List<Long> likeBookNum, List<Long> keepBookNum) {
 
 		List<BookInfo> books = bookInfoRepository.findAll();
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int i = 0; i < likeBookNum.size(); i++) {
+				if (likeBookNum.get(i) == book.getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int i = 0; i < keepBookNum.size(); i++) {
+				if (keepBookNum.get(i) == book.getBookNum()) {
+					keepFlag = "1";
+				}
+			}
+			
 			if (entityNullCheck(book)) {
 				BookDTO bookDTO = BookDTO.builder()
 						.bookNum(book.getBookNum())
@@ -97,6 +105,8 @@ public class BookServiceImpl implements BookService {
 						.bookThumbnail(book.getBookThumbnail())
 						.bookLike(book.getBookLike())
 						.bookPage(book.getBookPage())
+						.likeCheck(likeFlag)
+						.keepCheck(keepFlag)
 						.build();
 				
 				bookDTOList.add(bookDTO);
@@ -139,11 +149,26 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getCategoryList(String username) {
+	public List<BookDTO> getCategoryList(String username, List<Long> likeBookNum, List<Long> keepBookNum) {
 		List<BookInfo> books = bookInfoRepository.findAllByCategoryQuery(username);
-		List<BookDTO> bookDTOList = new ArrayList<>();
+		List<BookDTO> bookDTOList = new ArrayList<>();		
 		
 		for (BookInfo book : books) {
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int i = 0; i < likeBookNum.size(); i++) {
+				if (likeBookNum.get(i) == book.getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int i = 0; i < keepBookNum.size(); i++) {
+				if (keepBookNum.get(i) == book.getBookNum()) {
+					keepFlag = "1";
+				}
+			}
+			
 			if (entityNullCheck(book)) {
 				BookDTO bookDTO = BookDTO.builder()
 						.bookNum(book.getBookNum())
@@ -152,6 +177,8 @@ public class BookServiceImpl implements BookService {
 						.bookThumbnail(book.getBookThumbnail())
 						.bookLike(book.getBookLike())
 						.bookPage(book.getBookPage())
+						.likeCheck(likeFlag)
+						.keepCheck(keepFlag)
 						.build();
 				
 				bookDTOList.add(bookDTO);
@@ -163,19 +190,36 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getLikeList() {
+	public List<BookDTO> getLikeList(List<Long> likeBookNum, List<Long> keepBookNum) {
 		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookLike"));
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int i = 0; i < likeBookNum.size(); i++) {
+				if (likeBookNum.get(i) == book.getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int i = 0; i < keepBookNum.size(); i++) {
+				if (keepBookNum.get(i) == book.getBookNum()) {
+					keepFlag = "1";
+				}
+			}
+			
 			if (entityNullCheck(book)) {
-				BookDTO bookDTO = BookDTO.builder()
+				 BookDTO bookDTO = BookDTO.builder()
 						.bookNum(book.getBookNum())
 						.bookTitle(book.getBookTitle())
 						.bookGerne(book.getBookGerne())
 						.bookThumbnail(book.getBookThumbnail())
 						.bookLike(book.getBookLike())
 						.bookPage(book.getBookPage())
+						.likeCheck(likeFlag)
+						.keepCheck(keepFlag)
 						.build();
 				
 				bookDTOList.add(bookDTO);
@@ -187,11 +231,26 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getUpdateList() {
+	public List<BookDTO> getUpdateList(List<Long> likeBookNum, List<Long> keepBookNum) {
 		List<BookInfo> books = bookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "bookNum"));
 		List<BookDTO> bookDTOList = new ArrayList<>();
 		
 		for (BookInfo book : books) {
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int i = 0; i < likeBookNum.size(); i++) {
+				if (likeBookNum.get(i) == book.getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int i = 0; i < keepBookNum.size(); i++) {
+				if (keepBookNum.get(i) == book.getBookNum()) {
+					keepFlag = "1";
+				}
+			}
+			
 			if (entityNullCheck(book)) {
 				BookDTO bookDTO = BookDTO.builder()
 						.bookNum(book.getBookNum())
@@ -200,6 +259,8 @@ public class BookServiceImpl implements BookService {
 						.bookThumbnail(book.getBookThumbnail())
 						.bookLike(book.getBookLike())
 						.bookPage(book.getBookPage())
+						.likeCheck(likeFlag)
+						.keepCheck(keepFlag)
 						.build();
 				
 				bookDTOList.add(bookDTO);
