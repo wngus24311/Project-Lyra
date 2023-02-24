@@ -75,22 +75,3 @@ function mypage(){
 			}
 		});
 	}
-	
-function bookflip(){
-	let auth = localStorage.getItem("Authorization");
-		$.ajax({
-			url: '/main/bookflip',
-			type:"post",
-			contentType:"application/json; charset=UTF-8",
-			headers: {
-				"Authorization" : auth
-			},
-			dataType:"text",
-			success: function(result){
-				console.log("success result : " + result);
-				let url = "/main/bookflip?name=" + result;
-				console.log(url);
-				location.replace(url);
-			}
-		});
-	}

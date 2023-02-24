@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.lyra.project_lyra.dto.CombineDTO;
 import com.lyra.project_lyra.repository.book.BookInfoRepository;
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.interfaces.BookService;
@@ -33,7 +34,6 @@ public class MainController {
 	@GetMapping("/main")
 	public ModelAndView getMainList(Model model, @RequestParam(value = "name", required=false) String loginUser) throws Exception{
 		String username;
-		log.info(loginUser);
 		if (loginUser == null) {
 			username = "user";
 		}else {
@@ -103,7 +103,25 @@ public class MainController {
 	}
     
     @GetMapping("/bookflip")
-    public ModelAndView category() {
+    public ModelAndView getBookflip(Model model,@RequestParam(value = "name", required=false) String loginUser,@RequestParam(value = "num", required=false) Long bookNum) {
+    	String username;
+    	Long bookNums;
+    	
+		if (loginUser == null) {
+			username = "user";
+		}else {
+			username = loginUser;			
+		}	
+		
+		if (bookNum == null) {
+			bookNums = 1L;
+		}else {
+			bookNums = bookNum;			
+		}	
+		
+		model.addAttribute("username", username);
+		model.addAttribute("bookNum", bookNums);
+		
         log.info("/main/bookflip");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/main/bookflip");
@@ -111,7 +129,7 @@ public class MainController {
     }
     
     @PostMapping("/bookflip")
-	public String getBookflip(Authentication authentication) throws Exception{
+	public String getBookflip(Authentication authentication, @RequestBody Map<String,Object> data) throws Exception{
 		String username = (String)authentication.getPrincipal();
 
 		return username;
@@ -134,14 +152,14 @@ public class MainController {
 	}
     
     @PostMapping("/modal")
-	public String modalShow(@RequestBody Map<String,Object> data, Authentication authentication) {
+	public Long modalShow(@RequestBody Map<String,Object> data, Authentication authentication) {
 		String bookNum = (String)data.get("bookNums");
 		
 		Long lbookNum = Long.parseLong(bookNum); 
 		
 		log.info("bookNum : " + bookNum);
 		
-		return null;
+		return lbookNum;
 	}
 
 	// Entity -> DTO

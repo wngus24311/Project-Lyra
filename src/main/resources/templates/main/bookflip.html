@@ -24,67 +24,83 @@
             <div class="flip" id="p1">
                 <div class="front">
                     <img src="/images/bookpage_right.jpg">
-                    <label class="next-btn" for="c1">Next</label>
+                    <label class="next-btn" for="c1" onclick="pageSum(1)">Next</label>
                 </div>
                 <div class="back">
                     <img src="/images/bookpage_left.jpg">
-                    <label class="back-btn" for="c1">Back</label>
+                    <label class="back-btn" for="c1" onclick="pageSum(0)">Back</label>
                 </div>
             </div>
 
             <div class="flip" id="p2">
                 <div class="front">
                     <img src="/images/bookpage_right.jpg">
-                    <label class="next-btn" for="c2">Next</label>
+                    <label class="next-btn" for="c2" onclick="pageSum(1)">Next</label>
                 </div>
                 <div class="back">
                     <img src="/images/bookpage_left.jpg">
-                    <label class="back-btn" for="c2">Back</label>
+                    <label class="back-btn" for="c2" onclick="pageSum(0)">Back</label>
                 </div>
                
             </div>
             <div class="flip" id="p3">
                 <div class="front">
                     <img src="/images/bookpage_right.jpg">
-                    <label class="next-btn" for="c3">Next</label>
+                    <label class="next-btn" for="c3" onclick="pageSum(1)">Next</label>
                 </div>
                 <div class="back">
                     <img src="/images/bookpage_left.jpg">
-                    <label class="back-btn" for="c3">Back</label>
+                    <label class="back-btn" for="c3" onclick="pageSum(0)">Back</label>
                 </div>
             </div>
 
             <div class="flip" id="p4">
                 <div class="front">
                     <img src="/images/bookpage_right.jpg">
-                    <label class="next-btn" for="c4">Next</label>
+                    <label class="next-btn" for="c4" onclick="pageSum(1)">Next</label>
                 </div>
                 <div class="back">
                     <img src="/images/bookpage_left.jpg">
-                    <label class="back-btn" for="c4">Back</label>
+                    <label class="back-btn" for="c4" onclick="pageSum(0)">Back</label>
                 </div>             
             </div>
 
             <div class="flip" id="p5">
                 <div class="back">
                     <img src="/images/bookpage_left.jpg">
-                    <label class="back-btn" for="c5">Back</label>
+                    <label class="back-btn" for="c5" onclick="pageSum(0)">Back</label>
                 </div>
                 <div class="front">
                     <img src="/images/bookpage_right.jpg">
-                    <label class="next-btn" for="c5">Next</label>
+                    <label class="next-btn" for="c5" onclick="pageSum(1)">Next</label>
                 </div>             
             </div>
         </div>
         
       
     </div>
-	<script>
+	<script th:inline="javascript">
+	let pageNum = 1;
+	function pageSum(result){
+		if (result === 1){
+			pageNum = pageNum + 2;
+		} else{
+			pageNum = pageNum - 2;
+		}
+		
+		if (pageNum === 11){
+			pageNum = 10;
+		}
+	}
+	
+	/*<![CDATA[*/
 	function pageInsert(){
 		let auth = localStorage.getItem("Authorization");
-		let page = "4";
-		let bookNum = "2";
+		let page = String(pageNum);
+		let bookNum = '[[${bookNum}]]';
 		let data = {bookNums:bookNum, bookPage:page};
+				
+		console.log(data);
 		
 		$.ajax({
 			url: '/main/pageInsert',
@@ -101,6 +117,7 @@
 		});	
 		
 	}
+	/*]]>*/
 	</script>
 
 </body>

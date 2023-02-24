@@ -35,7 +35,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Long register1(BookDTO dto) {
-		log.info("dto--------" + dto);
 
 		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 
@@ -46,7 +45,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Long register2(BookDTO dto) {
-		log.info("dto--------" + dto);
 
 		BookReview bookReview = reviewDtoToEntity(dto);
 
@@ -58,14 +56,12 @@ public class BookServiceImpl implements BookService {
 	// 책 랭킹
 	@Override
 	public PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto) {
-		log.info("pageRequestDTO : " + pageRequestDto);
 
 		Pageable pageable = pageRequestDto.getPageable(Sort.by("bookLike").descending());
 
 		Page<Object[]> result = bookInfoRepository.getBookRankingPage(pageable);
 
 		result.getContent().forEach(arr -> {
-			log.info(Arrays.toString(arr));
 		});
 
 		Function<Object[], BookDTO> fn = (en -> bookInfoEntityToDto((BookInfo) en[0]));
@@ -113,7 +109,6 @@ public class BookServiceImpl implements BookService {
 			}
 		}
 		
-		log.info(bookDTOList);
 		return bookDTOList;
 	}
 
@@ -141,7 +136,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void insert(BookDTO dto) {
-		log.info("dto--------" + dto);
 		
 		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 		
@@ -185,7 +179,6 @@ public class BookServiceImpl implements BookService {
 			}
 		}
 		
-		log.info("bookDTOList : " + bookDTOList);
 		return bookDTOList;
 	}
 
@@ -226,7 +219,6 @@ public class BookServiceImpl implements BookService {
 			}
 		}
 		
-		log.info("bookLikeList" + bookDTOList);
 		return bookDTOList;
 	}
 
@@ -267,7 +259,6 @@ public class BookServiceImpl implements BookService {
 			}
 		}
 		
-		log.info("bookLikeList" + bookDTOList);
 		return bookDTOList;
 	}
 

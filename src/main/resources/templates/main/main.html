@@ -230,9 +230,9 @@
     <div class="modal">
     <div class="modal_content">
         <i class="modal_close far fa-times-circle"></i>
-
+		
         <div class="modal_left">
-        <div class="modal-bookNum">123</div>
+        <div class="modal_bookNum"></div>
             <img class="modal_img" src="" alt="" >
         </div>
 
@@ -244,9 +244,6 @@
                 </p>
                 <a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
                 <div class="icon">
-                    <span id="modal-heart-icon" class="material-icons-outlined">favorite_border</span>
-                    <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
-                    <span id="modal-add-icon" class="material-icons-outlined">control_point</span>
                 </div>
 
             </div>
@@ -307,7 +304,7 @@
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${bookResult[1]}">[[${bookResult[1]}]]</a>
 							</div>
@@ -336,12 +333,11 @@
 						</div>
 						<div class="imgbox">
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${dto.bookGerne}">#인기순위</a>
 							</div>
@@ -371,12 +367,11 @@
 						</div>
 						<div class="imgbox">
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${dto.bookGerne}">#추천</a>
 							</div>
@@ -694,9 +689,7 @@
 	    function modalInsert(bookNum){
 			let auth = localStorage.getItem("Authorization");
 			var data = {bookNums:bookNum};
-			
-			console.log(data);
-			
+						
 			$.ajax({
 				url: '/main/modal',
 				type:"post",
@@ -707,23 +700,26 @@
 				contentType:"application/json; charset=UTF-8",
 				dataType:"text",
 				success: function(result){
+						
 					 	const modal = document.querySelector('.modal');
 					    const modalContent = document.querySelector('.modal_content');
 					    const close = document.querySelector('.modal_close');
 					    const modalImg = document.querySelector('.modal_img');
 					    const item = document.querySelectorAll('.item');
 					    const title = document.querySelector('.detail_title');
+					    const bookNum = document.querySelector('.modal_bookNum');
 					     
 					     item.forEach((list, index) => {
+					  	    const titleName = list.querySelector('.item-title');
 					        const view = list.querySelector('.item-img');
 					        const itemImg = list.querySelector('.item-img').getAttribute('src');
 					        
 					         view.addEventListener('click', () => { // 클릭 이벤트 - modal show
+					        	bookNum.innerText = result;
 					            modal.classList.add('modal--bg');
 					            modalContent.classList.add('modal_content--show');
 					            modalImg.setAttribute('src', itemImg);
-					            title.innerText = `product title ${index + 1}`;
-					            // console.log(modalImg);
+					            title.innerText = titleName.innerHTML;
 					    });
 					});
 
@@ -735,6 +731,30 @@
 				}
 			});	
 		}
+	    
+	    function bookflip(){
+	    		let auth = localStorage.getItem("Authorization");
+	    		const bookNums = document.querySelector('.modal_bookNum');
+	    		var bookNum = bookNums.innerHTML;
+    		
+	    		let data = {bookNum:bookNum};
+	    		$.ajax({
+	    			url: '/main/bookflip',
+	    			type:"post",
+	    			contentType:"application/json; charset=UTF-8",
+	    			data:JSON.stringify(data),
+	    			headers: {
+	    				"Authorization" : auth
+	    			},
+	    			dataType:"text",
+	    			success: function(result){
+	    				console.log("success result : " + result);
+	    				let url = "/main/bookflip?name=" + result + "&num=" + bookNum;
+	    				console.log(url);
+	    				location.replace(url);
+	    			}
+	    		});
+	    	}
     </script>
     
     <script>

@@ -36,7 +36,8 @@ public interface BookService {
 	
 	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
 
-	//와이어 프레임에 명시된 기술들 페이지 처리
+	// 책 번호로 List 가져오기
+	
 	
 	// 랭킹 페이지 처리
 	PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto);
