@@ -127,10 +127,10 @@ public class MemberController {
         
         model.addAttribute("membership", memberService.getMembership(username));
         model.addAttribute("page", combineService.getPage(combineService.getPageList(username)));
-        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username)));
-        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username)));
+        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
+        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
         model.addAttribute("userInfo", memberService.getUsernameInfo(username));
-        
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/member/mypage");
         return modelAndView;

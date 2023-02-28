@@ -263,11 +263,25 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getBookList(List<CombineDTO> combineDTO) {
+	public List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum) {
 		List<BookDTO> listBookDTOs = new ArrayList<>();
 
 		for(int i = 0; i < combineDTO.size(); i++) {
-			Optional<BookInfo> bookInfo = bookInfoRepository.findById(combineDTO.get(i).getBookNum());
+			Optional<BookInfo> bookInfo = bookInfoRepository.findById(combineDTO.get(i).getBookNum());			
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int y = 0; y < likeBookNum.size(); y++) {
+				if (likeBookNum.get(y) == bookInfo.get().getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int y = 0; y < keepBookNum.size(); y++) {
+				if (keepBookNum.get(y) == bookInfo.get().getBookNum()) {
+					keepFlag = "1";
+				}
+			}
 			
 			BookDTO bookDTO = BookDTO.builder()
 					.bookNum(bookInfo.get().getBookNum())
@@ -276,6 +290,8 @@ public class BookServiceImpl implements BookService {
 					.bookThumbnail(bookInfo.get().getBookThumbnail())
 					.bookLike(bookInfo.get().getBookLike())
 					.bookPage(bookInfo.get().getBookPage())
+					.likeCheck(likeFlag)
+					.keepCheck(keepFlag)
 					.build();
 			
 			listBookDTOs.add(bookDTO);

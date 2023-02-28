@@ -39,7 +39,7 @@ public class CombineServiceImpl implements CombineService {
 		combineDTO.setBookNum(bookNum);
 		
 		combineKeep = combineDtoToEntity(combineDTO);
-		
+				
 		combineKeepRepository.save(combineKeep);
 	}
 

@@ -34,10 +34,7 @@ public interface BookService {
 	// 책 최신 리스트 가져오기
 	List<BookDTO> getUpdateList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
-	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
-
-	// 책 번호로 List 가져오기
-	
+	List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum);
 	
 	// 랭킹 페이지 처리
 	PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto);
