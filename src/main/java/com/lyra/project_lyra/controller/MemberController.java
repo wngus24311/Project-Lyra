@@ -68,9 +68,8 @@ public class MemberController {
                 dto.getAge(),
                 dto.getGender(),
                 dto.getNickname(),
-                dto.getMemberGenre(),
+                dto.getMemberGerne(),
                 dto.getSubscribeState());
-        ;
 
         return ResponseEntity.ok().body(memberServiceImpl.login(dto.getUsername(), dto.getPassword()));
     }
@@ -87,7 +86,7 @@ public class MemberController {
     public ResponseEntity<String> category(@RequestBody MemberDTO dto , Authentication authentication) {
         String username = (String) authentication.getPrincipal();
         log.info("username ==========> " + username);
-        memberServiceImpl.addMemberGenre(username, dto.getMemberGenre());
+        memberServiceImpl.addMemberGenre(username, dto.getMemberGerne());
         return ResponseEntity.ok().body("장르 선택이 완료 되었습니다.");
     }
 
@@ -125,18 +124,18 @@ public class MemberController {
 
         log.info("memberService getUsernameInfo" + memberService.getUsernameInfo(username));
         log.info("memberServie getKeepList" + combineService.getKeepList(username));
-
+        
         model.addAttribute("membership", memberService.getMembership(username));
         model.addAttribute("page", combineService.getPage(combineService.getPageList(username)));
-        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username)));
-        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username)));
+        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
+        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
         model.addAttribute("userInfo", memberService.getUsernameInfo(username));
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/member/mypage");
         return modelAndView;
     }
-
+    
     @GetMapping("/membership")
     public ModelAndView membership(@RequestParam(value = "name", required=false) String loginUser) {
     	String username;
@@ -151,34 +150,34 @@ public class MemberController {
         modelAndView.setViewName("/member/membership");
         return modelAndView;
     }
-
+    
     @PostMapping("/membership")
 	public String setKeepInsert(Authentication authentication) {
     	String username = (String)authentication.getPrincipal();
 
 		return username;
 	}
-
+    
     @PostMapping("/mypage")
 	public String getMypage(Authentication authentication) throws Exception{
 		String username = (String)authentication.getPrincipal();
 
 		return username;
 	}
-
+	
 	@PostMapping("/memberInsert")
 	public String setMemberInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
     	log.info(data);
     	log.info(data.get("membership"));
-
+    	
     	String membership = Integer.toString((Integer)data.get("membership"));
-
+		
 		String username = (String)authentication.getPrincipal();
-
+		
 		log.info(membership);
-
+		
 		memberService.updateMembership(membership, username);
-
+		
 		return username;
 	}
 }

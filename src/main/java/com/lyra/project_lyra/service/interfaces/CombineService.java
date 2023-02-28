@@ -27,9 +27,12 @@ public interface CombineService {
 	
 	//보던 책 저장
 	void bookPageSave(String username, Long bookNum, Long bookPage);
-		
-	//보던 책 취소
-	boolean bookPageUpdate(String username, Long bookNum, Long bookPage);
+	
+	// 책 좋아요 리스트
+	List<Long> bookLikeList(String username);
+	
+	// 구독 좋아요 리스트
+	List<Long> bookKeepList(String username);
 	
 	//회원 별 읽었던 책 or 페이지 가져오기
 	List<CombineDTO> getPageList(String username);

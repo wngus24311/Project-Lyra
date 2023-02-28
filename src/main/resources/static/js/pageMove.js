@@ -19,7 +19,8 @@ function membership(){
 	}
 	
 function main(){
-	let auth = localStorage.getItem("Authorization");
+		let auth = localStorage.getItem("Authorization");
+		
 		$.ajax({
 			url: '/main/main',
 			type:"post",

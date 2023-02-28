@@ -21,6 +21,10 @@ public class BookDTO {
 	 private Long bookLike; 
 	 private int bookPage;
 	 
+	 // 좋아요 찜하기 check
+     private String likeCheck;
+     private String keepCheck;
+	 
 	 //BookReview + ( bookNum )
 	 private Long reviewNum;
 	 private String username;

@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lyra.project_lyra.dto.MemberDTO;
 import com.lyra.project_lyra.entity.combine.CombinePage;
@@ -21,14 +22,6 @@ import com.lyra.project_lyra.util.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -62,7 +55,7 @@ public class MemberServiceImpl implements MemberService {
                 .age(age)
                 .gender(gender)
                 .nickname(nickname)
-                .memberGenre(memberGerne)
+                .memberGerne(memberGerne)
                 .subscribeState(subscribeState)
                 .lastlogin(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
@@ -92,7 +85,8 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void addMemberGenre(String username, String memberGenre) {
         MemberInfo memberInfo = memberRepository.findByUsername(username).get();
-        memberInfo.setMemberGenre(memberGenre);
+        memberInfo.setMemberGerne(memberGenre);
+
         memberRepository.save(memberInfo);
     }
 
@@ -109,7 +103,7 @@ public class MemberServiceImpl implements MemberService {
 		// 리뷰 페이지
 			List<MemberInfo> members = memberRepository.findAll();
 			List<MemberDTO> memberDTOList = new ArrayList<>();
-
+			
 			for (MemberInfo member : members) {
 				MemberDTO memberDTO = MemberDTO.builder()
 						.username(member.getUsername())
@@ -117,14 +111,14 @@ public class MemberServiceImpl implements MemberService {
 						.age(member.getAge())
 						.gender(member.getGender())
 						.nickname(member.getNickname())
-						.memberGenre(member.getMemberGenre())
+						.memberGerne(member.getMemberGerne())
 						.subscribeState(member.getSubscribeState())
 						.lastlogin(member.getLastlogin())
 						.build();
-
+				
 				memberDTOList.add(memberDTO);
 			}
-
+			
 			log.info(memberDTOList);
 			return memberDTOList;
 	}
@@ -133,16 +127,16 @@ public class MemberServiceImpl implements MemberService {
 	public String[] getCategory(String username) {
 		String[] category;
 		String[] categoryResult = new String[2];
-
+		
 		MemberInfo memberInfo = new MemberInfo();
-
+		
 		Optional<MemberInfo> memberDTO = memberRepository.findById(username);
-
-		category = memberDTO.get().getMemberGenre().split(",");
-
+		
+		category = memberDTO.get().getMemberGerne().split(",");
+		
 		int[] iFlag = new int[category.length];
-
-
+		
+		
 		//가장 많은 데이터 구분
 		for (int i = 0; i < category.length; i++) {
 			for (int y = 0; y < category.length; y++) {
@@ -151,7 +145,7 @@ public class MemberServiceImpl implements MemberService {
 				}
 			}
 		}
-
+		
 		//중복되는 데이터 체크
 		for (int i = 0; i < category.length; i++) {
 			for (int y = 0; y < category.length; y++) {
@@ -160,17 +154,17 @@ public class MemberServiceImpl implements MemberService {
 				}
 			}
 		}
-
+		
 		// 최대값 초기값 세팅
         int maxOne = iFlag[0];
-
+ 
         // 최대값 구하기 1차
         for (int num : iFlag) {
             if (num > maxOne) {
             	maxOne = num;
             }
         }
-
+        
         // 최대 값 카테고리 추가
         for (int i = 0; i < category.length; i++) {
         	if (maxOne == iFlag[i]) {
@@ -179,27 +173,27 @@ public class MemberServiceImpl implements MemberService {
         		break;
         	}
         }
-
+        
         int maxTwo = iFlag[0];
         log.info("iFlag" + maxTwo);
-
+        
         // 최대값 구하기 2차
         for (int num : iFlag) {
             if (num > maxTwo) {
             	maxTwo = num;
             }
         }
-
+        
         // 2번째 최대 값 카테고리 추가
         for (int i = 0; i < category.length; i++) {
         	if (maxTwo == iFlag[i]) {
         		categoryResult[1] = category[i];
         	}
         }
-
+		
 		log.info(categoryResult[0]);
 		log.info(categoryResult[1]);
-
+		
 		return categoryResult;
 	}
 
@@ -208,46 +202,48 @@ public class MemberServiceImpl implements MemberService {
 		MemberInfo memberInfo = new MemberInfo();
 		String getMemberGerne = memberRepository.findCategory(username);
 		String categorySum = "";
-
-
+		
+		
 		if (category.equals("")) {
-			categorySum = getMemberGerne + category;
+			categorySum = getMemberGerne + category;	
 		} else {
-			categorySum = getMemberGerne + "," + category;
+			categorySum = getMemberGerne + "," + category;			
 		}
 
-		memberRepository.updateCategory(username, categorySum);
+		log.info(categorySum);
+
+		memberRepository.updateCategory(username, categorySum);		
 	}
 
 	@Override
 	public MemberDTO getUsernameInfo(String username) {
 		MemberInfo member = new MemberInfo();
 		MemberDTO memberDTO = new MemberDTO();
-
+		
 		member = memberRepository.findUsernameInfo(username);
-
+		
 		memberDTO = memberDTO.builder()
 				.username(member.getUsername())
 				.age(member.getAge())
 				.gender(member.getGender())
 				.nickname(member.getNickname())
 				.build();
-
+		
 		log.info("findUsernameInfo" + memberDTO);
 		return memberDTO;
 	}
-
+	
 	@Override
-	public void updateMembership(String membership, String username) {
+	public void updateMembership(String membership, String username) {		
 		memberRepository.updateMembership(membership, username);
 	}
 
 	@Override
 	public String getMembership(String username) {
 		MemberInfo memberInfo = memberRepository.getById(username);
-
+		
 		String membership = memberInfo.getSubscribeState();
-
+		
 		return membership;
 	}
 }

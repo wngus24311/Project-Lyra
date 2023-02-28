@@ -30,7 +30,6 @@ public class CombineServiceImpl implements CombineService {
 	private final CombinePageRepository combinePageRepository;
 	private final BookInfoRepository bookInfoRepository;
 	
-	
 	@Override
 	public void bookKeepSave(String username, Long bookNum) {
 		CombineKeep combineKeep = new CombineKeep();
@@ -40,7 +39,7 @@ public class CombineServiceImpl implements CombineService {
 		combineDTO.setBookNum(bookNum);
 		
 		combineKeep = combineDtoToEntity(combineDTO);
-		
+				
 		combineKeepRepository.save(combineKeep);
 	}
 
@@ -150,42 +149,32 @@ public class CombineServiceImpl implements CombineService {
 
 	@Override
 	public void bookPageSave(String username, Long bookNum, Long bookPage) {
-		CombinePage combinePage = new CombinePage();
-		CombineDTO combineDTO = new CombineDTO();
-		
-		combineDTO.setUsername(username);
-		combineDTO.setBookNum(bookNum);
-		combineDTO.setBookPage(bookPage);
-		
-		combinePage = pageDtoToEntity(combineDTO);
-		
-		combinePageRepository.save(combinePage);
-	}
-
-	@Override
-	public boolean bookPageUpdate(String username, Long bookNum, Long bookPage) {
 		boolean bResult = false;
-		String strBookNum = Long.toString(bookNum);
-		String strListBookNum;
-
-		List<CombinePage> list = new ArrayList<>();
+		List<CombinePage> combinePageList = new ArrayList<>();
 		
+		combinePageList = combinePageRepository.findAll();
 		
-		list = combinePageRepository.findAll();
-		
-		for (int i = 0; i < list.size(); i++) {
-			
-			strListBookNum = Long.toString(list.get(i).getBookInfo().getBookNum());
-			
-			if (list.get(i).getMemberInfo().getUsername().equals(username) 
-					&& strBookNum.equals(strListBookNum)) {
-				combinePageRepository.updateBookPage(bookNum, bookPage);
-
+		for (int i = 0; i < combinePageList.size(); i++) {
+			if (combinePageList.get(i).getBookInfo().getBookNum() == bookNum
+					&&combinePageList.get(i).getMemberInfo().getUsername().equals(username)) {
+				
+				combinePageRepository.pageUpdate(bookPage, username, bookNum);
 				bResult = true;
 			}
 		}
 		
-		return bResult;
+		if (bResult == false) {
+			CombinePage combinePage = new CombinePage();
+			CombineDTO combineDTO = new CombineDTO();				
+			
+			combineDTO.setUsername(username);
+			combineDTO.setBookNum(bookNum);
+			combineDTO.setBookPage(bookPage);
+			
+			combinePage = pageDtoToEntity(combineDTO);
+			
+			combinePageRepository.save(combinePage);
+		}		
 	}
 
 	@Override
@@ -220,6 +209,40 @@ public class CombineServiceImpl implements CombineService {
 		}		
 		
 		return pages;
+	}
+
+	@Override
+	public List<Long> bookLikeList(String username) {
+		List<CombineLike> combineLike = new ArrayList<>();
+		
+		List<Long> longlist = new ArrayList<>();
+		
+		combineLike = combineLikeRepository.findAll();
+		
+		for (int i = 0; i < combineLike.size(); i++) {
+			if (combineLike.get(i).getMemberInfo().getUsername().equals(username)) {
+				longlist.add(combineLike.get(i).getBookInfo().getBookNum());
+			}
+		}
+		
+		return longlist;
+	}
+
+	@Override
+	public List<Long> bookKeepList(String username) {
+		List<CombineKeep> combineKeep = new ArrayList<>();
+		
+		List<Long> longlist = new ArrayList<>();
+		
+		combineKeep = combineKeepRepository.findAll();
+		
+		for (int i = 0; i < combineKeep.size(); i++) {
+			if (combineKeep.get(i).getMemberInfo().getUsername().equals(username)) {
+				longlist.add(combineKeep.get(i).getBookInfo().getBookNum());
+			}
+		}
+		
+		return longlist;
 	}
 	
 }

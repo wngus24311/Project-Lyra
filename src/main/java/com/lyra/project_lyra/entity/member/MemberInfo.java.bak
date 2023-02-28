@@ -21,7 +21,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-@Setter
 @Table(name="tbl_MemberInfo")
 public class MemberInfo {
    

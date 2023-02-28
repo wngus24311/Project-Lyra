@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ----- box icons -----  -->
@@ -63,7 +63,6 @@
             display: inline;
             text-shadow: 1px 1px 2px gray;
             color: white;
-            
         }
         #modal .title h2 {
             display: inline;
@@ -88,7 +87,7 @@
 	<!-- API TEST -->
 </head>
 <body>
-	<!-- API TEST -->
+	<!-- API TEST -->		
     <div id="modal" class="modal-overlay" style="display: none;">
         <div class="modal-window">
             <div class="title">
@@ -97,17 +96,17 @@
             <div class="close-area">X</div>
             <div class="content">
 				 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-         		<div class="addthis_inline_share_toolbox_07dw" id="btn-modal"></div>
-            
+         		<div class="addthis_inline_share_toolbox_07dw" id="btn-modal"></div> 
+                
             </div>
         </div>
-    </div>
-    
+    </div>      
+              
     <!-- API TEST -->
 	
 	<!-- header 호출 -->
 	<div data-include-path="/aside/header.html"></div>
- 
+            
 	<!-- ---------- slider start ---------- -->
 	<div id="slider">
     <a href="#" class="control_next"> > </a>
@@ -185,7 +184,7 @@
         </li>
     </ul>  
     </div>
-    <!-- ---------- slider end ---------- -->
+	<!-- ---------- slider end ---------- -->
 
 
 	<!-- contents start -->
@@ -202,18 +201,23 @@
 				<div class="item" th:each="dto : ${result1}" th:category="${bookResult[0]}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span>
 							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="bookNumPageInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${bookResult[0]}">[[${bookResult[0]}]]</a>
 							</div>
@@ -229,22 +233,20 @@
     <div class="modal">
     <div class="modal_content">
         <i class="modal_close far fa-times-circle"></i>
-
+		
         <div class="modal_left">
+        <div class="modal_bookNum"></div>
             <img class="modal_img" src="" alt="" >
         </div>
 
         <div class="modal_right">
             <div class="detail">
                 <h2 class="detail_title"></h2>
-                <p class="detail_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Architecto praesentium corporis accusamus dolor necessitatibus asperiores, nobis velit ex.
+                <p class="detail_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Architecto praesentium corporis accusamus dolor necessitatibus asperiores, nobis velit ex. 
                 </p>
-                <a href="#" onclick="location.href='/main/bookflip.html'" class="detail_readBtn">읽으러 가기</a>
+                <a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
                 <div class="icon">
-                    <span id="modal-heart-icon" class="material-icons-outlined">favorite_border</span>
-                    <i class='bx bx-share-alt' id='bx bx-share-alt' ></i>
-                    <span id="modal-add-icon" class="material-icons-outlined">control_point</span>
                 </div>
 
             </div>
@@ -275,30 +277,6 @@
                 <h3 class="comment_id">요떼기</h3>
                     <p class="comment_detail">잼써여33333333333333</p>
             </div>
-            <div class="comments">
-                <h3 class="comment_id">ad세훈</h3>
-                    <p class="comment_detail">잼써여444444444444</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">짱비</h3>
-                    <p class="comment_detail">잼써여5555555555555555555</p>
-            </div>
             <!-- <p class="review-add">작성하기</p> -->
         </div>
     </div>
@@ -314,21 +292,25 @@
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${result2}" th:category="${bookResult[1]}" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${result2}" th:category="${bookResult[1]}" th:onClick="categoryInsert(this.getAttribute('category'))">					
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span>
 							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${bookResult[1]}">[[${bookResult[1]}]]</a>
 							</div>
@@ -349,18 +331,22 @@
 				<div class="item" th:each="dto : ${bookLikeList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span>
 							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${dto.bookGerne}">#인기순위</a>
 							</div>
@@ -382,18 +368,22 @@
 				<div class="item" th:each="dto : ${bookUpdateList}" th:category="${dto.bookGerne}" th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span id="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))">favorite_border</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span>
+							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span>
 							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))">control_point</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
+							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
 							<div>
-								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" />
+								<img class="item-img" th:src="${dto.bookThumbnail}" th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
 							</div>
 						</div>
 						<div class="text">
-							<h3>#[[${dto.bookTitle}]]</h3>
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
 							<div class="description-genre">
 								<a href="#" th:id="${dto.bookGerne}">#추천</a>
 							</div>
@@ -440,7 +430,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
-	<script>
+	<script>		
 		let auth = localStorage.getItem("Authorization");
 		function categoryInsert(clicked_id){
 			let url = window.location.href;
@@ -459,7 +449,7 @@
 				success: function(result){
 					console.log("categoryInsert success");
 				}
-			});
+			});	
 			
 		}
 		
@@ -481,7 +471,7 @@
 				success: function(result){
 					console.log("keep success");
 				}
-			});
+			});	
 		}
 		
 		function bookNumLikeInsert(bookNum){
@@ -502,7 +492,7 @@
 				success: function(result){
 					console.log("like success");
 				}
-			});
+			});	
 		}
 		
 		function bookNumPageInsert(bookNum){
@@ -523,7 +513,7 @@
 				success: function(result){
 					console.log("page success");
 				}
-			});
+			});	
 			*/
 		}
 		
@@ -561,6 +551,15 @@
 	moveRight();
 	}, 3000);
 	});
+	
+	$('.control_next').click(function($) // 슬라이더 좌우 버튼 클릭 시 body 스크롤 block
+		    {
+		        $.preventDefault();
+		    });
+	$('.control_prev').click(function($) // 슬라이더 좌우 버튼 클릭 시 body 스크롤 block
+		    {
+		        $.preventDefault();
+		    });
 	
 	let slideCount = $('#slider ul li').length;
 	let slideWidth = $('#slider ul li').width();
@@ -602,10 +601,18 @@
 	<!-- --------- slider.js end ----------  -->
 	<!-- ----- icon click effect -----  -->
 	<script>
-	    const hearts = document.querySelectorAll('#heart-icon')
+	    const hearts = document.getElementsByName('heart-icon');
 	    hearts.forEach((heart) => {
 	        heart.addEventListener("click", toggleLike)
-	
+
+	    if(heart.textContent === "favorite") {
+	    	heart.textContent = "favorite"
+            heart.style.color = "red"
+        } else {
+        	heart.textContent = "favorite_border"
+            heart.style.color = "white"
+        }
+	       
 	    function toggleLike() {
 	        if(heart.textContent === "favorite_border") {
 	            heart.textContent = "favorite"
@@ -621,7 +628,15 @@
 	    adds.forEach((add) => {
 	
 	    add.addEventListener("click", toggleAdd)
-	
+		
+	    if(add.textContent === "add_task") {
+	    		add.textContent = "add_task"
+	            add.style.color = "green"
+       	 } else {
+       			add.textContent = "control_point"
+	            add.style.color = "white"
+        }
+	    
 	    function toggleAdd(){
 	        if(add.textContent === "control_point") {
 	            add.textContent = "add_task"
@@ -692,34 +707,75 @@
 
     <!-- ---------- modal screen ----------  -->
     <script>
-        const modal = document.querySelector('.modal');
-        const modalContent = document.querySelector('.modal_content');
-        const close = document.querySelector('.modal_close');
-        const modalImg = document.querySelector('.modal_img');
-        const item = document.querySelectorAll('.item');
-        const title = document.querySelector('.detail_title');
+	    function modalInsert(bookNum){
+			let auth = localStorage.getItem("Authorization");
+			var data = {bookNums:bookNum};
+			
+			$.ajax({
+				url: '/main/modal',
+				type:"post",
+				data:JSON.stringify(data),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+						
+					 	const modal = document.querySelector('.modal');
+					    const modalContent = document.querySelector('.modal_content');
+					    const close = document.querySelector('.modal_close');
+					    const modalImg = document.querySelector('.modal_img');
+					    const item = document.querySelectorAll('.item');
+					    const title = document.querySelector('.detail_title');
+					    const bookNum = document.querySelector('.modal_bookNum');
+					     
+					     item.forEach((list, index) => {
+					  	    const titleName = list.querySelector('.item-title');
+					        const view = list.querySelector('.item-img');
+					        const itemImg = list.querySelector('.item-img').getAttribute('src');
+					        
+					         view.addEventListener('click', () => { // 클릭 이벤트 - modal show
+					        	bookNum.innerText = result;
+					            modal.classList.add('modal--bg');
+					            modalContent.classList.add('modal_content--show');
+					            modalImg.setAttribute('src', itemImg);
+					            title.innerText = titleName.innerHTML;
+					    });
+					});
 
-        item.forEach((list, index) => {
-            const view = list.querySelector('.item-img');
-            const itemImg = list.querySelector('.item-img').getAttribute('src');
+					close.addEventListener('click', () => { // 클릭이벤트 - modal close
+					    modal.classList.remove('modal--bg');
+					    modalContent.classList.remove('modal_content--show');
+					});
 
-            view.addEventListener('click', () => {
-                modal.classList.add('modal--bg');
-                modalContent.classList.add('modal_content--show');
-                modalImg.setAttribute('src', itemImg);
-                title.innerText = `product title ${index + 1}`;
-                // console.log(modalImg);
-        });
-    });
-
-    close.addEventListener('click', () => {
-        modal.classList.remove('modal--bg');
-        modalContent.classList.remove('modal_content--show');
-    });
-    // modal.addEventListener('click', () => {
-    //     modal.classList.remove('modal--bg');
-    //     modalContent.classList.remove('modal_content--show');
-    // });
+				}
+			});
+		}
+	    
+	    function bookflip(){
+	    		let auth = localStorage.getItem("Authorization");
+	    		const bookNums = document.querySelector('.modal_bookNum');
+	    		var bookNum = bookNums.innerHTML;
+    		
+	    		let data = {bookNum:bookNum};
+	    		$.ajax({
+	    			url: '/main/bookflip',
+	    			type:"post",
+	    			contentType:"application/json; charset=UTF-8",
+	    			data:JSON.stringify(data),
+	    			headers: {
+	    				"Authorization" : auth
+	    			},
+	    			dataType:"text",
+	    			success: function(result){
+	    				console.log("success result : " + result);
+	    				let url = "/main/bookflip?name=" + result + "&num=" + bookNum;
+	    				console.log(url);
+	    				location.replace(url);
+	    			}
+	    		});
+	    	}
     </script>
     
     <script>
@@ -734,6 +790,11 @@
 	            $('.review-write-container').hide();
 	        })
 	    })
+	    
+	    $('#review-submit').click(function($) // 클릭 이벤트 시 body 스크롤 block
+	    {
+	        $.preventDefault();
+	    });
 	</script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
