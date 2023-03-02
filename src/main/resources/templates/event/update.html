@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- header js, css 호출 -->
+    <link rel="stylesheet" href="/css/header.css">
+    <script src="/js/header.js"></script>
+	<!-- page move -->
+    <script type="text/javascript" src="/js/pageMove.js"></script>
+<title>listPage</title>
+</head>
+<body>
+	<!-- header 호출 -->
+    <div data-include-path="/aside/header.html"></div>
+
+
+	<form action="/event/update" method="post" name="updateForm">
+		<input type="hidden" name="evnum" th:value="${eventUpdate.evnum}">
+			제목 : <input type="text" name="eventTitle"
+			th:value="${eventUpdate.eventTitle}"><br> 
+
+			내용 : <textarea name="eventName" cols="30" rows="10"
+			th:text="${eventUpdate.eventName}"></textarea><br>
+
+			기간 : <input type="date" th:value="${eventUpdate.eventStartDate}"> 
+			~ <input type="date" th:value="${eventUpdate.eventEndDate}"><br>
+
+			이벤트 썸네일 : <input type="file" th:value="${eventUpdate.eventOriginalThumbnailName}"> <br>
+			
+			이벤트 이미지 : <input type="file" th:value="${eventUpdate.eventOriginalImageName}">
+			<input type="hidden" name="eventHits" th:value="${eventUpdate.eventHits}"> 
+			<input type="submit" value="글작성완료">
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+ <!-- ---------- footer 호출 ---------- -->
+<div data-include-path="/aside/movingfooter.html"></div>
+<link rel="stylesheet" href="/css/movingfooter.css">
+<link rel="stylesheet" href="/css/main.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
