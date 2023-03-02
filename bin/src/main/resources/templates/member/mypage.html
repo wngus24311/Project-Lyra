@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+
+    <!-- ----- css -----  -->
+    <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/movingfooter.css">
+
+<!-- ----- box icons -----  -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<!-- ----- fontawsome -----  -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<!-- ----- carousel -----  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+
+<!-- ----- google fonts -----  -->
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+<!-- page move -->
+    <script type="text/javascript" src="/js/pageMove.js"></script>
+
+<body>
+
+    <!-- header 호출 -->
+    <div data-include-path="/aside/header.html"></div>
+
+    <!-- ---------- user profile start ----------  -->
+
+    <div class="wrapper">
+        <div class="left">
+            <img src="/images/profile.jpg" alt="user" width="100">
+            <h4>[[${userInfo.username}]]</h4>
+        </div>
+        <div class="right">
+
+            <div class="info1">
+                <h3>Information</h3>
+                <div class="info1_data">
+                    <div class="data">
+                        <h4>Name</h4>
+                        <p>[[${userInfo.username}]]</p>
+                    </div>
+                    <div class="data">
+                        <h4>NickName</h4>
+                        <p>[[${userInfo.nickname}]]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info2">
+                <div class="info2_data">
+                    <div class="data">
+                        <h4>Age</h4>
+                        <p>[[${userInfo.age}]]</p>
+                    </div>
+                    <div class="data">
+                        <h4>Gender</h4>
+                        <p th:if="${userInfo.gender == 0}">남자</p>
+                        <p th:if="${userInfo.gender == 1}">여자</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- user profile end ----------  -->
+
+    
+    <!-- ---------- 나의 구독 start ----------  -->
+    <div class="container-membership">
+        <h2>나의 구독</h2>
+        <div class="pricing-table">
+            <div class="pricing-card">
+                <h3 class="pricing-card-header">Personal</h3>
+                <div class="price">[[${membership}]]개월</div>
+                <ul>
+                    <li>매 주 기다리던 만화 업데이트, [[${membership}]]주분 무료!</li>
+                    <li>[[${membership}]]개월 구독료 캐시백</li>
+                    <li>베스트셀러 일러스트 특별판 [[${membership}]]권 무료</li>
+                </ul>
+            </div>
+    </div>
+    </div>
+    <!-- ---------- 나의 구독 end ----------  -->
+
+    <!-- ---------- 찜한 책 start ----------  -->
+    <section class="popular mtop">
+        <div class="heart-container">
+            <div class="heading flex1">
+                <h2>🤍찜한 책</h2>
+                <button>더보기 ></button>
+            </div>               
+            <div class="owl-carousel owl-theme">																																																																																					
+                <div class="item" th:each="dto : ${keepList}">
+                    <div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i> 
+							<i class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">#찜 목록</a>
+							</div>
+						</div>
+					</div>
+                </div>
+
+            </div>
+            </div>
+    </section>
+    <!-- ---------- 찜한 책 end ----------  -->
+
+    
+    <!-- ---------- 읽은 책 start ----------  -->
+    <section class="popular mtop">
+        <div class="read-container">
+            <div class="heading flex1">
+                <h2>읽은 책</h2>
+                <button>더보기 ></button>
+            </div>          
+            <div class="owl-carousel owl-theme">
+                <div class="item" th:each="dto, num: ${pageList}">
+                    <div class="box">
+						<div class="icon">
+							<i class="far fa-heart"></i> 
+							<i class="fas fa-share-alt"></i> 
+							<i class="fas fa-plus"></i>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}" />
+							</div>
+						</div>
+						<div class="text">
+							<h3>[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#">#찜 목록</a>
+							</div>
+						</div>
+					</div>
+					<div class="progress-bar">
+                     	<span th:data-width="${page[num.index]}"></span>
+              		</div>   
+                </div>  			          	      
+
+            </div>
+            </div>
+    </section>
+    <!-- ---------- 읽은 책 end ----------  -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    
+     <script>
+        $('.owl-carousel').owlCarousel({
+            loop:false,
+            margin:10,
+            dots: false,
+            nav:true,
+            itemsScaleUp:false,
+            responsive:{
+                411:{
+                    items:1
+                },
+                768:{
+                    items:2
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+    </script>
+
+    <!-- ---------- progress bar ----------  -->
+    <script>
+        const spans = document.querySelectorAll('.progress-bar span');
+
+        spans.forEach((span) => {
+            span.style.width = span.dataset.width;
+            span.innerHTML = span.dataset.width;
+        });
+    </script>
+
+
+
+    <!-- ---------- footer 호출 ----------  -->
+    <div data-include-path="/aside/movingfooter.html"></div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

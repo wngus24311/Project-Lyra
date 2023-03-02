@@ -34,25 +34,63 @@ public class BookServiceImpl implements BookService {
 	private final BookReviewRepository bookReviewRepository;
 
 	@Override
-	public Long register1(BookDTO dto) {
+	public List<BookDTO> getReviewsOfBook(Long bookNum) {
+		BookInfo bookInfo = BookInfo.builder().bookNum(bookNum).build();
+
+		List<BookReview> result = bookReviewRepository.findByBookInfo(bookInfo);
+
+		log.info("제발" + bookInfo);
+
+		return result.stream().map(bookReview -> reviewEntityToDto(bookReview)).collect(Collectors.toList());
+	}
+
+
+	@Override
+	public Long reviewRegister(BookDTO bookDTO, String username) {
+		log.info("dto--------" + bookDTO);
+		
+		bookDTO.setUsername(username);
+
+		BookReview bookReview = reviewDtoToEntity(bookDTO);
+				
+		log.info("bookReview===" + bookReview);
+		
+		bookReviewRepository.save(bookReview);
+
+		return bookDTO.getBookNum();
+	}
+	
+	@Override
+	public void remove(Long reviewnum) {
+		bookReviewRepository.deleteById(reviewnum);
+
+	}
+
+	@Override
+	public void insert(BookDTO dto) {
+		log.info("dto--------" + dto);
 
 		BookInfo bookInfo = bookInfoDtoToEntity(dto);
 
 		bookInfoRepository.save(bookInfo);
-
-		return bookInfo.getBookNum();
 	}
-
+	
+	// 책 리뷰 수정
 	@Override
-	public Long register2(BookDTO dto) {
+	public void modify(BookDTO BookDTO) {
+		Optional<BookReview> result = bookReviewRepository.findById(BookDTO.getReviewnum());
 
-		BookReview bookReview = reviewDtoToEntity(dto);
+		if (result.isPresent()) {
+			BookReview review = result.get();
+			review.changeGrade(BookDTO.getGrade());
+			review.changeReview(BookDTO.getBookReview());
 
-		bookReviewRepository.save(bookReview);
+			bookReviewRepository.save(review);
+		}
 
-		return bookReview.getReviewnum();
 	}
 
+	
 	// 책 랭킹
 	@Override
 	public PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto) {
@@ -112,35 +150,6 @@ public class BookServiceImpl implements BookService {
 		return bookDTOList;
 	}
 
-	// 책 리뷰 수정
-	@Override
-	public void modify(BookDTO BookDTO) {
-		Optional<BookReview> result = bookReviewRepository.findById(BookDTO.getReviewNum());
-
-		if (result.isPresent()) {
-			BookReview review = result.get();
-			review.changeGrade(BookDTO.getGrade());
-			review.changeReview(BookDTO.getBookReview());
-
-			bookReviewRepository.save(review);
-		}
-
-	}
-
-	// 리뷰 삭제
-	@Override
-	public void remove(Long reviewNum) {
-		bookReviewRepository.deleteById(reviewNum);
-		
-	}
-
-	@Override
-	public void insert(BookDTO dto) {
-		
-		BookInfo bookInfo = bookInfoDtoToEntity(dto);
-		
-		bookInfoRepository.save(bookInfo);
-	}
 
 	@Override
 	public List<BookDTO> getCategoryList(String username, List<Long> likeBookNum, List<Long> keepBookNum) {
@@ -263,11 +272,25 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<BookDTO> getBookList(List<CombineDTO> combineDTO) {
+	public List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum) {
 		List<BookDTO> listBookDTOs = new ArrayList<>();
 
 		for(int i = 0; i < combineDTO.size(); i++) {
-			Optional<BookInfo> bookInfo = bookInfoRepository.findById(combineDTO.get(i).getBookNum());
+			Optional<BookInfo> bookInfo = bookInfoRepository.findById(combineDTO.get(i).getBookNum());			
+			String likeFlag = "0";
+			String keepFlag = "0";
+			
+			for(int y = 0; y < likeBookNum.size(); y++) {
+				if (likeBookNum.get(y) == bookInfo.get().getBookNum()) {
+					likeFlag = "1";
+				}
+			}
+			
+			for(int y = 0; y < keepBookNum.size(); y++) {
+				if (keepBookNum.get(y) == bookInfo.get().getBookNum()) {
+					keepFlag = "1";
+				}
+			}
 			
 			BookDTO bookDTO = BookDTO.builder()
 					.bookNum(bookInfo.get().getBookNum())
@@ -276,6 +299,8 @@ public class BookServiceImpl implements BookService {
 					.bookThumbnail(bookInfo.get().getBookThumbnail())
 					.bookLike(bookInfo.get().getBookLike())
 					.bookPage(bookInfo.get().getBookPage())
+					.likeCheck(likeFlag)
+					.keepCheck(keepFlag)
 					.build();
 			
 			listBookDTOs.add(bookDTO);

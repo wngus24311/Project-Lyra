@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ----- box icons -----  -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
+<!-- ----- google font icons -----  -->
+<link
+	href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+	rel="stylesheet">
+<!-- ----- fontawsome -----  -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+	crossorigin="anonymous">
+<!-- ----- carousel -----  -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+
+<!-- ----- google fonts -----  -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap"
+	rel="stylesheet">
+
+<!-- ----- css -----  -->
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- page move -->
+<script type="text/javascript" src="/js/pageMove.js"></script>
+<!-- API TEST -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript"
+	src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
+
+<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 15000;
+	left: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: rgba(69, 139, 197, 0.70);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+</style>
+
+<!-- API TEST -->
+</head>
+<body>
+	<!-- API TEST -->
+	<div id="modal" class="modal-overlay" style="display: none;">
+		<div class="modal-window">
+			<div class="title">
+				<h1>공유하기</h1>
+			</div>
+			<div class="close-area">X</div>
+			<div class="content">
+				<!-- Go to www.addthis.com/dashboard to customize your tools -->
+				<div class="addthis_inline_share_toolbox_07dw" id="btn-modal"></div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- API TEST -->
+
+	<!-- header 호출 -->
+	<div data-include-path="/aside/header.html"></div>
+
+	<!-- ---------- slider start ---------- -->
+	<div id="slider">
+		<a href="#" class="control_next"> > </a> <a href="#"
+			class="control_prev"> < </a>
+		<ul>
+			<li id="slide1" class="slides">
+				<h1>해리포터</h1>
+				<p>돌아온 판타지의 역작</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">판타지</span>
+				</div>
+			</li>
+			<li id="slide2" class="slides">
+				<h1>셜록 홈즈</h1>
+				<p>“범죄는 흔하다. 그러나 논리는 흔치 않다”</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">추리</span>
+				</div>
+			</li>
+			<li id="slide3" class="slides">
+				<h1>슬램덩크</h1>
+				<p>"농구 좋아하세요?"</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">스포츠</span>
+				</div>
+			</li>
+			<li id="slide4" class="slides">
+				<h1>위대한 개츠비</h1>
+				<p>미국을 대표하는 고전 소설</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">고전</span>
+				</div>
+			</li>
+			<li id="slide5" class="slides">
+				<h1>용의자 x의 헌신</h1>
+				<p>히가시노 게이고 문학의 정수</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">추리</span>
+				</div>
+			</li>
+			<li id="slide6" class="slides">
+				<h1>오만과 편견</h1>
+				<p>영국인들이 가장 사랑하는 작가로 꼽힌 제인 오스틴의 대표작</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">로맨스</span>
+				</div>
+			</li>
+			<li id="slide7" class="slides">
+				<h1>살인자의 기억법</h1>
+				<p>전 세계 독자를 사로잡은 최고의 심리스릴러</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">추리</span>
+				</div>
+			</li>
+			<li id="slide8" class="slides">
+				<h1>나미야 잡화점의 기억</h1>
+				<p>수백만부 베스트셀러의 주인공</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">장편소설</span>
+				</div>
+			</li>
+			<li id="slide9" class="slides">
+				<h1>러브레터</h1>
+				<p>겨울이 오면 생각나는 명대사</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">로맨스</span>
+				</div>
+			</li>
+			<li id="slide10" class="slides">
+				<h1>헝거게임</h1>
+				<p>판타지 액션 블록버스터</p>
+				<div class="slide_genre">
+					장르: <span class="text-body">판타지</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- ---------- slider end ---------- -->
+
+
+	<!-- contents start -->
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<span>
+					<h2>[[${username}]]님의 많이 보던 장르</h2>
+				</span>
+				<button>더보기 ></button>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result1}"
+					th:category="${bookResult[0]}"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
+					<div class="box">
+						<div class="icon">
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
+						</div>
+						<div class="imgbox">
+							<div>
+								<img class="item-img" th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
+							</div>
+						</div>
+						<div class="text">
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#" th:id="${bookResult[0]}">[[${bookResult[0]}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- ---------- modal screen start ----------  -->
+	<div class="modal">
+		<div class="modal_content">
+			<i class="modal_close far fa-times-circle"></i>
+
+			<div class="modal_left">
+				<div class="modal_bookNum"></div>
+				<img class="modal_img" src="" alt="">
+			</div>
+
+			<div class="modal_right">
+				<div class="detail">
+					<h2 class="detail_title"></h2>
+					"삭제된 기억, 알 수 없는 메시지로 둘러싸인 낯선 공간“
+					정신을 차리고 눈을 떴다.
+					알 수 없는 장소에, 알 수 없는 메시지가 가득하다.
+					여긴 도대체 어디란 말인가?
+					정확히 설명할 순 없지만 무언가 엄청난 일들이 벌어지는 중이라는 걸
+					직감할 수 있다.
+                </p>
+					<a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
+					<div class="icon"></div>
+
+				</div>
+			</div>
+			<div class="review">
+				<h2 class="review_title">⭐ 이 책의 리뷰</h2>
+				<p class="review-add" id="review-add">작성하기</p>
+				<div class="review-write-container" style="display: none;">
+					<form action="#">
+						<header>소중한 리뷰를 작성해주세요</header>
+						<div class="textarea">
+							<textarea class="bookReviews" name="bookReview" cols="30" placeholder="리뷰 작성"></textarea>
+						</div>
+						<div class="btn">
+							<button type="button" class="review-submit"
+								onClick="bookReviewSave();">업로드 하기</button>
+						</div>
+					</form>
+				</div>
+				<div class="reviewList"></div>
+				<!-- <p class="review-add">작성하기</p> -->
+			</div>
+		</div>
+	</div>
+	<!-- ---------- modal screen end ----------  -->
+
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<span>
+					<h2>[[${username}]]님의 추천 장르</h2>
+				</span>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${result2}"
+					th:category="${bookResult[1]}"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
+					<div class="box">
+						<div class="icon">
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
+						</div>
+						<div class="imgbox">
+<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
+							<div>
+								<img class="item-img" th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
+							</div>
+						</div>
+						<div class="text">
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#" th:id="${bookResult[1]}">[[${bookResult[1]}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<h2>실시간 인기 순위</h2>
+				<button>더보기 ></button>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${bookLikeList}"
+					th:category="${dto.bookGerne}"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
+					<div class="box">
+						<div class="icon">
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
+						</div>
+						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
+							<div>
+								<img class="item-img" th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
+							</div>
+						</div>
+						<div class="text">
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#" th:id="${dto.bookGerne}">#인기순위</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
+				<h2>최근 나온 책</h2>
+				<button>더보기 ></button>
+			</div>
+
+			<div class="owl-carousel owl-theme">
+				<div class="item" th:each="dto : ${bookUpdateList}"
+					th:category="${dto.bookGerne}"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
+					<div class="box">
+						<div class="icon">
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
+						</div>
+						<div class="imgbox">
+							<a href="#" class="watch-btn">
+	                        <i class='bx bx-book-open bx-tada' ></i>
+	                        </a>
+							<div>
+								<img class="item-img" th:src="${dto.bookThumbnail}"
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
+							</div>
+						</div>
+						<div class="text">
+							<h3 class="item-title">[[${dto.bookTitle}]]</h3>
+							<div class="description-genre">
+								<a href="#" th:id="${dto.bookGerne}">#추천</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--  API TEST -->
+	<script>
+	const modals = document.getElementById("modal")
+	function modalOn() {
+	    modals.style.display = "flex"
+	}
+	function isModalOn() {
+	    return modals.style.display === "flex"
+	}
+	function modalOff() {
+	    modals.style.display = "none"
+	}
+	const btnModal = document.getElementById("btn-modal")
+	btnModal.addEventListener("click", e => {
+	    modalOn()
+	})
+	const closeBtn = modal.querySelector(".close-area")
+	closeBtn.addEventListener("click", e => {
+	    modalOff()
+	})
+	modal.addEventListener("click", e => {
+	    const evTarget = e.target
+	    if(evTarget.classList.contains("modal-overlay")) {
+	        modalOff()
+	    }
+	})
+	window.addEventListener("keyup", e => {
+	    if(isModalOn() && e.key === "Escape") {
+	        modalOff()
+	    }
+	})
+    </script>
+	<!--  API TEST -->
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+	<script>		
+		let auth = localStorage.getItem("Authorization");
+		function categoryInsert(clicked_id){
+			let url = window.location.href;
+			let data = {category:clicked_id, url:url};
+			console.log(url);
+			
+			$.ajax({
+				url: '/main/categoryInsert',
+				type:"post",
+				data:JSON.stringify(data),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("categoryInsert success");
+				}
+			});	
+			
+		}
+		
+		function bookNumInsert(bookNum){
+			var urls = window.location.href;
+			var datas = {bookNums:bookNum, url:urls};
+			
+			console.log(datas);
+			
+			$.ajax({
+				url: '/combine/keep',
+				type:"post",
+				data:JSON.stringify(datas),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("keep success");
+				}
+			});	
+		}
+		
+		function bookNumLikeInsert(bookNum){
+			var urls = window.location.href;
+			var datas = {bookNums:bookNum, url:urls};
+			
+			console.log(datas);
+			
+			$.ajax({
+				url: '/combine/like',
+				type:"post",
+				data:JSON.stringify(datas),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("like success");
+				}
+			});	
+		}
+		
+		function bookNumPageInsert(bookNum){
+			
+			console.log("pageInsert");
+			/*
+			let urls = window.location.href;
+			let page = window.location.href;
+			
+			let datas = {bookNums:bookNum, url:urls, bookPage:page};
+			
+			$.ajax({
+				url: '/combine/page',
+				type:"post",
+				data:JSON.stringify(datas),
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("page success");
+				}
+			});	
+			*/
+		}
+		
+		$(".fa-share-alt").click(function(){
+			$('#div-api').show();
+			modalOn();
+		});
+	
+		$('.owl-carousel').owlCarousel({
+			loop : true,
+			margin : 10,
+			dots : false,
+			nav : true,
+			responsive : {
+				411 : {
+					items : 1
+				},
+				768 : {
+					items : 2
+				},
+				1000 : {
+					items : 5
+				}
+			}
+		})
+
+	</script>
+	<!-- contents end -->
+
+	<!-- --------- slider.js start ----------  -->
+	<script>
+	jQuery(document).ready(function ($) {
+	$('#checkbox').change(function(){
+	setInterval(function () {
+	moveRight();
+	}, 3000);
+	});
+	
+	$('.control_next').click(function($) // 슬라이더 좌우 버튼 클릭 시 body 스크롤 block
+		    {
+		        $.preventDefault();   
+		    });
+	$('.control_prev').click(function($) // 슬라이더 좌우 버튼 클릭 시 body 스크롤 block
+		    {
+		        $.preventDefault();   
+		    });
+	let slideCount = $('#slider ul li').length;
+	let slideWidth = $('#slider ul li').width();
+	let slideHeight = $('#slider ul li').height();
+	let sliderUlWidth = slideCount * slideWidth;
+	
+	$('#slider').css({ width: slideWidth, height: slideHeight });     
+	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });  
+	$('#slider ul li:last-child').prependTo('#slider ul');
+	
+	function moveLeft() {
+	    $('#slider ul').animate({
+	    left: + slideWidth
+	    }, 200, function () {
+	        $('#slider ul li:last-child').prependTo('#slider ul');
+	        $('#slider ul').css('left', '');
+	        });
+	};
+	
+	function moveRight() {
+	    $('#slider ul').animate({
+	        left: - slideWidth
+	    }, 200, function () {
+	        $('#slider ul li:first-child').appendTo('#slider ul');
+	        $('#slider ul').css('left', '');
+	    });
+	};
+	
+	$('a.control_prev').click(function () {
+	    moveLeft();
+	});
+	
+	$('a.control_next').click(function () {
+	    moveRight();
+	});
+	});    
+	</script>
+
+	<!-- --------- slider.js end ----------  -->
+	<!-- ----- icon click effect -----  -->
+	<script>	
+	    const hearts = document.getElementsByName('heart-icon');
+	    hearts.forEach((heart) => {
+	        heart.addEventListener("click", toggleLike)
+
+	    if(heart.textContent === "favorite") {
+	    	heart.textContent = "favorite"
+            heart.style.color = "red"
+        } else {
+        	heart.textContent = "favorite_border"
+            heart.style.color = "white" 
+        }    
+	        
+	    function toggleLike() {
+	        if(heart.textContent === "favorite_border") {
+	            heart.textContent = "favorite"
+	            heart.style.color = "red"
+	        } else {
+	            heart.textContent = "favorite_border"
+	            heart.style.color = "white"
+	        }
+	    }
+	})
+	
+	    const adds = document.querySelectorAll('#add-icon')
+	    adds.forEach((add) => {
+	
+	    add.addEventListener("click", toggleAdd)
+		
+	    if(add.textContent === "add_task") {
+	    		add.textContent = "add_task"
+	            add.style.color = "green"	            
+       	 } else {
+       			add.textContent = "control_point"
+	            add.style.color = "white"
+        }
+	    
+	    function toggleAdd(){
+	        if(add.textContent === "control_point") {
+	            add.textContent = "add_task"
+	            add.style.color = "green"
+	        } else {
+	            add.textContent = "control_point"
+	            add.style.color = "white"
+	        }
+	    }
+	})
+	
+	const modalHearts = document.querySelectorAll('#modal-heart-icon')
+	        modalHearts.forEach((modalHeart) => {
+	        modalHeart.addEventListener("click", toggleLike)
+	
+	    function toggleLike() {
+	        if(modalHeart.textContent === "favorite_border") {
+	            modalHeart.textContent = "favorite"
+	            modalHeart.style.color = "red"
+	        } else {
+	            modalHeart.textContent = "favorite_border"
+	            modalHeart.style.color = "black"
+	        }
+	    }
+	})
+	
+	const modalAdds = document.querySelectorAll('#modal-add-icon')
+	    modalAdds.forEach((modalAdd) => {
+	
+	    modalAdd.addEventListener("click", toggleAdd)
+	
+	    function toggleAdd(){
+	        if(modalAdd.textContent === "control_point") {
+	            modalAdd.textContent = "add_task"
+	            modalAdd.style.color = "green"
+	        } else {
+	            modalAdd.textContent = "control_point"
+	            modalAdd.style.color = "black"
+	        }
+	    }
+	})
+	</script>
+
+	<!-- ---------- footer 호출 ----------  -->
+	<div data-include-path="/aside/movingfooter.html"></div>
+
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+	<script>
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+	<!-- ---------- modal screen ----------  -->
+	<script>
+
+	//리뷰 등록
+	function bookReviewSave() {
+		let url = window.location.href;
+		let auth = localStorage.getItem("Authorization");
+		const bookNums = document.querySelector('.modal_bookNum');
+		var bookNum = bookNums.innerHTML;
+		let data = {
+			"bookNum" : bookNum,
+			"bookReview": $('textarea[name="bookReview"]').val(),
+
+		};
+		console.log(data);
+ 		  
+ 		  $.ajax({
+ 			  url: '/reviews/',
+ 			  method: 'post',
+ 			  data: JSON.stringify(data),
+ 			 headers: {
+					"Authorization" : auth
+				},
+ 			  contentType: 'application/json; charset=utf-8',
+ 			  dataType: 'text',
+ 			  success: function(result){
+ 				  
+ 				  console.log("리뷰 작성 완료!" + result);
+ 				  
+ 				  alert("댓글이 등록되었습니다.");
+ 				  
+ 				  let results = JSON.parse(result);
+					
+ 				  console.log(results);
+ 				  
+ 				  $('.review-write-container').hide();
+          		  $("body").removeClass('notScroll');
+ 				  
+          		loadReviewData(results);
+ 				  
+ 			  }
+		}); 
+
+	}
+	
+
+	
+	//리뷰 가져온거 모달에 올려주는놈
+	function loadReviewData(results){
+		
+		console.log("results는 여기" + results[0].bookNum);
+		let bookNums = results[0].bookNum;
+		
+
+		if(results != null){
+		  $.getJSON('/reviews/main/'+ bookNums, function(arr){
+			  
+			  let listGroup = $(".reviewList");
+			  		  
+			  let str="";
+			  
+			  var result = 0;
+			  			  
+			  $.each(arr, function(){
+				  					  					  
+				  str += ' <div class="comments"> ';
+				  
+				  str += ' <h3 class="comment_id">' +results[result].username+ '</h3>';
+				  
+				  str += ' <p>' + results[result].bookReview + '</h6>';
+
+				  str += ' </div>';
+				  
+				  console.log(str);
+				  
+				  result = result + 1;
+				  
+			  })
+				  console.log("loadReviewData" + listGroup);
+			  
+			  listGroup.html(str);
+			  
+		  });
+		}
+
+		
+	  }
+    
+	    function modalInsert(bookNum){
+	    	let url = window.location.href;
+			let auth = localStorage.getItem("Authorization");
+			let data = {
+					"bookNums" : bookNum,
+					"url" : url
+				};
+						
+			$.ajax({
+				url: '/main/modal',
+				type:"post",
+				data:JSON.stringify(data),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+						
+					 	const modal = document.querySelector('.modal');
+					    const modalContent = document.querySelector('.modal_content');
+					    const close = document.querySelector('.modal_close');
+					    const modalImg = document.querySelector('.modal_img');
+					    const item = document.querySelectorAll('.item');
+					    const title = document.querySelector('.detail_title');
+					    const bookNum = document.querySelector('.modal_bookNum');
+					     
+					     item.forEach((list, index) => {
+					  	    const titleName = list.querySelector('.item-title');
+					        const view = list.querySelector('.item-img');
+					        const itemImg = list.querySelector('.item-img').getAttribute('src');
+					        
+					         view.addEventListener('click', () => { // 클릭 이벤트 - modal show
+					        	bookNum.innerText = result;
+					            modal.classList.add('modal--bg');
+					            modalContent.classList.add('modal_content--show');
+					            modalImg.setAttribute('src', itemImg);
+					            title.innerText = titleName.innerHTML;
+					    });
+					});
+
+					close.addEventListener('click', () => { // 클릭이벤트 - modal close 
+					    modal.classList.remove('modal--bg');
+					    modalContent.classList.remove('modal_content--show');
+					});
+
+				}
+			});	
+			
+			$.ajax({
+				url : '/main/bookReviewInsert',
+				type : "post",
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=UTF-8",
+				dataType : "text",
+				success : function(result) {
+					console.log("bookReviewInsert success" + result);
+					
+					let results = JSON.parse(result);
+					
+
+					loadReviewData(results);
+				}
+			});
+	
+		}
+	    
+	    
+	    function bookflip(){
+	    		let auth = localStorage.getItem("Authorization");
+	    		const bookNums = document.querySelector('.modal_bookNum');
+	    		var bookNum = bookNums.innerHTML;
+    		
+	    		let data = {bookNum:bookNum};
+	    		$.ajax({
+	    			url: '/main/bookflip',
+	    			type:"post",
+	    			contentType:"application/json; charset=UTF-8",
+	    			data:JSON.stringify(data),
+	    			headers: {
+	    				"Authorization" : auth
+	    			},
+	    			dataType:"text",
+	    			success: function(result){
+	    				console.log("success result : " + result);
+	    				let url = "/main/bookflip?name=" + result + "&num=" + bookNum;
+	    				console.log(url);
+	    				location.replace(url);
+	    			}
+	    		});
+	    	}
+    </script>
+
+	<script>
+	    jQuery(document).ready(function ($) {
+	        $('.review-add').click(function(){
+	            $('.review-write-container').show();
+	        })
+	    })
+	
+	    jQuery(document).ready(function ($) {
+	        $('#review-submit').click(function(){
+	        	$.preventDefault();
+	            $('.review-write-container').hide();
+	        })
+	    })	
+	    
+	    jQuery(document).ready(function ($) {
+	        $('.modal_close').click(function(){
+	            $('.review-write-container').hide();
+	        })
+	    })
+	    
+	</script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript"
+		src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
+
+</body>
+</html>

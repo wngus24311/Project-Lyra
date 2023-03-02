@@ -70,13 +70,6 @@ public class BookController {
 //		return new ResponseEntity<>(bookService.getList(bookNum), HttpStatus.OK);
 //	}
 	
-	@PostMapping("")
-	public ResponseEntity<Long> register(@RequestBody BookDTO bookDTO){
-		log.info("controller......." + bookDTO);
-		Long reviewNum = bookService.register2(bookDTO);
-		return new ResponseEntity<Long>(reviewNum, HttpStatus.OK);
-	}
-	
 	@DeleteMapping("/{reviewNum}")
 	public ResponseEntity<String> remove(@PathVariable("reviewNum") Long reviewNum){
 		

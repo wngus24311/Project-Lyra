@@ -26,7 +26,7 @@ public class BookDTO {
      private String keepCheck;
 	 
 	 //BookReview + ( bookNum )
-	 private Long reviewNum;
+	 private Long reviewnum;
 	 private String username;
 	 private String bookReview;
 	 private Long grade;

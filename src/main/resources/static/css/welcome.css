@@ -290,9 +290,10 @@ input[type="radio"]{
     cursor: pointer;
     padding: 15px 30px;
     transition: 0.3s;
-    text-decoration-line: none;]
+    text-decoration-line: none;
     padding-top: 20px;
 }
+
 .faq a:hover{
     background: #01dbdf;
     font-weight: bolder;

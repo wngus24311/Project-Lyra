@@ -127,17 +127,17 @@ public class MemberController {
         
         model.addAttribute("membership", memberService.getMembership(username));
         model.addAttribute("page", combineService.getPage(combineService.getPageList(username)));
-        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username)));
-        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username)));
+        model.addAttribute("pageList", bookService.getBookList(combineService.getPageList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
+        model.addAttribute("keepList", bookService.getBookList(combineService.getKeepList(username), combineService.bookLikeList(username), combineService.bookKeepList(username)));
         model.addAttribute("userInfo", memberService.getUsernameInfo(username));
-        
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/member/mypage");
         return modelAndView;
     }
     
     @GetMapping("/membership")
-    public ModelAndView membership(@RequestParam(value = "name", required=false) String loginUser) {
+    public ModelAndView membership(Model model,@RequestParam(value = "name", required=false) String loginUser) {
     	String username;
 		log.info(loginUser);
 		if (loginUser == null) {
@@ -145,6 +145,8 @@ public class MemberController {
 		}else {
 			username = loginUser;			
 		}	
+		
+		model.addAttribute("membership", memberService.getMembership(username));
     	
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/member/membership");

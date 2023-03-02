@@ -2,24 +2,25 @@ package com.lyra.project_lyra.controller;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.lyra.project_lyra.dto.CombineDTO;
-import com.lyra.project_lyra.repository.book.BookInfoRepository;
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.interfaces.BookService;
 import com.lyra.project_lyra.service.interfaces.CombineService;
 import com.lyra.project_lyra.service.interfaces.MemberService;
-import com.lyra.project_lyra.util.Category;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/main")
@@ -162,6 +163,19 @@ public class MainController {
 		return lbookNum;
 	}
 
+    @PostMapping("/bookReviewInsert")
+	public ResponseEntity<Object> setbookReviewInsert(Model model, @RequestBody Map<String,Object> data) {
+		log.info(data.get("bookNums"));
+		String bookNumss  = (String)data.get("bookNums");
+		Long llBookNum = Long.parseLong(bookNumss);
+
+		log.info("bookNum" + llBookNum);
+		
+		model.addAttribute("bookReviewList", bookService.getReviewsOfBook(llBookNum));
+		
+		return ResponseEntity.ok().body(bookService.getReviewsOfBook(llBookNum));		
+	}
+    
 	// Entity -> DTO
 	public String[] categoryDBtoView(String username) {
 		String[] categoryName = memberService.getCategory(username);

@@ -1,7 +1,6 @@
 package com.lyra.project_lyra.service.interfaces;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.lyra.project_lyra.dto.BookDTO;
 import com.lyra.project_lyra.dto.CombineDTO;
@@ -18,9 +17,9 @@ public interface BookService {
 	
 	void insert(BookDTO dto);
 
-	Long register1(BookDTO dto);
-	
-	Long register2(BookDTO dto);
+	List<BookDTO> getReviewsOfBook(Long bookNum);
+
+	Long reviewRegister(BookDTO bookDTO, String username);
 	
 	// 책 리뷰 페이지 처리
 	List<BookDTO> getList(List<Long> likeBookNum, List<Long> keepBookNum);
@@ -34,7 +33,7 @@ public interface BookService {
 	// 책 최신 리스트 가져오기
 	List<BookDTO> getUpdateList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
-	List<BookDTO> getBookList(List<CombineDTO> combineDTO);
+	List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum);
 
 	// 책 번호로 List 가져오기
 	
@@ -44,7 +43,7 @@ public interface BookService {
 
 	void modify(BookDTO bookDTO);
 
-	void remove(Long reviewNum);
+	void remove(Long reviewnum);
 
 	default BookInfo bookInfoDtoToEntity(BookDTO dto) {
 
@@ -60,22 +59,6 @@ public interface BookService {
 		return bookInfo;
 	}
 
-	default BookReview reviewDtoToEntity(BookDTO dto) {
-
-		MemberInfo memberInfo = MemberInfo.builder().username(dto.getUsername()).build();
-
-		BookInfo bookInfo = BookInfo.builder().bookNum(dto.getBookNum()).build();
-
-		BookReview bookReview = BookReview.builder()
-				.reviewnum(dto.getReviewNum())
-				.memberInfo(memberInfo)
-				.bookInfo(bookInfo).grade(dto.getGrade())
-				.bookReview(dto.getBookReview())
-				.bookReviewRegDate(dto.getBookReviewRegDate())
-				.build();
-
-		return bookReview;
-	}
 
 	default BookDTO bookInfoEntityToDto(BookInfo bookInfo) {
 
@@ -90,14 +73,29 @@ public interface BookService {
 		return bookDTO;
 	}
 
+	default BookReview reviewDtoToEntity(BookDTO dto) {
+
+		MemberInfo memberInfo = MemberInfo.builder().username(dto.getUsername()).build();
+
+		BookInfo bookInfo = BookInfo.builder().bookNum(dto.getBookNum()).build();
+
+		BookReview bookReview = BookReview.builder()
+				.reviewnum(dto.getReviewnum())
+				.memberInfo(memberInfo)
+				.bookInfo(bookInfo)
+				.bookReview(dto.getBookReview())
+				.build();
+
+		return bookReview;
+	}
+	
 	default BookDTO reviewEntityToDto(BookReview bookReview) {
 
-		BookDTO bookDTO = BookDTO.builder().reviewNum(bookReview.getReviewnum()).
-				username(bookReview.getMemberInfo().getUsername())
+		BookDTO bookDTO = BookDTO.builder()
+				.reviewnum(bookReview.getReviewnum())
+				.username(bookReview.getMemberInfo().getUsername())
 				.bookNum(bookReview.getBookInfo().getBookNum())
 				.bookReview(bookReview.getBookReview())
-				.grade(bookReview.getGrade())
-				.bookReviewRegDate(bookReview.getBookReviewRegDate())
 				.build();
 
 		return bookDTO;

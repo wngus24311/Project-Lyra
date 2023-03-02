@@ -1,5 +1,6 @@
 package com.lyra.project_lyra.repository.member;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
@@ -39,6 +40,7 @@ public class MemberRepositoryTests {
                        .age(i)
                        .memberGerne("액션")
                        .subscribeState("예")
+                       .lastlogin(Timestamp.valueOf(LocalDateTime.now()))
                        .build();
                memberInfoRepository.save(memberInfo);
 

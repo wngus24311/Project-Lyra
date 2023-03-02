@@ -42,7 +42,7 @@ i{
 
 
 /* ---------- slider ---------- */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);	
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);   
 html {
     border-top: 5px solid #fff;
     color: #2a2a2a;
@@ -195,6 +195,9 @@ section{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+.box{
+   height:450px;
+}
 .heading h2{
     font-size: 30px;
     font-weight: 600;
@@ -246,7 +249,7 @@ section{
     /* visibility: hidden; */
     display: none;
 }
-.popular .box:hover .watch-btn{
+.popular .imgbox:hover .watch-btn{
     position: absolute;
     display: flex;
     align-items: center;
@@ -264,6 +267,21 @@ section{
     z-index: 2;
 }
 
+
+.popular .icon span{
+    padding-top: 10px;
+    font-size: 22px;
+    padding-right: 5px;
+    color: white;
+    margin:5px;
+}
+
+.popular .icon i{
+   margin-bottom:15px;
+   font-size: 22px;
+   margin-right: 5px;
+}
+
 .popular .icon{
     position: absolute;
     bottom: 0;
@@ -271,23 +289,7 @@ section{
     padding-right: 10px;
     padding-bottom: 3px;
 }
-.popular .icon i{
-    font-size: 18px;
-    margin: 5px;
-    padding: 5px;
-}
-.icon #add-icon{
-    font-size: 20px;
-}
-.icon #heart-icon{
-    font-size: 20px;
-}
-.material-icons-outlined{
-    /* font-size: 20px; */
-    margin: 5px;
-    padding: 5px;
-    color: white;
-}
+
 .material-icons-outlined:hover,
 .material-icons-outlined:focus{
     cursor: pointer;
@@ -296,10 +298,11 @@ section{
     transform: scale(0.96);
 }
 .popular .text{
-    padding-top: 10px;
+    padding-top: 15px;
 }
 .popular .text h3{
     display: block;
+    font-size:20px
 }
 .popular .description-genre{
     margin: 0;
@@ -309,7 +312,6 @@ section{
     color: white;
 }
 .owl-nav span{
-    
     font-size: 40px;
     color: white;
     font-weight: bolder;
@@ -524,10 +526,6 @@ form .btn button{
 form .btn button:hover{
     background: #1b1b1b;
 }
-
-
-
-
 
 .detail .icon{
     justify-content: center;

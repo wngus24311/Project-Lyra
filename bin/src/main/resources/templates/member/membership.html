@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/membership.css">
+    <link rel="stylesheet" href="/css/movingfooter.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+     <!-- header 호출 -->
+     <div data-include-path="/aside/header.html"></div>
+	 
+	 <!-- page move -->
+    <script type="text/javascript" src="/js/pageMove.js"></script>
+</head>
+<body>
+    <div class="pricing-table">
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Personal</h3>
+            <div class="price">3개월</div>
+            <ul>
+                <li>매 주 기다리던 만화 업데이트, 3주분 무료!</li>
+                <li>3개월 구독료 캐시백</li>
+                <li>베스트셀러 일러스트 특별판 3권 무료</li>
+            </ul>
+            <div class="order-btn" onclick='getValue(3)'>구독하기</div>
+        </div>
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Professional</h3>
+            <div class="price">6개월</div>
+            <ul>
+                <li>매 주 기다리던 만화 업데이트, 6주분 무료!</li>
+                <li>6개월 구독료 캐시백</li>
+                <li>베스트셀러 일러스트 특별판 6권 무료</li>
+            </ul>
+            <div class="order-btn" onclick='getValue(6)'>구독하기</div>
+        </div>
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Premium</h3>
+            <div class="price">9개월</div>
+            <ul>
+                <li>매 주 기다리던 만화 업데이트, 9주분 무료!</li>
+                <li>9개월 구독료 캐시백</li>
+                <li>베스트셀러 일러스트 특별판 9권 무료</li>
+            </ul>
+            <div class="order-btn" onclick='getValue(9)'>구독하기</div>
+        </div>
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Ultimate</h3>
+            <div class="price">12개월</div>
+            <ul>
+                <li>매 주 기다리던 만화 업데이트, 12주분 무료!</li>
+                <li>12개월 구독료 캐시백</li>
+                <li>베스트셀러 일러스트 특별판 12권 무료</li>
+            </ul>
+            <div class="order-btn" onclick='getValue(12)'>구독하기</div>
+        </div>
+        
+
+    </div>
+    
+
+
+
+     <!-- ---------- footer 호출 ----------  -->
+     <div data-include-path="/aside/movingfooter.html"></div>
+
+     <!-- ---------- header, footer 호출 ----------  -->
+     <script>
+     	let auth = localStorage.getItem("Authorization");
+     
+     	function getValue(value) {
+          let url = window.location.href;
+		  let data = {membership:value, url:url};
+		  let auth = localStorage.getItem("Authorization");
+		  console.log(data);
+
+    	  $.ajax({
+				url: '/member/memberInsert',
+				type:"post",
+				data:JSON.stringify(data),
+				headers: {
+					"Authorization" : auth
+				},
+				contentType:"application/json; charset=UTF-8",
+				dataType:"text",
+				success: function(result){
+					console.log("membership success");
+				}
+			});	
+    	} 
+     
+        window.addEventListener('load', function() {
+            var allElements = document.getElementsByTagName('*');
+            Array.prototype.forEach.call(allElements, function(el) {
+                var includePath = el.dataset.includePath;
+                if (includePath) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            el.outerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open('GET', includePath, true);
+                    xhttp.send();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
