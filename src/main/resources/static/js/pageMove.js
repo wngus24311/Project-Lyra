@@ -75,3 +75,26 @@ function mypage(){
 			}
 		});
 	}
+	
+	
+function event(){
+	let auth = localStorage.getItem("Authorization");
+		$.ajax({
+			url: '/event/paging',
+			type: "post",
+			contentType: "application/json; charset=UTF-8",
+			headers: {
+				"authorization" : auth
+			},
+			dataType:"text",
+			success: function(result){
+				console.log("success result : " + result);
+				let url = "/event/paging?name=" + result;
+				console.log(url);
+				location.replace(url);
+			}
+		});
+}
+
+
+

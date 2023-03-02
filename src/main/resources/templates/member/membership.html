@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="pricing-table">
-        <div class="pricing-card">
+        <div class="pricing-card" id="color-card1">
             <h3 class="pricing-card-header">Personal</h3>
             <div class="price">3개월</div>
             <ul>
@@ -27,9 +27,10 @@
                 <li>3개월 구독료 캐시백</li>
                 <li>베스트셀러 일러스트 특별판 3권 무료</li>
             </ul>
-            <div class="order-btn" onclick='getValue(3)'>구독하기</div>
+            <button class="order-btn1" onclick='getValue(3)' th:if="${membership} == '3'">구독 중</button>
+            <button class="order-btn1" onclick='getValue(3)' th:unless="${membership} == '3'">구독하기</button>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card" id="color-card2">
             <h3 class="pricing-card-header">Professional</h3>
             <div class="price">6개월</div>
             <ul>
@@ -37,9 +38,10 @@
                 <li>6개월 구독료 캐시백</li>
                 <li>베스트셀러 일러스트 특별판 6권 무료</li>
             </ul>
-            <div class="order-btn" onclick='getValue(6)'>구독하기</div>
+            <button class="order-btn2" onclick='getValue(6)' th:if="${membership} == '6'">구독 중</button>
+            <button class="order-btn2" onclick='getValue(6)' th:unless="${membership} == '6'">구독하기</button>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card" id="color-card3">
             <h3 class="pricing-card-header">Premium</h3>
             <div class="price">9개월</div>
             <ul>
@@ -47,9 +49,10 @@
                 <li>9개월 구독료 캐시백</li>
                 <li>베스트셀러 일러스트 특별판 9권 무료</li>
             </ul>
-            <div class="order-btn" onclick='getValue(9)'>구독하기</div>
+            <button class="order-btn3" onclick='getValue(9)' th:if="${membership} == '9'">구독 중</button>
+            <button class="order-btn3" onclick='getValue(9)' th:unless="${membership} == '9'">구독하기</button>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card" id="color-card4">
             <h3 class="pricing-card-header">Ultimate</h3>
             <div class="price">12개월</div>
             <ul>
@@ -57,7 +60,8 @@
                 <li>12개월 구독료 캐시백</li>
                 <li>베스트셀러 일러스트 특별판 12권 무료</li>
             </ul>
-            <div class="order-btn" onclick='getValue(12)'>구독하기</div>
+            <button class="order-btn4" onclick='getValue(12)' th:if="${membership} == '12'">구독 중</button>
+            <button class="order-btn4" onclick='getValue(12)' th:unless="${membership} == '12'">구독하기</button>
         </div>
         
 
@@ -111,6 +115,93 @@
             });
         });
     </script>
-
+    
+    <script th:inline="javascript">
+   	 /*<![CDATA[*/
+    	let color = /*[[${membership}]]*/
+   	 
+   	 	console.log(color);
+    	
+    	if (color == 3){
+    		document.getElementById("color-card1").style.backgroundColor = "#01dbdf";
+            document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+    	} else if (color == 6){
+            document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+    		document.getElementById("color-card2").style.backgroundColor = "#01dbdf";
+            document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+    	} else if (color == 9){
+            document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+    		document.getElementById("color-card3").style.backgroundColor = "#01dbdf";
+            document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+    	} else if (color == 12){
+            document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+            document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+    		document.getElementById("color-card4").style.backgroundColor = "#01dbdf";
+    	}
+    	
+       $(function() {
+            $('.order-btn1').click( function() {
+              if( $(this).html() == '구독하기' ) {
+                $(this).html('구독중');
+                document.getElementById("color-card1").style.backgroundColor = "#01dbdf";
+                document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+                document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+                document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+                $('.order-btn2').html('구독하기');
+                $('.order-btn3').html('구독하기');
+                $('.order-btn4').html('구독하기');
+              alert("구독하시겠습니까?");
+              }
+              });
+            
+            $('.order-btn2').click( function() {
+                if( $(this).html() == '구독하기' ) {
+                  $(this).html('구독중');
+                  document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card2").style.backgroundColor = "#01dbdf";
+                  document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+                  $('.order-btn1').html('구독하기');
+                  $('.order-btn3').html('구독하기');
+                  $('.order-btn4').html('구독하기');
+                alert("구독하시겠습니까?");
+                }
+                });
+            
+            $('.order-btn3').click( function() {
+                if( $(this).html() == '구독하기' ) {
+                  $(this).html('구독중');
+                  document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card3").style.backgroundColor = "#01dbdf";
+                  document.getElementById("color-card4").style.backgroundColor = "#e7e7e7";
+                  $('.order-btn1').html('구독하기');
+                  $('.order-btn2').html('구독하기');
+                  $('.order-btn4').html('구독하기');
+                alert("구독하시겠습니까?");
+                }
+                });
+            
+            $('.order-btn4').click( function() {
+                if( $(this).html() == '구독하기' ) {
+                  $(this).html('구독중');
+                  document.getElementById("color-card1").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card2").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card3").style.backgroundColor = "#e7e7e7";
+                  document.getElementById("color-card4").style.backgroundColor = "#01dbdf";
+                  $('.order-btn1').html('구독하기');
+                  $('.order-btn2').html('구독하기');
+                  $('.order-btn3').html('구독하기');
+                alert("구독하시겠습니까?");
+                }
+                });
+           });
+       /*]]>*/
+    </script>
 </body>
 </html>
