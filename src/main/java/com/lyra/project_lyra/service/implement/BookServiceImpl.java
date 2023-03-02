@@ -1,21 +1,15 @@
 package com.lyra.project_lyra.service.implement;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.lyra.project_lyra.dto.BookDTO;
 import com.lyra.project_lyra.dto.CombineDTO;
-import com.lyra.project_lyra.dto.PageRequestDTO;
-import com.lyra.project_lyra.dto.PageResultDTO;
 import com.lyra.project_lyra.entity.book.BookInfo;
 import com.lyra.project_lyra.entity.book.BookReview;
 import com.lyra.project_lyra.repository.book.BookInfoRepository;
@@ -33,18 +27,19 @@ public class BookServiceImpl implements BookService {
 	private final BookInfoRepository bookInfoRepository;
 	private final BookReviewRepository bookReviewRepository;
 
+	//리뷰 가져오기
 	@Override
 	public List<BookDTO> getReviewsOfBook(Long bookNum) {
 		BookInfo bookInfo = BookInfo.builder().bookNum(bookNum).build();
 
 		List<BookReview> result = bookReviewRepository.findByBookInfo(bookInfo);
 
-		log.info("제발" + bookInfo);
+		log.info("bookInfo" + bookInfo);
 
 		return result.stream().map(bookReview -> reviewEntityToDto(bookReview)).collect(Collectors.toList());
 	}
 
-
+	//리뷰 추가
 	@Override
 	public Long reviewRegister(BookDTO bookDTO, String username) {
 		log.info("dto--------" + bookDTO);
@@ -59,13 +54,8 @@ public class BookServiceImpl implements BookService {
 
 		return bookDTO.getBookNum();
 	}
+
 	
-	@Override
-	public void remove(Long reviewnum) {
-		bookReviewRepository.deleteById(reviewnum);
-
-	}
-
 	@Override
 	public void insert(BookDTO dto) {
 		log.info("dto--------" + dto);
@@ -74,39 +64,7 @@ public class BookServiceImpl implements BookService {
 
 		bookInfoRepository.save(bookInfo);
 	}
-	
-	// 책 리뷰 수정
-	@Override
-	public void modify(BookDTO BookDTO) {
-		Optional<BookReview> result = bookReviewRepository.findById(BookDTO.getReviewnum());
 
-		if (result.isPresent()) {
-			BookReview review = result.get();
-			review.changeGrade(BookDTO.getGrade());
-			review.changeReview(BookDTO.getBookReview());
-
-			bookReviewRepository.save(review);
-		}
-
-	}
-
-	
-	// 책 랭킹
-	@Override
-	public PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto) {
-
-		Pageable pageable = pageRequestDto.getPageable(Sort.by("bookLike").descending());
-
-		Page<Object[]> result = bookInfoRepository.getBookRankingPage(pageable);
-
-		result.getContent().forEach(arr -> {
-		});
-
-		Function<Object[], BookDTO> fn = (en -> bookInfoEntityToDto((BookInfo) en[0]));
-
-		return new PageResultDTO<>(result, fn);
-
-	}
 
 	// 리뷰 페이지
 	@Override

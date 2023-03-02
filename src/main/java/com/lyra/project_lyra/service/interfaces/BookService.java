@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.lyra.project_lyra.dto.BookDTO;
 import com.lyra.project_lyra.dto.CombineDTO;
-import com.lyra.project_lyra.dto.PageRequestDTO;
-import com.lyra.project_lyra.dto.PageResultDTO;
 import com.lyra.project_lyra.entity.book.BookInfo;
 import com.lyra.project_lyra.entity.book.BookReview;
 import com.lyra.project_lyra.entity.member.MemberInfo;
@@ -17,8 +15,10 @@ public interface BookService {
 	
 	void insert(BookDTO dto);
 
+	//리뷰 가져오기
 	List<BookDTO> getReviewsOfBook(Long bookNum);
 
+	//리뷰 추가
 	Long reviewRegister(BookDTO bookDTO, String username);
 	
 	// 책 리뷰 페이지 처리
@@ -33,17 +33,8 @@ public interface BookService {
 	// 책 최신 리스트 가져오기
 	List<BookDTO> getUpdateList(List<Long> likeBookNum, List<Long> keepBookNum);
 	
-	List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum);
-
 	// 책 번호로 List 가져오기
-	
-	
-	// 랭킹 페이지 처리
-	PageResultDTO<BookDTO, Object[]> getBookRankingList(PageRequestDTO pageRequestDto);
-
-	void modify(BookDTO bookDTO);
-
-	void remove(Long reviewnum);
+	List<BookDTO> getBookList(List<CombineDTO> combineDTO, List<Long> likeBookNum, List<Long> keepBookNum);
 
 	default BookInfo bookInfoDtoToEntity(BookDTO dto) {
 

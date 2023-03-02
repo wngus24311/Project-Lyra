@@ -1,5 +1,6 @@
 package com.lyra.project_lyra.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lyra.project_lyra.repository.member.MemberInfoRepository;
+import com.lyra.project_lyra.dto.BookDTO;
 import com.lyra.project_lyra.service.interfaces.BookService;
 import com.lyra.project_lyra.service.interfaces.CombineService;
 import com.lyra.project_lyra.service.interfaces.MemberService;
@@ -29,9 +31,11 @@ import lombok.extern.log4j.Log4j2;
 public class MainController {
 	private final BookService bookService;
 	private final MemberService memberService;
-	private final MemberInfoRepository repository;
 	private final CombineService combineService;
 
+
+	
+	//메인 컨트롤러
 	@GetMapping("/main")
 	public ModelAndView getMainList(Model model, @RequestParam(value = "name", required=false) String loginUser) throws Exception{
 		String username;
@@ -62,6 +66,9 @@ public class MainController {
 		return username;
 	}
 	
+
+	
+	//카테고리
 	@PostMapping("/categoryInsert")
 	public void setCategoryInsert(Model model, @RequestBody Map<String,Object> data, Authentication authentication) {
 		String category = (String)data.get("category");
@@ -79,6 +86,8 @@ public class MainController {
 		log.info("category Insert Success");
 	}
 	
+	
+	//장르
 	 @GetMapping("/genrepage")
     public ModelAndView gernepage(Model model, @RequestParam(value = "name", required=false) String loginUser) {
     	String username;
@@ -96,6 +105,7 @@ public class MainController {
         return modelAndView;
     }
     
+	 
     @PostMapping("/genrepage")
 	public String getCategory(Authentication authentication) throws Exception{
 		String username = (String)authentication.getPrincipal();
@@ -103,6 +113,7 @@ public class MainController {
 		return username;
 	}
     
+    //북 플립
     @GetMapping("/bookflip")
     public ModelAndView getBookflip(Model model,@RequestParam(value = "name", required=false) String loginUser,@RequestParam(value = "num", required=false) Long bookNum) {
     	String username;
@@ -136,6 +147,8 @@ public class MainController {
 		return username;
 	}
     
+    
+    //책 페이징
     @PostMapping("/pageInsert")
 	public void setPageInsert(@RequestBody Map<String,Object> data, Authentication authentication) {
 		String bookNum = (String)data.get("bookNums");
@@ -152,6 +165,8 @@ public class MainController {
 		combineService.bookPageSave(username, lbookNum, lbookPage);
 	}
     
+    
+    //모달 처리
     @PostMapping("/modal")
 	public Long modalShow(@RequestBody Map<String,Object> data, Authentication authentication) {
 		String bookNum = (String)data.get("bookNums");
@@ -163,6 +178,7 @@ public class MainController {
 		return lbookNum;
 	}
 
+    //리뷰 삽입
     @PostMapping("/bookReviewInsert")
 	public ResponseEntity<Object> setbookReviewInsert(Model model, @RequestBody Map<String,Object> data) {
 		log.info(data.get("bookNums"));
@@ -176,7 +192,49 @@ public class MainController {
 		return ResponseEntity.ok().body(bookService.getReviewsOfBook(llBookNum));		
 	}
     
-	// Entity -> DTO
+    //디비 리뷰 가져오기
+ 	@GetMapping(value ="/main/{bookNum}")
+ 	public ResponseEntity<List<BookDTO>> getReviewByModal(@PathVariable("bookNum") Long bookNum) {
+
+ 		log.info("ReviewController /main/bookNum :" + bookNum);
+
+ 		return new ResponseEntity<>(bookService.getReviewsOfBook(bookNum), HttpStatus.OK);
+
+ 	}
+
+ 	//리뷰 추가
+ 	@PostMapping("")
+ 	public ResponseEntity<Object> addReview(@RequestBody BookDTO bookDTO,Authentication authentication) {
+
+ 		log.info("------------ add review -------------------");
+ 		log.info("BookDTO : " + bookDTO);
+
+ 		String username = (String)authentication.getPrincipal();
+ 		
+ 		Long reviewnum = bookService.reviewRegister(bookDTO, username);
+ 		Long bookNum = bookService.getReviewsOfBook(bookDTO.getBookNum()).get(0).getBookNum();
+ 		
+ 		log.info("리뷰넘-------------" + reviewnum);
+
+ 		return ResponseEntity.ok().body(bookService.getReviewsOfBook(bookNum));	
+ 	}
+
+ 	//리뷰 삭제
+	/*
+	 * @DeleteMapping("/{bookNum}/{reviewNum}") public ResponseEntity<Long>
+	 * removeReview(@PathVariable Long reviewNum) {
+	 * 
+	 * log.info("--------------- remove review ----------------");
+	 * log.info("reviewNum : " + reviewNum);
+	 * 
+	 * bookService.remove(reviewNum);
+	 * 
+	 * return new ResponseEntity<Long>(reviewNum, HttpStatus.OK);
+	 * 
+	 * }
+	 */
+    
+	// 카테고리 Entity -> DTO
 	public String[] categoryDBtoView(String username) {
 		String[] categoryName = memberService.getCategory(username);
 

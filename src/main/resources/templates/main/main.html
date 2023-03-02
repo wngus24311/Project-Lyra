@@ -778,7 +778,7 @@
 		console.log(data);
  		  
  		  $.ajax({
- 			  url: '/reviews/',
+ 			  url: '/main/',
  			  method: 'post',
  			  data: JSON.stringify(data),
  			 headers: {
@@ -816,7 +816,7 @@
 		
 
 		if(results != null){
-		  $.getJSON('/reviews/main/'+ bookNums, function(arr){
+		  $.getJSON('/main/main/'+ bookNums, function(arr){
 			  
 			  let listGroup = $(".reviewList");
 			  		  
