@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lyra.project_lyra.dto.MemberDTO;
-import com.lyra.project_lyra.entity.combine.CombinePage;
 import com.lyra.project_lyra.entity.member.MemberInfo;
 import com.lyra.project_lyra.excpetion.AppException;
 import com.lyra.project_lyra.excpetion.ErrorCode;
@@ -55,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
                 .age(age)
                 .gender(gender)
                 .nickname(nickname)
-                .memberGerne(memberGerne)
+                .memberGenre(memberGerne)
                 .subscribeState(subscribeState)
                 .lastlogin(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
@@ -85,7 +84,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void addMemberGenre(String username, String memberGenre) {
         MemberInfo memberInfo = memberRepository.findByUsername(username).get();
-        memberInfo.setMemberGerne(memberGenre);
+        memberInfo.setMemberGenre(memberGenre);
 
         memberRepository.save(memberInfo);
     }
@@ -111,7 +110,7 @@ public class MemberServiceImpl implements MemberService {
 						.age(member.getAge())
 						.gender(member.getGender())
 						.nickname(member.getNickname())
-						.memberGerne(member.getMemberGerne())
+						.memberGenre(member.getMemberGenre())
 						.subscribeState(member.getSubscribeState())
 						.lastlogin(member.getLastlogin())
 						.build();
@@ -132,7 +131,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		Optional<MemberInfo> memberDTO = memberRepository.findById(username);
 		
-		category = memberDTO.get().getMemberGerne().split(",");
+		category = memberDTO.get().getMemberGenre().split(",");
 		
 		int[] iFlag = new int[category.length];
 		

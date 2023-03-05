@@ -65,13 +65,13 @@ $('.okJoin').click(function () {
       
    // 정규식
       // id, pw
-      var regIdPw = /^[a-zA-Z0-9]{3,12}$/;
+      const regIdPw = /^[a-zA-Z0-9]{3,12}$/;
       // 이름
-      var regName = /^[가-힣a-zA-Z]{2,15}$/;
+      const regName = /^[가-힣a-zA-Z]{2,15}$/;
       // 년도
-      var regYear = /^[1-2]{1}[0-9]{0,4}$/;
+      const regYear = /^[1-2]{1}[0-9]{0,4}$/;
       // 나이
-      var check = /^[0-9]+$/; 
+      const check = /^[0-9]+$/;
 
       //아이디 확인
       if(checkId.value == ""){
@@ -123,11 +123,6 @@ $('.okJoin').click(function () {
           return false;
       }
     //정규식 종료
-      
-     // id, pw
-      var regIdPw = /^[a-zA-Z0-9]{4,12}$/;
-      // 이름
-      var regName = /^[가-힣a-zA-Z]{2,15}$/;
     
     let username = $(".username").val();
     let password = $(".password").val();
@@ -142,7 +137,7 @@ $('.okJoin').click(function () {
        "age": age,
        "nickname": nickname,
        "gender": gender,
-       "subscribeState" : "year"
+       "subscribeState" : "1"
     }
     
     $.ajax({

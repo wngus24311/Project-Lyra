@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.springframework.org/security/tags">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!-- ----- css -----  -->
     <link rel="stylesheet" href="/css/header.css">  
 </head>
@@ -11,9 +13,11 @@
     <!-- ---------- header start ----------  -->
     <div class="header">
         <nav class="nav-bar1">
-            <div>
-                <a href="/member/login">로그인</a>
-                <a href="javascript:membership();">구독권</a>
+            <div class="navbox">
+	            <a id="btnLogin" sec:authorize="!isAuthenticated" href="/member/login">로그인</a>
+	            <a id="btnLogout" sec:authorize="isAuthenticated" href="javascript:logout();">로그아웃</a></a>
+	            <a sec:authorize="!isAuthenticated" href="/member/join">회원가입</a></a>
+	            <a href="javascript:membership();">구독권</a>
                 <a href="">이벤트</a>
             </div>
         </nav>

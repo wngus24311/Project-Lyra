@@ -33,8 +33,9 @@ public class AuthenticationConfig {
                 .csrf().disable()   // 위와 동
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/member/join", "/member/login", "/member/mypage", "/member/membership", "/main/main").permitAll()   /** join, login은 언제나 가능하도록!!! */
-//                .antMatchers(HttpMethod.POST, "/book/**").authenticated()   /**모든 포스트 요청과 책 읽기는 인증 필요로 해놓음.*/
+                .antMatchers("/aside.header").permitAll()
+                .antMatchers(HttpMethod.GET,"/member/join", "/member/login", "/main/main", "/aside/header", "/book/insert", "/js/**").permitAll()   /** join, login은 언제나 가능하도록!!! */
+                .antMatchers(HttpMethod.POST, "/book/**").authenticated()   /**모든 포스트 요청과 책 읽기는 인증 필요로 해놓음.*/
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) /**JWT를 사용하는 경우에만 씀*/

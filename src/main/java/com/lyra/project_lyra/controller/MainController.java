@@ -38,7 +38,7 @@ public class MainController {
 		if (loginUser == null) {
 			username = "user";
 		}else {
-			username = loginUser;			
+			username = loginUser;
 		}	
 		
 		String[] categoryOne = memberService.getCategory(username);
@@ -58,7 +58,7 @@ public class MainController {
 	@PostMapping("/main")
 	public String getMainList(Authentication authentication) throws Exception{
 		String username = (String)authentication.getPrincipal();
-		
+
 		return username;
 	}
 	

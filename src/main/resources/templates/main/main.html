@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,6 +89,7 @@
 	<!-- API TEST -->
 </head>
 <body>
+
 	<!-- API TEST -->		
     <div id="modal" class="modal-overlay" style="display: none;">
         <div class="modal-window">
@@ -185,8 +188,6 @@
     </ul>  
     </div>
 	<!-- ---------- slider end ---------- -->
-
-
 	<!-- contents start -->
 	<section class="popular mtop">
 		<div class="container">
@@ -795,6 +796,40 @@
 	    {
 	        $.preventDefault();
 	    });
+		
+	    // $(document).ready(function () {
+		// 	let test = $(".btnLogin");
+		//     let x = document.getElementsByClassName("btnLogin")[0];
+		//     console.log("여기 타나:?")
+		//     console.log(test);
+		//     let auth = localStorage.getItem("Authentication");
+		//     let isLoginStatus = false;
+		//     $(".btnLogin").text("logout");
+		//
+		//     $.ajax({
+		//     	url: "/member/check",
+		//     	contentType: "application/json",
+		//     	type: "POST",
+		//     	headers: {
+		//     		"Authorization": auth
+		//     	},
+		//     	dataType: "text",
+		//     	success: function (result) {
+		//     		console.log("success result : " + result);
+		//     		isLoginStatus = result;
+	    //
+		//     		if (isLoginStatus) {
+		//     			$(".btnLogin").val().innerText = "로그아웃";
+		//     			$(".btnLogin").text("로그인");
+		//     		} else {
+		//     			$(".btnLogin").val().innerText = "로그아웃";
+		//     		}
+		//     	},
+		//     	error: function (textStatus) {
+		//     		console.log(textStatus + "왜 이게 나와");
+		//     	}
+		//     })
+	    // });
 	</script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>

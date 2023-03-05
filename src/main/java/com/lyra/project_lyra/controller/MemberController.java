@@ -1,42 +1,23 @@
 package com.lyra.project_lyra.controller;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.lyra.project_lyra.dto.MemberDTO;
 import com.lyra.project_lyra.repository.member.MemberInfoRepository;
 import com.lyra.project_lyra.service.implement.MemberServiceImpl;
 import com.lyra.project_lyra.service.interfaces.BookService;
 import com.lyra.project_lyra.service.interfaces.CombineService;
 import com.lyra.project_lyra.service.interfaces.MemberService;
-
+import com.lyra.project_lyra.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -68,7 +49,7 @@ public class MemberController {
                 dto.getAge(),
                 dto.getGender(),
                 dto.getNickname(),
-                dto.getMemberGerne(),
+                dto.getMemberGenre(),
                 dto.getSubscribeState());
 
         return ResponseEntity.ok().body(memberServiceImpl.login(dto.getUsername(), dto.getPassword()));
@@ -86,7 +67,7 @@ public class MemberController {
     public ResponseEntity<String> category(@RequestBody MemberDTO dto , Authentication authentication) {
         String username = (String) authentication.getPrincipal();
         log.info("username ==========> " + username);
-        memberServiceImpl.addMemberGenre(username, dto.getMemberGerne());
+        memberServiceImpl.addMemberGenre(username, dto.getMemberGenre());
         return ResponseEntity.ok().body("장르 선택이 완료 되었습니다.");
     }
 
@@ -180,4 +161,16 @@ public class MemberController {
 		
 		return username;
 	}
+
+    @PostMapping("/check")
+    public ResponseEntity<Boolean> check(Authentication authentication) {
+        log.info("안탐?");
+        log.info("Test auth ========> " + authentication.isAuthenticated());
+
+        if (authentication.isAuthenticated()) {
+            return ResponseEntity.ok().body(true);
+        }
+
+        return ResponseEntity.ok().body(false);
+    }
 }

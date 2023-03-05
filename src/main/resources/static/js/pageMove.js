@@ -75,3 +75,8 @@ function mypage(){
 			}
 		});
 	}
+function logout() {
+		alert("감사합니다. 로그아웃 하겠습니다.");
+		localStorage.setItem("Authorization", "");
+		location.replace("/main/main");
+}

@@ -220,7 +220,7 @@ function count_check(obj){
 	    console.log(checkData);
 	
 	    let jsonData = {
-		    "memberGerne": checkData
+		    "memberGenre": checkData
 	    };
 	
 	    $.ajax({
@@ -237,7 +237,7 @@ function count_check(obj){
 			    $.ajax({
 				    url: "/main/main",
 				    contentType: "application/json",
-				    type: "post",
+				    type: "POST",
 				    headers: {
 					    "Authorization": auth
 				    },
