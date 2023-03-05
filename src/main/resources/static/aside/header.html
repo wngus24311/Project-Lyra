@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ----- css -----  -->
+    <link rel="stylesheet" href="/css/header.css">  
+</head>
+<body>
+    <!-- ---------- header start ----------  -->
+    <div class="header">
+        <nav class="nav-bar1">
+            <div>
+                <a id="btnLogin" sec:authorize="!isAuthenticated" href="/member/login">로그인</a>
+	            <a id="btnLogout" sec:authorize="isAuthenticated" href="javascript:logout();">로그아웃</a>
+	            <a sec:authorize="!isAuthenticated" href="/member/join">회원가입</a>
+                <a href="javascript:membership();">구독권</a>
+                <a href="/event/paging">이벤트</a>
+            </div>
+        </nav>
+        <nav class="nav-bar2">  
+            <img src="/images/logo2.png" class="logo">
+            <div class="navbox">
+                <a href="javascript:main();">홈</a>
+                <a href="javascript:category();">장르</a>
+                <a href="javascript:mypage();">마이페이지</a>
+            </div>
+        </nav>
+    </div>   
+    <!-- ---------- header end ---------- -->
+</body>
+</html>

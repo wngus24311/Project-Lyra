@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>회원 가입</title>
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+   <link rel="stylesheet" href="/css/join.css">
+   <style>
+   
+   </style>
+   
+</head>
+<body>
+   <div class="login-box">
+   <h2 class="login_header">회원가입</h2>
+   <form>
+      <div class="user-box">
+         <div class="idMsg"></div>
+         <input type="text" class="username form-control" id="checkId" name="username" placeholder="ID를 입력해주세요">
+         <label>UserName</label>
+      </div>
+      <div class="user-box">
+         <div class="passwordMsg"></div>
+         <input type="password" class="password form-control" id="checkPassword" name="password" placeholder="비밀번호를 입력해주세요.">
+         <label>Password</label>
+      </div>
+      <div class="user-box">
+         <div class="passwordMsg"></div>
+         <input type="text"class="age form-control" id="checkAge" name="age" placeholder="나이를 입력해주세요.">
+         <label>Age</label>
+      </div>
+      <div class="user-box">
+         <div class="passwordMsg"></div>
+            <input type="text" class="nickname form-control" id="checkNickname" name="nickname" placeholder="별명을 입력해주세요.">
+         <label>NickName</label>
+      </div>
+      <div class="form-check form-check-inline">
+         <input type="radio" class="gender form-check-input" id="inlineRadio1" name="gender" value="0" >
+         <label class="form-check-label" for="inlineRadio1">남성</label>
+                  
+      </div>
+      <div class="form-check form-check-inline">
+         <input type="radio" class="gender form-check-input" id="inlineRadio2" name="gender" value="1" >
+         <label class="form-check-label" for="inlineRadio1">여성</label>
+      </div>
+      <button type="button" class="btn btn-outline-success okJoin">가입완료</button>
+   </form>
+      <a href="/member/login" class="link-info">이미 가입되어 있나요?</a>      
+</div>
+
+
+
+<script>
+$('.okJoin').click(function () {
+    // 정규식 확인
+    let checkId = document.getElementById("checkId");
+      let checkPassword = document.getElementById("checkPassword");
+      let checkAge = document.getElementById("checkAge");
+      let checkNickname = document.getElementById("checkNickname");
+      
+   // 정규식
+      // id, pw
+      var regIdPw = /^[a-zA-Z0-9]{3,12}$/;
+      // 이름
+      var regName = /^[가-힣a-zA-Z]{2,15}$/;
+      // 년도
+      var regYear = /^[1-2]{1}[0-9]{0,4}$/;
+      // 나이
+      var check = /^[0-9]+$/; 
+
+      //아이디 확인
+      if(checkId.value == ""){
+          alert("아이디를 입력하세요.")
+          checkId.focus();
+          return false;
+      }
+      //아이디 영어 대소문자 확인
+      else if(!regIdPw.test(checkId.value)){
+          alert("아이디를 3~12자 영문 대소문자, 숫자만 입력하세요.")
+          checkId.focus();
+          return false;
+      }
+
+      //비밀번호 확인
+      if(checkPassword.value == ""){
+          alert("비밀번호를 입력하세요.")
+          checkPassword.focus();
+          return false;
+      }
+      //비밀번호 영어 대소문자 확인
+      else if(!regIdPw.test(checkPassword.value)){
+          alert("비밀번호를 3~12자 영문 대소문자, 숫자만 입력하세요.")
+          checkPassword.focus();
+          return false;
+      }
+      //비밀번호와 아이디 비교
+      else if(checkPassword.value == checkId.value){
+          alert("아이디와 동일한 비밀번호를 사용할 수 없습니다.")
+          checkPassword.focus();
+          return false;
+      }
+      
+      if (!check.test(checkAge.value)) {
+         alert("나이는 숫자만 입력 가능합니다.");
+         return false;
+      }
+
+      //이름 확인 = 한글과 영어만 가능하도록
+      if(checkNickname.value == ""){
+          alert("이름을 입력하세요.")
+          checkNickname.focus();
+          return false;
+      }
+
+      else if(!regName.test(checkNickname.value)){
+          alert("닉네임은 최소 2글자 이상, 한글과 영어만 입력하세요.")
+          checkNickname.focus();
+          return false;
+      }
+    //정규식 종료
+      
+     // id, pw
+      var regIdPw = /^[a-zA-Z0-9]{4,12}$/;
+      // 이름
+      var regName = /^[가-힣a-zA-Z]{2,15}$/;
+    
+    let username = $(".username").val();
+    let password = $(".password").val();
+    let age = $(".age").val();
+    let nickname = $(".nickname").val();
+    let gender = $(".gender").val();
+    
+    let datas = {
+       "username": username,
+       "password": password,
+       "memberGerne": "0",
+       "age": age,
+       "nickname": nickname,
+       "gender": gender,
+       "subscribeState" : "year"
+    }
+    
+    $.ajax({
+       url: '/member/join',
+       contentType: "application/json",
+       data: JSON.stringify(datas),
+       type: "POST",
+       dataType: 'text',
+       success: function (data) {
+          console.log("Success " + data);
+          localStorage.setItem("Authorization", "Bearer " + data);
+          let auth = localStorage.getItem("Authorization");
+          $.ajax({
+             url: '/member/category',
+             contentType: "application/json",
+             type: "GET",
+             headers: {
+                "Authorization" : auth
+             },
+             dataType: "text",
+             success: function (data) {
+                console.log("Success" + data);
+                window.location.href = "/member/category";
+             }
+          });
+          
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+          console.log("Error" + textStatus);
+          if (username == null) {
+             alert("아이디를 입력해주세요.");
+          } else {
+             alert("아이디가 있습니다 다시 입력해주세요.")
+          }
+       }
+    });
+ }); // .uploadBtn 이벤트 종료
+</script>
+</body>
+</html>
+
