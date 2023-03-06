@@ -26,7 +26,6 @@ public class Event {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long evnum;
-	// ũ��� 20, not null
 	@Column
 	private String eventTitle;
 	@Column

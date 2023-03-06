@@ -1,138 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/genrepage.css">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="/css/genrepage.css">
 <!-- ----- box icons -----  -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+	rel='stylesheet'>
 <!-- ----- google font icons -----  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link
+	href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
 <!-- ----- fontawsome -----  -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+	integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+	crossorigin="anonymous">
 <!-- ----- carousel -----  -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
 <!-- page move -->
 <script type="text/javascript" src="/js/pageMove.js"></script>
 <!-- ----- google fonts -----  -->
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap"
+	rel="stylesheet">
 <!-- API TEST -->
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
-	
-	<style>
-        #modal.modal-overlay {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            z-index: 15000;
-            left: 0;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(1.5px);
-            -webkit-backdrop-filter: blur(1.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        #modal .modal-window {
-            background: rgba( 69, 139, 197, 0.70 );
-            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-            backdrop-filter: blur( 13.5px );
-            -webkit-backdrop-filter: blur( 13.5px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 400px;
-            height: 500px;
-            position: relative;
-            top: -100px;
-            padding: 10px;
-        }
-        #modal .title {
-            padding-left: 10px;
-            display: inline;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-            
-        }
-        #modal .title h2 {
-            display: inline;
-        }
-        #modal .close-area {
-            display: inline;
-            float: right;
-            padding-right: 10px;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-        }
-        
-        #modal .content {
-            margin-top: 20px;
-            padding: 0px 10px;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-        }
-    </style>
-	
-	<!-- API TEST -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript"
+	src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
+
+<style>
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 15000;
+	left: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: rgba(69, 139, 197, 0.70);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 500px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .title {
+	padding-left: 10px;
+	display: inline;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .title h2 {
+	display: inline;
+}
+
+#modal .close-area {
+	display: inline;
+	float: right;
+	padding-right: 10px;
+	cursor: pointer;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+}
+</style>
+
+<!-- API TEST -->
 
 </head>
 <body>
-	<!-- API TEST -->		
-    <div id="modal" class="modal-overlay" style="display: none;">
-        <div class="modal-window">
-            <div class="title">
-                <h1>공유하기</h1>
-            </div>
-            <div class="close-area">X</div>
-            <div class="content">
-				 <!-- Go to www.addthis.com/dashboard to customize your tools -->
-         		<div class="addthis_inline_share_toolbox_07dw" id="btn-modal"></div> 
-                
-            </div>
-        </div>
-    </div>      
-              
-    <!-- API TEST -->
-    <!-- header 호출 -->
-    <div data-include-path="/aside/header.html"></div>
+	<!-- API TEST -->
+	<div id="modal" class="modal-overlay" style="display: none;">
+		<div class="modal-window">
+			<div class="title">
+				<h1>공유하기</h1>
+			</div>
+			<div class="close-area">X</div>
+			<div class="content">
+				<!-- Go to www.addthis.com/dashboard to customize your tools -->
+				<div class="addthis_inline_share_toolbox_07dw" id="btn-modal"></div>
 
-    <!-- contents start -->
-    <section class="popular mtop">
-        <div class="container">
-            <div class="heading flex1">
+			</div>
+		</div>
+	</div>
+
+	<!-- API TEST -->
+	<!-- header 호출 -->
+	<div data-include-path="/aside/header.html"></div>
+
+	<!-- contents start -->
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#액션</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '1'" th:category="1" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '1'" th:category="1"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -145,88 +176,101 @@
 				</div>
 
 			</div>
-            </div>
-    </section>
+		</div>
+	</section>
 
-    	<!-- ---------- modal screen start ----------  -->
-    <div class="modal">
-    <div class="modal_content">
-        <i class="modal_close far fa-times-circle"></i>
-		
-        <div class="modal_left">
-        <div class="modal_bookNum"></div>
-            <img class="modal_img" src="" alt="" >
-        </div>
+	<!-- ---------- modal screen start ----------  -->
+	<div class="modal">
+		<div class="modal_content">
+			<i class="modal_close far fa-times-circle"></i>
 
-        <div class="modal_right">
-            <div class="detail">
-                <h2 class="detail_title"></h2>
-                <p class="detail_description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Architecto praesentium corporis accusamus dolor necessitatibus asperiores, nobis velit ex. 
-                </p>
-                <a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
-                <div class="icon">
-                </div>
+			<div class="modal_left">
+				<div class="modal_bookNum"></div>
+				<img class="modal_img" src="" alt="">
+			</div>
 
-            </div>
-        </div>
-        <div class="review">
-            <h2 class="review_title">⭐ 이 책의 리뷰</h2>
-            <p class="review-add" id="review-add">작성하기</p>
-            <div class="review-write-container" style="display: none;">
-                <form action="#">
-                <header>소중한 리뷰를 작성해주세요</header>
-                <div class="textarea">
-                    <textarea cols="30" placeholder="리뷰 작성"></textarea>
-                </div>
-                <div class="btn">
-                    <button type="submit" id="review-submit">업로드 하기</button>
-                </div>
-            </form>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">안산고수</h3>
-                    <p class="comment_detail">잼써여111111111</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">원데이</h3>
-                    <p class="comment_detail">잼써여2222222222</p>
-            </div>
-            <div class="comments">
-                <h3 class="comment_id">요떼기</h3>
-                    <p class="comment_detail">잼써여33333333333333</p>
-            </div>
-            <!-- <p class="review-add">작성하기</p> -->
-        </div>
-    </div>
-    </div>
-    <!-- ---------- modal screen end ----------  -->
-        <section class="popular mtop">
-            <div class="container">
-            <div class="heading flex1">
+			<div class="modal_right">
+				<div class="detail">
+					<h2 class="detail_title"></h2>
+					<p class="detail_description">Lorem, ipsum dolor sit amet
+						consectetur adipisicing elit. Architecto praesentium corporis
+						accusamus dolor necessitatibus asperiores, nobis velit ex.</p>
+					<a href="javascript:bookflip();" class="detail_readBtn">읽으러 가기</a>
+					<div class="icon"></div>
+
+				</div>
+			</div>
+			<div class="review">
+				<h2 class="review_title">⭐ 이 책의 리뷰</h2>
+				<p class="review-add" id="review-add">작성하기</p>
+				<div class="review-write-container" style="display: none;">
+					<form action="#">
+						<header>소중한 리뷰를 작성해주세요</header>
+						<div class="textarea">
+							<textarea cols="30" placeholder="리뷰 작성"></textarea>
+						</div>
+						<div class="btn">
+							<button type="submit" id="review-submit">업로드 하기</button>
+						</div>
+					</form>
+				</div>
+				<div class="comments">
+					<h3 class="comment_id">안산고수</h3>
+					<p class="comment_detail">잼써여111111111</p>
+				</div>
+				<div class="comments">
+					<h3 class="comment_id">원데이</h3>
+					<p class="comment_detail">잼써여2222222222</p>
+				</div>
+				<div class="comments">
+					<h3 class="comment_id">요떼기</h3>
+					<p class="comment_detail">잼써여33333333333333</p>
+				</div>
+				<!-- <p class="review-add">작성하기</p> -->
+			</div>
+		</div>
+	</div>
+	<!-- ---------- modal screen end ----------  -->
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#로맨스</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '2'" th:category="2" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '2'" th:category="2"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -239,34 +283,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                 <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#추리</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '3'" th:category="3" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '3'" th:category="3"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -279,34 +337,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#에세이</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '4'" th:category="4" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '4'" th:category="4"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -319,34 +391,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                 <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#교육</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '5'" th:category="5" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '5'" th:category="5"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -359,34 +445,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                 <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#소설</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '6'" th:category="6" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '6'" th:category="6"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -399,34 +499,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                 <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#기술</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '7'" th:category="7" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '7'" th:category="7"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -439,34 +553,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-        <section class="popular mtop">
-                 <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#인문</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '8'" th:category="8" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '8'" th:category="8"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -479,34 +607,48 @@
 				</div>
 
 			</div>
-            </div>
-        </section>
-    <section class="popular mtop">
-            <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#경영</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '9'" th:category="9" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '9'" th:category="9"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -519,34 +661,48 @@
 				</div>
 
 			</div>
-            </div>
-    </section>
-    <section class="popular mtop">
-           <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#여행</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '10'" th:category="10" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '10'" th:category="10"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -559,34 +715,48 @@
 				</div>
 
 			</div>
-            </div>
-    </section>
-    <section class="popular mtop">
-             <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#요리</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '11'" th:category="11" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '11'" th:category="11"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -599,34 +769,48 @@
 				</div>
 
 			</div>
-            </div>
-    </section>
-    <section class="popular mtop">
-           <div class="container">
-            <div class="heading flex1">
+		</div>
+	</section>
+	<section class="popular mtop">
+		<div class="container">
+			<div class="heading flex1">
 				<span>
 					<h2>#건강</h2>
 				</span>
-				<button>더보기 ></button>
 			</div>
 
 			<div class="owl-carousel owl-theme">
-				<div class="item" th:each="dto : ${list}" th:if="${dto.bookGerne} == '12'" th:category="12" th:onClick="categoryInsert(this.getAttribute('category'))">
+				<div class="item" th:each="dto : ${list}"
+					th:if="${dto.bookGerne} == '12'" th:category="12"
+					th:onClick="categoryInsert(this.getAttribute('category'))">
 					<div class="box">
 						<div class="icon">
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:if="${dto.likeCheck} == '1'">favorite</span> 
-							<span name="heart-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))" th:unless="${dto.likeCheck} == '1'">favorite_border</span> 
-							<i class="fas fa-share-alt"></i>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:if="${dto.keepCheck} == '1'">add_task</span>
-							<span id="add-icon" class="material-icons-outlined" th:bookNum="${dto.bookNum}" th:onClick="bookNumInsert(this.getAttribute('bookNum'))" th:unless="${dto.keepCheck} == '1'">control_point</span>
+							<span name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.likeCheck} == '1'">favorite</span> <span
+								name="heart-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumLikeInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.likeCheck} == '1'">favorite_border</span> <i
+								class="fas fa-share-alt"></i> <span id="add-icon"
+								class="material-icons-outlined" th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:if="${dto.keepCheck} == '1'">add_task</span> <span
+								id="add-icon" class="material-icons-outlined"
+								th:bookNum="${dto.bookNum}"
+								th:onClick="bookNumInsert(this.getAttribute('bookNum'))"
+								th:unless="${dto.keepCheck} == '1'">control_point</span>
 						</div>
 						<div class="imgbox">
-							<a href="#" class="watch-btn">
-	                        <i class='bx bx-book-open bx-tada' ></i>
-	                        </a>
+							<a href="#" class="watch-btn"> <i
+								class='bx bx-book-open bx-tada'></i>
+							</a>
 							<div>
 								<img class="item-img" th:src="${dto.bookThumbnail}"
-									th:if="${dto.bookThumbnail != null}" th:bookNum="${dto.bookNum}" th:onClick="modalInsert(this.getAttribute('bookNum'))"/>
+									th:if="${dto.bookThumbnail != null}"
+									th:bookNum="${dto.bookNum}"
+									th:onClick="modalInsert(this.getAttribute('bookNum'))" />
 							</div>
 						</div>
 						<div class="text">
@@ -639,10 +823,10 @@
 				</div>
 
 			</div>
-            </div>
-    </section>
-                      
-   <!--  API TEST -->
+		</div>
+	</section>
+
+	<!--  API TEST -->
 	<script>
 	const modals = document.getElementById("modal")
 	function modalOn() {
@@ -674,17 +858,19 @@
 	    }
 	})
     </script>
-    <!--  API TEST -->
+	<!--  API TEST -->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
 	<script>		
 		let auth = localStorage.getItem("Authorization");
 		function categoryInsert(clicked_id){
 			let url = window.location.href;
 			let data = {category:clicked_id, url:url};
-			console.log(url);
+			console.log(data);
 			
 			$.ajax({
 				url: '/main/categoryInsert',
@@ -791,7 +977,7 @@
 
 	</script>
 	<!-- contents end -->
-	
+
 	<!-- --------- slider.js start ----------  -->
 	<script>
 	jQuery(document).ready(function ($) {
@@ -844,7 +1030,7 @@
 	});
 	});    
 	</script>
-	
+
 	<!-- --------- slider.js end ----------  -->
 	<!-- ----- icon click effect -----  -->
 	<script>	
@@ -926,14 +1112,16 @@
 	    }
 	})
 	</script>
-	
+
 	<!-- ---------- footer 호출 ----------  -->
-    <div data-include-path="/aside/movingfooter.html"></div>
+	<div data-include-path="/aside/movingfooter.html"></div>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <script>
+	<script>
         window.addEventListener('load', function() {
             var allElements = document.getElementsByTagName('*');
             Array.prototype.forEach.call(allElements, function(el) {
@@ -952,8 +1140,8 @@
         });
     </script>
 
-    <!-- ---------- modal screen ----------  -->
-    <script>
+	<!-- ---------- modal screen ----------  -->
+	<script>
 	    function modalInsert(bookNum){
 			let auth = localStorage.getItem("Authorization");
 			var data = {bookNums:bookNum};
@@ -1024,8 +1212,8 @@
 	    		});
 	    	}
     </script>
-    
-    <script>
+
+	<script>
 	    jQuery(document).ready(function ($) {
 	        $('.review-add').click(function(){
 	            $('.review-write-container').show();
@@ -1043,8 +1231,9 @@
 	        $.preventDefault();   
 	    });
 	</script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript"
+		src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63eb3e557f457737"></script>
 
 </body>
 </html>

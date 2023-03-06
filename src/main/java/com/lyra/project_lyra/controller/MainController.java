@@ -325,8 +325,8 @@ public class MainController {
 			case "#건강":
 				categoryName = "12";
 				break;
-			default:
-				categoryName = "";
+			default: 
+				categoryName = category;
 				break;
 		}		
 		return categoryName;
