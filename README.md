@@ -53,3 +53,7 @@ Back End : 차승현, 김세훈, 박주현, 한승현
 일정
 
 <img width="700" alt="image" src="https://user-images.githubusercontent.com/95727405/218631474-e8c7e744-092a-4c44-b8c9-47be13aa3f1d.png">
+
+Notion
+
+https://fierce-bedbug-9d1.notion.site/f0f0e42e28fa4aa999112ac768f7ae5c
